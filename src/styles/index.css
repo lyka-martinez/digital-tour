@@ -16,6 +16,7 @@
     --color-brnd-primary: #00843A;
     --color-brnd-secondary: #00483A;
     --color-brnd-base: #E0E4EB;
+    --color-brnd-bg: #E2E6EC;
 
     --font-poppins: 'Poppins', sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
@@ -28,27 +29,13 @@
 
     color-scheme: light dark;
     color: #213547;
-    background-color: #ffffff;
+    background-color: var(--color-brnd-bg);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-}
-
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-}
-
 
 /* dark theme */
 @media (prefers-color-scheme: dark) {
