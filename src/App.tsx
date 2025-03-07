@@ -1,5 +1,6 @@
 //imported components
 import {Header} from './components/header.tsx';
+import {Content} from './components/content.tsx';
 
 export default function App() {
 
@@ -7,6 +8,7 @@ export default function App() {
         <>
             <div>
                 <Header/>
+                <Content/>
             </div>
         </>
     )
