@@ -1,7 +1,6 @@
 //components
 import {Video} from './video_content.tsx';
 import {Accordion} from './accordion.tsx';
-//import {Accordion} from './test.tsx';
 
 export function Content() {
     return (

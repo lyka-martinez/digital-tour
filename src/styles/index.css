@@ -17,6 +17,7 @@
     --color-brnd-secondary: #00483A;
     --color-brnd-base: #E0E4EB;
     --color-brnd-bg: #E2E6EC;
+    --color-brnd-clicked: rgba(0, 132, 58, 0.5);
 
     --font-poppins: 'Poppins', sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
