@@ -3,12 +3,9 @@
 @import "./fonts";
 @import "tailwindcss";
 /* @plugin "daisyui"; */
-@plugin "daisyui" { themes: light --default }
 
-/* 
-    Add the following line to daisyui to enable dark mode:
-    { themes: light --default, dark --prefersdark; }
-*/
+@plugin "daisyui" { themes: light --default }
+/*  Add the following line to daisyui to enable dark mode: { themes: light --default, dark --prefersdark; } */
 
 @theme {
     --color-brnd-light: #F1F1F1;
@@ -16,19 +13,19 @@
     --color-brnd-primary: #00843A;
     --color-brnd-secondary: #00483A;
     --color-brnd-base: #E0E4EB;
+    --color-brnd-base-50: #D3DBE8;
 
     --font-poppins: 'Poppins', sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
 }
 
 :root {
-    font-family: var(--font-montserrat);
-    line-height: 1.5;
+    font-family: var(--font-poppins);
     font-weight: 400;
 
     color-scheme: light dark;
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--color-neutral);
+    background-color: var(--color-brnd-base);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -38,17 +35,7 @@
 
 body {
     margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
 }
-
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-}
-
 
 /* dark theme */
 @media (prefers-color-scheme: dark) {

@@ -1,16 +1,44 @@
 /* Specific styles for the App component. */
 
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+.bg-bottom-svg {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23D3DBE8" fill-opacity="1" d="M0,0L60,5.3C120,11,240,21,360,58.7C480,96,600,160,720,208C840,256,960,288,1080,272C1200,256,1320,192,1380,160L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: contain;
 }
 
-.card {
-    padding: 2em;
+.scroll-hidden {
+    scrollbar-width: none;
 }
 
-.read-the-docs {
-    color: #888;
+.slide-up {
+    animation: slide-up 0.5s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+
+/* Overwritten pre-build UI styles */
+.custom-join {
+    display: unset;
+    align-items: unset;
+    overscroll-behavior-y: contain;
+}
+
+.join-vertical > .join-item:first-child {
+    --join-ss: var(--radius-xl);
+    --join-se: var(--radius-xl);
+}
+
+.join-vertical > .join-item:last-child {
+    --join-es: var(--radius-xl);
+    --join-ee: var(--radius-xl);
 }
