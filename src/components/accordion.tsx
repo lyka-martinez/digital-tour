@@ -1,13 +1,8 @@
 //types
-type Room = {
-    name: string;
-    options?: string[];
-};
-
 type AccordionProps = {
     title: string;
     with_drops?: string[];
-    rooms?: Room[];
+    rooms?: string[];
     no_drops?: string[];
 };
 
@@ -27,7 +22,7 @@ export const Accordion = ({title, with_drops, rooms, no_drops} : AccordionProps)
                                 <div tabIndex={0} role="button" className="btn text-base bg-transparent text-[var(--color-brnd-secondary)] p-2 w-full border border-[var(--color-brnd-muted)] rounded-[8px] hover:bg-[var(--color-brnd-primary)] hover:text-[var(--color-brnd-light)] focus:bg-[var(--color-brnd-primary)] focus:text-[var(--color-brnd-light)] dropdown-open:bg-[var(--color-brnd-primary)]">{with_drop}</div>
                                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-100 w-52 p-2 shadow-sm">
                                     {rooms && rooms.map((room, index) => (
-                                        <li key={index} className="rounded-[8px] hover:bg-[var(--color-brnd-primary)] hover:text-[var(--color-brnd-light)]"><a className="active:!bg-[var(--color-brnd-clicked)] rounded-[8px]">{room.name}</a></li>
+                                        <li key={index} className="rounded-[8px] hover:bg-[var(--color-brnd-primary)] hover:text-[var(--color-brnd-light)]"><a className="active:!bg-[var(--color-brnd-clicked)] rounded-[8px]">{room}</a></li>
                                     ))}
                                 </ul>
                             </div>

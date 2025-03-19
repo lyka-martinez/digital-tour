@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Arrival Experience",
+        "no_drops": ["Front Office", "Elevator"]
+    },
+    {
+        "title": "Amenities",
+        "no_drops": ["Function Room", "Swimming Pool", "Jacuzzi", "Fitness Center", "Game Room", "Mini Golf", "Children's Playground"]
+    },
+    {
+        "title": "Room",
+        "with_drops": ["Classic", "Deluxe", "Premiere"],
+        "no_drops": ["Suite"],
+        "rooms": ["Queen", "Twin"]
+    }
+]
