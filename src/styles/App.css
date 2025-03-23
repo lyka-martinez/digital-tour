@@ -5,8 +5,11 @@
     background-size: contain;
 }
 
-.scroll-hidden {
+.scrollbar-hidden {
     scrollbar-width: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
 }
 
 .slide-up {
@@ -22,6 +25,20 @@
     to {
         transform: translateY(-100%);
         opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fade-in 0.3s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 

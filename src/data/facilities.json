@@ -1,0 +1,83 @@
+[
+    {
+        "title": "Arrival Experience",
+        "rooms": [
+            {
+                "name": "Front Office",
+                "description": "The hotel front desk is the main hub for guest services, where check-ins, reservations, and inquiries are handled. It offers assistance and information, ensuring a smooth and welcoming experience for guests.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                "name": "Elevator",
+                "description": "Elevators for easy access to all floors.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+            }
+        ]
+    },
+    {
+        "title": "Amenities",
+        "rooms": [
+            {
+                "name": "Function Room",
+                "description": "A spacious room for events and meetings.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            },
+            {
+                "name": "Swimming Pool",
+                "description": "Enjoy a calm and rewarding plunge in our swimming pool. With a spacious size of 130 sqm, everyone can jump in and enjoy sunny days at The Exchange Regency Residence Hotel.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+            },
+            {
+                "name": "Jacuzzi",
+                "description": "A hot tub for a soothing experience.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                "name": "Fitness Center",
+                "description": "Stay in shape at our fitness center. Complete with a well-curated selection of equipment and regularly sanitized for your safety.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                "name": "Game Room",
+                "description": "A room with various games for entertainment.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                "name": "Mini Golf",
+                "description": "A mini golf course for leisure activities.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                "name": "Children's Playground",
+                "description": "A safe and fun area for children to play.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            }
+        ]
+    },
+    {
+        "title": "Room",
+        "rooms": [
+            {
+                "name": "Classic",
+                "description": "A standard room with basic amenities.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                "name": "Deluxe",
+                "description": "A deluxe room with additional space and comfort.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                "name": "Premiere",
+                "description": "A premium room with luxurious features.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            },
+            {
+                "name": "Suite",
+                "description": "A suite with separate living and sleeping areas.",
+                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                "bedOptions": ["Queen", "Twin"]
+            }
+        ]
+    }
+]

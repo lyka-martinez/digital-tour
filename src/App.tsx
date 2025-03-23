@@ -2,20 +2,19 @@ import { useState } from 'react';
 import { Button } from './components/Buttons';
 import NavBar from './components/NavBar';
 import Content from './components/Content';
+
 import './styles/App.css';
 
 export default function App() {
 
-    const [startTour, setStartTour] = useState(true);
-    const [hideLandingPage, setHideLandingPage] = useState(true);
+    const [startTour, setStartTour] = useState(false);
+    const [hideLandingPage, setHideLandingPage] = useState(false);
 
     const handleStartTour = () => {
         setStartTour(true);
         setTimeout(() => {
             setHideLandingPage(true);
-        }, 500);
-
-        console.log('Tour Started!');
+        }, 300);
     };
 
     return (
@@ -46,7 +45,7 @@ export default function App() {
             )}
 
             {hideLandingPage && (
-                <div className="flex flex-col items-center justify-center h-svh bg-brnd-base">
+                <div className="flex flex-col items-center justify-center h-svh bg-brnd-base fade-in">
                     <NavBar />
                     <Content />
                 </div>
