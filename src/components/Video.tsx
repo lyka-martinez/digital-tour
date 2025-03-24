@@ -9,7 +9,7 @@ export function Video({ room }: VideoProps) {
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
     useEffect(() => {
-        console.log("Room selected:", room);
+        // console.log("Room selected:", room);
 
         if (videoRef.current) {
             videoRef.current.load();    // Reload the video source

@@ -12,6 +12,8 @@
     display: none;
 }
 
+
+/* Animations */
 .slide-up {
     animation: slide-up 0.5s ease;
     animation-fill-mode: forwards;
@@ -28,18 +30,40 @@
     }
 }
 
+.slide-down {
+    animation: slide-down 0.5s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .fade-in {
-    animation: fade-in 0.3s ease;
+    animation: fade-in 0.2s ease;
     animation-fill-mode: forwards;
 }
 
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-out {
+    animation: fade-out 0.2s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 
