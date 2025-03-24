@@ -9,8 +9,8 @@ type ButtonProps = {
 export function Button({ text, onClick }: ButtonProps) {
     return (
         <button
-        className="btn btn-lg h-[3.25rem] w-fit font-medium pl-9 pr-6 gap-3 rounded-md duration-200 trasition-all bg-brnd-secondary text-white border-2 border-brnd-secondary hover:bg-base-200 hover:text-brnd-secondary shadow-sm"
-        onClick={onClick}
+            className="btn text-base h-[2.625rem] md:btn-lg md:h-[3.25rem] w-fit font-medium pl-9 pr-6 gap-3 rounded-md duration-200 trasition-all bg-brnd-secondary text-white border-2 border-brnd-secondary hover:bg-base-200 hover:text-brnd-secondary shadow-sm"
+            onClick={onClick}
         >
             {text}
             <ArrowDownRight />
