@@ -33,7 +33,7 @@ export function Video({ room }: VideoProps) {
                     </video>
                     
                     <div className="absolute inset-0 flex flex-col-reverse items-start justify-between gap-4 p-8 text-neutral">
-                        <div className="w-full bg-base-100/[.60] rounded-md p-4 flex flex-col gap-2">
+                        <div className="w-full bg-base-100/[.65] rounded-md p-4 flex flex-col gap-2">
                             <p className="font-semibold text-lg">{room.name}</p>
                             <p className="text-base">{room.description}</p>
                         </div>

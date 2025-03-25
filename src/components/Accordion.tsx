@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AccordionButton } from "./Buttons";
 
 import { Room } from "../types";
@@ -8,6 +9,13 @@ type AccordionProps = {
 };
 
 export function Accordion({ onRoomSelect }: AccordionProps) {
+    const [activeRoom, setActiveRoom] = useState<string | null>(null);
+
+    const handleRoomSelect = (room: Room) => {
+        setActiveRoom(room.name);
+        onRoomSelect(room);
+    };
+
     return (
         <>
             {facilities.map((facility, index) => (
@@ -25,7 +33,8 @@ export function Accordion({ onRoomSelect }: AccordionProps) {
                             <AccordionButton
                                 key={roomIndex}
                                 text={room.name}
-                                onClick={() => onRoomSelect(room)}
+                                onClick={() => handleRoomSelect(room)}
+                                isActive={activeRoom === room.name}
                             />
                         ))}
                     </div>

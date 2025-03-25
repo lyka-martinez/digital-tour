@@ -7,8 +7,8 @@ import './styles/App.css';
 
 export default function VirtualTourApp() {
     const [stat, setStat] = useState({
-        startTour: false,
-        hideLandingPage: false,
+        startTour: true,
+        hideLandingPage: true,
         returnToLanding: false,
     });
 
@@ -56,7 +56,7 @@ const LandingPage = ({ classes, onStartTour }: { classes: string; onStartTour: (
                     <img
                         src="./images/ter-long-logo.png"
                         alt="TER Logo"
-                        className="h-auto w-[11.25rem] md:w-[12.5rem] xl:w-[13.75rem] object-cover -ml-3"
+                        className="h-auto w-[10rem] md:w-[12.5rem] xl:w-[13.75rem] object-cover -ml-3"
                     />
 
                     <div className="flex flex-col text-center lg:text-start gap-5">
@@ -65,7 +65,7 @@ const LandingPage = ({ classes, onStartTour }: { classes: string; onStartTour: (
                         </p>
 
                         <p className="text-base md:text-lg xl:text-xl text-base-content/80 leading-7">
-                            Welcome to our virtual tour. We're thrilled to guide you <br /> through an immersive experience and showcase all <br /> the amazing amenities we have to offer.
+                            Welcome to our virtual tour. We're thrilled to guide <br /> you through an immersive experience and showcase <br />  all the amazing amenities we have to offer.
                         </p>
                     </div>
 
@@ -87,7 +87,7 @@ const LandingPage = ({ classes, onStartTour }: { classes: string; onStartTour: (
 const MainContent = ({ classes, onBack }: { classes: string; onBack: () => void }) => {
     return (
         <div className={classes}>
-            <NavBar onBack={onBack} />
+            <NavBar onClick={onBack} />
             <Content />
         </div>
     );

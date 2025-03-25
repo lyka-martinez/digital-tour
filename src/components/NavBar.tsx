@@ -1,17 +1,17 @@
 import { ChevronLeft } from 'lucide-react';
 
 type NavBarProps = {
-    onBack: () => void;
+    onClick: () => void;
 };
 
-export default function NavBar({ onBack }: NavBarProps) {
+export default function NavBar({ onClick }: NavBarProps) {
     return (
         <div className="navbar bg-base-100 shadow-sm flex-none gap-4">
             <div className="flex-none">
                 <button
                     className="btn btn-square btn-ghost rounded-md"
                     aria-label="Go back"
-                    onClick={onBack}
+                    onClick={onClick}
                 >
                     <ChevronLeft size={30} />
                 </button>
