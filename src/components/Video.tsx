@@ -19,7 +19,7 @@ export function Video({ room }: VideoProps) {
     }, [room]);
 
     return (
-        <div className="flex items-center justify-center h-full w-full overflow-hidden relative">
+        <div className="flex items-center justify-center h-full w-full relative">
             {room ? (
                 <>
                     <video
@@ -33,26 +33,28 @@ export function Video({ room }: VideoProps) {
                         Your browser does not support the video tag.
                     </video>
                     
-                    <div className="absolute inset-0 flex flex-col-reverse items-start justify-between gap-4 p-8">
-                        <div className="collapse rounded-none">
-                            <input 
-                                type="checkbox"
-                                className="peer video-desc"
-                                onChange={() => setIsDescVisible(prev => !prev)}
-                                checked={isDescVisible}
-                            />
-                            <div className="collapse-title font-medium video-desc">
-                                {isDescVisible ? "Hide Description" : "Show Description"}
-                            </div>
-                            
-                            <div className="collapse-content text-neutral bg-base-100/80 rounded-md flex flex-col gap-1 peer-checked:pt-4 peer-checked:mt-2">
-                                <p className="font-semibold text-lg">{room.name}</p>
-                                <p className="text-base">{room.description}</p>
+                    <div className="absolute inset-0 flex flex-col-reverse items-start justify-between gap-4">
+                        <div className="w-full bg-gradient p-6">
+                            <div className="collapse rounded-none">
+                                <input 
+                                    type="checkbox"
+                                    className="peer video-desc"
+                                    onChange={() => setIsDescVisible(prev => !prev)}
+                                    checked={isDescVisible}
+                                />
+                                <div className="collapse-title font-medium video-desc">
+                                    {isDescVisible ? "Hide Description" : "Show Description"}
+                                </div>
+                                
+                                <div className="collapse-content text-neutral bg-base-100/80 rounded-md flex flex-col gap-1 peer-checked:pt-4 peer-checked:mt-2">
+                                    <p className="font-semibold text-lg">{room.name}</p>
+                                    <p className="text-base">{room.description}</p>
+                                </div>
                             </div>
                         </div>
 
                         {room.bedOptions && (
-                            <div className="flex gap-3">
+                            <div className="flex gap-3 p-6">
                                 {room.bedOptions.map((option, index) => (
                                     <button key={index} className="btn rounded-md shadow-none">
                                         {option}

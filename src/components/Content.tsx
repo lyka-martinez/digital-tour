@@ -15,7 +15,7 @@ export default function Content() {
                 {accordion}
             </div>
 
-            <div className="flex-1 min-h-[30rem] bg-neutral text-brnd-light rounded-xl">
+            <div className="flex-1 min-h-[30rem] bg-neutral text-brnd-light rounded-xl overflow-hidden">
                 <Video room={selectedRoom} />
             </div>
         </div>
