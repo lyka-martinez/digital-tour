@@ -23,7 +23,7 @@ export function Button({ text, onClick }: ButtonProps) {
 export function AccordionButton({ text, onClick, isActive }: ButtonProps) {
     return (
         <button
-            className={`btn btn-block rounded-md border hover:bg-brnd-primary hover:border-brnd-primary hover:text-base-100 active:bg-brnd-primary-50 active:border-brnd-primary-50 ${
+            className={`btn btn-block rounded-md border hover:bg-brnd-primary hover:border-brnd-primary-50 hover:text-base-100 active:bg-brnd-primary-50 active:border-brnd-primary-50 ${
                 isActive
                     ? "bg-brnd-primary text-brnd-light border-brnd-primary-50"
                     : "border border-brnd-muted text-brnd-secondary bg-transparent"

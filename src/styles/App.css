@@ -83,3 +83,8 @@
     --join-es: var(--radius-xl);
     --join-ee: var(--radius-xl);
 }
+
+.video-desc {
+    padding: 0;
+    min-height: fit-content;
+}

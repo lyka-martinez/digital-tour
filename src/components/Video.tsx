@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Room } from "../types";
 
 type VideoProps = {
@@ -7,6 +7,7 @@ type VideoProps = {
 
 export function Video({ room }: VideoProps) {
     const videoRef = useRef<HTMLVideoElement | null>(null);
+    const [isDescVisible, setIsDescVisible] = useState(false);
 
     useEffect(() => {
         // console.log("Room selected:", room);
@@ -32,14 +33,26 @@ export function Video({ room }: VideoProps) {
                         Your browser does not support the video tag.
                     </video>
                     
-                    <div className="absolute inset-0 flex flex-col-reverse items-start justify-between gap-4 p-8 text-neutral">
-                        <div className="w-full bg-base-100/[.65] rounded-md p-4 flex flex-col gap-2">
-                            <p className="font-semibold text-lg">{room.name}</p>
-                            <p className="text-base">{room.description}</p>
+                    <div className="absolute inset-0 flex flex-col-reverse items-start justify-between gap-4 p-8">
+                        <div className="collapse rounded-none">
+                            <input 
+                                type="checkbox"
+                                className="peer video-desc"
+                                onChange={() => setIsDescVisible(prev => !prev)}
+                                checked={isDescVisible}
+                            />
+                            <div className="collapse-title font-medium video-desc">
+                                {isDescVisible ? "Hide Description" : "Show Description"}
+                            </div>
+                            
+                            <div className="collapse-content text-neutral bg-base-100/80 rounded-md flex flex-col gap-1 peer-checked:pt-4 peer-checked:mt-2">
+                                <p className="font-semibold text-lg">{room.name}</p>
+                                <p className="text-base">{room.description}</p>
+                            </div>
                         </div>
 
                         {room.bedOptions && (
-                            <div className="flex gap-2">
+                            <div className="flex gap-3">
                                 {room.bedOptions.map((option, index) => (
                                     <button key={index} className="btn rounded-md shadow-none">
                                         {option}
