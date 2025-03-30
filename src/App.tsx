@@ -7,8 +7,8 @@ import './styles/App.css';
 
 export default function VirtualTourApp() {
     const [stat, setStat] = useState({
-        startTour: true,
-        hideLandingPage: true,
+        startTour: false,
+        hideLandingPage: false,
         returnToLanding: false,
     });
 
@@ -54,9 +54,10 @@ const LandingPage = ({ classes, onStartTour }: { classes: string; onStartTour: (
             <div className="grid grid-cols-1 lg:grid-cols-2 w-screen gap-4 my-4 p-2 lg:px-[6.25rem] 2xl:px-[7.5rem]">
                 <div className="flex flex-col items-center lg:items-start justify-center gap-9">
                     <img
-                        src="./images/ter-long-logo.png"
+                        src="./images/ter-long-logo.webp"
                         alt="TER Logo"
                         className="h-auto w-[10rem] md:w-[12.5rem] xl:w-[13.75rem] object-cover -ml-3"
+                        loading="lazy"
                     />
 
                     <div className="flex flex-col text-center lg:text-start gap-5">
@@ -74,7 +75,7 @@ const LandingPage = ({ classes, onStartTour }: { classes: string; onStartTour: (
 
                 <div className="rounded-xl overflow-hidden hidden lg:block">
                     <img
-                        src="./images/ter-suite.jpg"
+                        src="./images/ter-suite.webp"
                         alt="Suite Room Photo"
                         className="h-[32.5rem] xl:h-[36.25rem] w-auto object-cover"
                     />

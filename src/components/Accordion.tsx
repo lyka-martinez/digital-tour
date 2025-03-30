@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AccordionButton } from "./Buttons";
-
 import { Room } from "../types";
+
 import facilities from "../data/facilities.json";
 
 type AccordionProps = {
@@ -12,6 +12,8 @@ export function Accordion({ onRoomSelect }: AccordionProps) {
     const [activeRoom, setActiveRoom] = useState<string | null>(null);
 
     const handleRoomSelect = (room: Room) => {
+        console.log("Room: ", room.name);
+
         setActiveRoom(room.name);
         onRoomSelect(room);
     };

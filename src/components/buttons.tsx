@@ -28,7 +28,6 @@ export function AccordionButton({ text, onClick, isActive }: ButtonProps) {
                     ? "bg-brnd-primary text-brnd-light border-brnd-primary-50"
                     : "border border-brnd-muted text-brnd-secondary bg-transparent"
             }`}
-
             onClick={onClick}
         >
             {text}

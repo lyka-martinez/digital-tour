@@ -10,8 +10,6 @@ export function Video({ room }: VideoProps) {
     const [isDescVisible, setIsDescVisible] = useState(false);
 
     useEffect(() => {
-        // console.log("Room selected:", room);
-
         if (videoRef.current) {
             videoRef.current.load();    // Reload the video source
             videoRef.current.play();    // Play the new video
@@ -42,13 +40,13 @@ export function Video({ room }: VideoProps) {
                                     onChange={() => setIsDescVisible(prev => !prev)}
                                     checked={isDescVisible}
                                 />
-                                <div className="collapse-title font-medium video-desc">
+                                <div className="collapse-title font-medium video-desc text-sm">
                                     {isDescVisible ? "Hide Description" : "Show Description"}
                                 </div>
                                 
                                 <div className="collapse-content text-neutral bg-base-100/80 rounded-md flex flex-col gap-1 peer-checked:pt-4 peer-checked:mt-2">
                                     <p className="font-semibold text-lg">{room.name}</p>
-                                    <p className="text-base">{room.description}</p>
+                                    <p className="text-sm">{room.description}</p>
                                 </div>
                             </div>
                         </div>

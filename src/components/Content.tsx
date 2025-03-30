@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { Accordion } from "./Accordion";
 import { Video } from "./Video";
-
 import { Room } from "../types";
 
 export default function Content() {
