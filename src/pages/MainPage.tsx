@@ -12,11 +12,13 @@ type MainPageProps = {
 const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
     const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
 
+
     const classes = useMemo(() => {
         return `flex flex-col items-center justify-center h-svh bg-brnd-base ${
             returnToLanding ? 'fade-out' : 'fade-in'
         }`;
     }, [returnToLanding]);
+    
     
     return (
         <div className={classes}>

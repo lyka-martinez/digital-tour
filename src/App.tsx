@@ -11,12 +11,14 @@ export default function VirtualTourApp() {
         returnToLanding: false,
     });
 
+
     const handleStartTour = useCallback(() => {
         setStat((prev) => ({ ...prev, startTour: true }));
         setTimeout(() => {
             setStat((prev) => ({ ...prev, startTour: true, hideLandingPage: true }));
         }, 300);
     }, []);
+
 
     const handleReturnToLanding = useCallback(() => {
         setStat((prev) => ({ ...prev, returnToLanding: true }));
@@ -27,6 +29,7 @@ export default function VirtualTourApp() {
             setStat({ startTour: false, hideLandingPage: false, returnToLanding: false });
         }, 700);
     }, []);
+
 
     return (
         <>

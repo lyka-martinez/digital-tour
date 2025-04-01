@@ -3,5 +3,8 @@ export type Room = {
     description: string;
     roomFeatures?: string[];
     video?: string;
-    bedOptions?: string[];
+    bedOptions?: {
+        type: string;
+        video: string;
+    }[];
 };

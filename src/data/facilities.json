@@ -72,8 +72,10 @@
                     "Intercom",
                     "Hair dryer"
                 ],
-                "video": "./videos/deluxe-premium-twin.mp4",
-                "bedOptions": ["Queen", "Twin"]
+                "bedOptions": [
+                    { "type": "Queen", "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
+                    { "type": "Twin", "video": "./videos/deluxe-premium-twin.mp4" }
+                ]
             },
             {
                 "name": "Deluxe Premium",
@@ -91,12 +93,14 @@
                     "Hair dryer",
                     "Bedroom Slippers"
                 ],
-                "video": "./videos/deluxe-premium-twin.mp4",
-                "bedOptions": ["Queen", "Twin"]
+                "bedOptions": [
+                    { "type": "Queen", "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
+                    { "type": "Twin", "video": "./videos/deluxe-premium-twin.mp4" }
+                ]
             },
             {
-                "name": "Premier",
-                "description": "Find all the essentials plus a little extra in our Premier Rooms. It comes with additional bathroom amenities and optional kitchenware, perfect for those who are looking for extended business or leisure stays.",
+                "name": "Premiere",
+                "description": "Find all the essentials plus a little extra in our Premiere Rooms. It comes with additional bathroom amenities and optional kitchenware, perfect for those who are looking for extended business or leisure stays.",
                 "roomFeatures": [
                     "29 to 35 sqm",
                     "1 queen bed / 2 twin beds",
@@ -110,8 +114,10 @@
                     "Hair dryer",
                     "Bedroom Slippers"
                 ],
-                "video": "./videos/deluxe-premium-twin.mp4",
-                "bedOptions": ["Queen", "Twin"]
+                "bedOptions": [
+                    { "type": "Queen", "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
+                    { "type": "Twin", "video": "./videos/premier-twin.mp4" }
+                ]
             },
             {
                 "name": "Suite",

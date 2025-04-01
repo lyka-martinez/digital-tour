@@ -14,6 +14,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
         }`;
     }, [startTour, returnToLanding]);
 
+    
     return (
         <div className={classes}>
             <div className="grid grid-cols-1 lg:grid-cols-2 w-screen gap-4 my-4 p-2 lg:px-[6.25rem] 2xl:px-[7.5rem]">

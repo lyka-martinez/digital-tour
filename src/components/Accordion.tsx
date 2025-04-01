@@ -8,20 +8,22 @@ type AccordionProps = {
     onRoomSelect: (room: Room) => void;
 };
 
-export const Accordion = ({ onRoomSelect }: AccordionProps) => {        
+export const Accordion = ({ onRoomSelect }: AccordionProps) => {
     const [activeRoom, setActiveRoom] = useState<string | null>(null);
     
-    const handleRoomSelect = useCallback(
-        (room: Room) => {
-            /* Return early if the room is the same */
-            if (room.name === activeRoom) return;
-            
-            setActiveRoom(room.name);
-            onRoomSelect(room);
-        },
-        [activeRoom, onRoomSelect]
-    );
 
+    const handleRoomSelect = useCallback((room: Room) => {
+        if (!room.video && (!room.bedOptions || room.bedOptions.length === 0)) {
+            console.error(`Room "${room.name}" has no video property.`);
+            return;
+        }
+
+        if (room.name === activeRoom) return;   // Return early if the room is the same
+        setActiveRoom(room.name);
+        onRoomSelect(room);
+    }, [activeRoom, onRoomSelect]);
+
+    
     return (
         <>
             {facilities.map((facility, index) => (
