@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { AccordionButton } from "./Buttons";
 import { Room } from "../types";
 
@@ -8,15 +8,19 @@ type AccordionProps = {
     onRoomSelect: (room: Room) => void;
 };
 
-export function Accordion({ onRoomSelect }: AccordionProps) {
+export const Accordion = ({ onRoomSelect }: AccordionProps) => {        
     const [activeRoom, setActiveRoom] = useState<string | null>(null);
-
-    const handleRoomSelect = (room: Room) => {
-        console.log("Room: ", room.name);
-
-        setActiveRoom(room.name);
-        onRoomSelect(room);
-    };
+    
+    const handleRoomSelect = useCallback(
+        (room: Room) => {
+            /* Return early if the room is the same */
+            if (room.name === activeRoom) return;
+            
+            setActiveRoom(room.name);
+            onRoomSelect(room);
+        },
+        [activeRoom, onRoomSelect]
+    );
 
     return (
         <>

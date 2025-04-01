@@ -1,10 +1,11 @@
+import { memo } from "react";
 import { ChevronLeft } from 'lucide-react';
 
 type NavBarProps = {
     onClick: () => void;
 };
 
-export default function NavBar({ onClick }: NavBarProps) {
+const NavBar = ({ onClick }: NavBarProps) => {
     return (
         <div className="navbar bg-base-100 shadow-sm flex-none gap-4">
             <div className="flex-none">
@@ -22,4 +23,6 @@ export default function NavBar({ onClick }: NavBarProps) {
             </div>
         </div>
     );
-}
+};
+
+export default memo(NavBar);

@@ -5,12 +5,12 @@
             {
                 "name": "Front Office",
                 "description": "The hotel front desk is the main hub for guest services, where check-ins, reservations, and inquiries are handled. It offers assistance and information, ensuring a smooth and welcoming experience for guests.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             },
             {
                 "name": "Elevator",
                 "description": "Elevators for easy access to all floors.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             }
         ]
     },
@@ -20,37 +20,37 @@
             {
                 "name": "Function Room",
                 "description": "A spacious room for events and meetings.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             },
             {
                 "name": "Swimming Pool",
                 "description": "Enjoy a calm and rewarding plunge in our swimming pool. With a spacious size of 130 sqm, everyone can jump in and enjoy sunny days at The Exchange Regency Residence Hotel.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             },
             {
                 "name": "Jacuzzi",
                 "description": "A hot tub for a soothing experience.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             },
             {
                 "name": "Fitness Center",
                 "description": "Stay in shape at our fitness center. Complete with a well-curated selection of equipment and regularly sanitized for your safety.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             },
             {
                 "name": "Game Room",
                 "description": "A room with various games for entertainment.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             },
             {
                 "name": "Mini Golf",
                 "description": "A mini golf course for leisure activities.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             },
             {
                 "name": "Children's Playground",
                 "description": "A safe and fun area for children to play.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "video": "./videos/deluxe-premium-twin.mp4"
             }
         ]
     },
@@ -58,25 +58,85 @@
         "title": "Room",
         "rooms": [
             {
-                "name": "Classic",
-                "description": "A standard room with basic amenities.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "name": "Deluxe Classic",
+                "description": "Simple yet sensible, the Deluxe Classic is an ideal choice for the prudent. With ample space and the standard features, guests can enjoy convenient accommodation and hospitable service at a reasonable cost. With the option of queen or twin beds, it is perfect for individual traveller or those with a companion.",
+                "roomFeatures": [
+                    "25 sqm", 
+                    "1 queen bed / 2 twin beds",
+                    "Stable internet connection",
+                    "Mini refrigerator",
+                    "Electric kettle",
+                    "Bottled water (upon arrival)",
+                    "Writing desk",
+                    "In-room safe",
+                    "Intercom",
+                    "Hair dryer"
+                ],
+                "video": "./videos/deluxe-premium-twin.mp4",
+                "bedOptions": ["Queen", "Twin"]
             },
             {
-                "name": "Deluxe",
-                "description": "A deluxe room with additional space and comfort.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "name": "Deluxe Premium",
+                "description": "An upgrade from the Classic, the Deluxe Premium brings you the same basic comforts with additional amenities while you’re on a brief business trip or an extended staycation.",
+                "roomFeatures": [
+                    "25 to 27 sqm",   
+                    "1 queen bed / 2 twin beds",   
+                    "Stable internet connection",   
+                    "Mini refrigerator",   
+                    "Electric kettle",   
+                    "Bottled water (replenished daily)",   
+                    "Writing desk",   
+                    "In-room safe",   
+                    "Intercom", 
+                    "Hair dryer",
+                    "Bedroom Slippers"
+                ],
+                "video": "./videos/deluxe-premium-twin.mp4",
+                "bedOptions": ["Queen", "Twin"]
             },
             {
-                "name": "Premiere",
-                "description": "A premium room with luxurious features.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                "name": "Premier",
+                "description": "Find all the essentials plus a little extra in our Premier Rooms. It comes with additional bathroom amenities and optional kitchenware, perfect for those who are looking for extended business or leisure stays.",
+                "roomFeatures": [
+                    "29 to 35 sqm",
+                    "1 queen bed / 2 twin beds",
+                    "Stable internet connection",
+                    "Dining area with 2-piece dinnerware set",
+                    "Mini refrigerator",
+                    "Bottled water (replenished daily)",
+                    "Writing desk",   
+                    "In-room safe",   
+                    "Intercom", 
+                    "Hair dryer",
+                    "Bedroom Slippers"
+                ],
+                "video": "./videos/deluxe-premium-twin.mp4",
+                "bedOptions": ["Queen", "Twin"]
             },
             {
                 "name": "Suite",
-                "description": "A suite with separate living and sleeping areas.",
-                "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-                "bedOptions": ["Queen", "Twin"]
+                "description": "Not a fan of traveling solo? Bring your family or friends along and stay in any of our suites. Best for larger groups, each suite has 2 separate bedrooms, 2 bathrooms, a fully-equipped kitchen, dining area, and receiving area.",
+                "roomFeatures": [
+                    "64.5-68.5 sqm",
+                    "1 queen bed (inside master’s bedroom)",
+                    "1 double bed (inside bedroom 2)",
+                    "Stable internet connection",
+                    "Dining area with 4-piece dinnerware set",
+                    "Receiving area with 3-seater sofa",
+                    "Kitchenette with electric stove and rangehood",
+                    "Cookware set",
+                    "Microwave oven",
+                    "Mini refrigerator",
+                    "Electric kettle",
+                    "Bottled water (replenished daily)",
+                    "Coffee, cream and sugar",
+                    "Writing desk",   
+                    "In-room safe",   
+                    "Intercom", 
+                    "Hair dryer",
+                    "Bedroom Slippers"
+                ],
+                "video": "./videos/deluxe-premium-twin.mp4"
             }
         ]
     }

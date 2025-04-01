@@ -1,20 +1,25 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { Check } from 'lucide-react';
 import { Room } from "../types";
 
 type VideoProps = {
     room: Room | null;
 };
 
-export function Video({ room }: VideoProps) {
+export const Video = ({ room }: VideoProps) => {    
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [isDescVisible, setIsDescVisible] = useState(false);
-
+    
     useEffect(() => {
         if (videoRef.current) {
             videoRef.current.load();    // Reload the video source
             videoRef.current.play();    // Play the new video
         }
     }, [room]);
+
+    const toggleDescription = useCallback(() => {
+        setIsDescVisible((prev) => !prev);
+    }, []);
 
     return (
         <div className="flex items-center justify-center h-full w-full relative">
@@ -32,21 +37,44 @@ export function Video({ room }: VideoProps) {
                     </video>
                     
                     <div className="absolute inset-0 flex flex-col-reverse items-start justify-between gap-4">
-                        <div className="w-full bg-gradient p-6">
+                        <div className="w-full bg-gradient p-6 pt-9">
                             <div className="collapse rounded-none">
                                 <input 
                                     type="checkbox"
                                     className="peer video-desc"
-                                    onChange={() => setIsDescVisible(prev => !prev)}
+                                    onChange={toggleDescription}
                                     checked={isDescVisible}
                                 />
                                 <div className="collapse-title font-medium video-desc text-sm">
-                                    {isDescVisible ? "Hide Description" : "Show Description"}
+                                    {isDescVisible ? "Hide details" : "Show details"}
                                 </div>
-                                
-                                <div className="collapse-content text-neutral bg-base-100/80 rounded-md flex flex-col gap-1 peer-checked:pt-4 peer-checked:mt-2">
+
+                                <div className="collapse-content text-neutral bg-base-100/85 rounded-md flex flex-col gap-2 peer-checked:pt-4 peer-checked:mt-2">
+                                    {/* Room Name */}
                                     <p className="font-semibold text-lg">{room.name}</p>
-                                    <p className="text-sm">{room.description}</p>
+
+                                    <div className="flex flex-col gap-4 text-sm">
+                                        {/* Room Description */}
+                                        {room.description && (
+                                            <div className="h-fit">{room.description}</div>
+                                        )}
+
+                                        {/* Room Features */}
+                                        {room.roomFeatures && room.roomFeatures.length > 0 && (
+                                            <div>                                            
+                                                <p className="pb-2 font-medium tracking-wide">Room Features:</p>
+
+                                                <ul className="grid grid-cols-2 gap-x-4 gap-y-1">   
+                                                    {room.roomFeatures.map((feature, index) => (
+                                                        <li key={index} className="flex items-center gap-2">
+                                                            <div><Check size={12} /></div>
+                                                            <div>{feature}</div>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
