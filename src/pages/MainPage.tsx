@@ -18,7 +18,7 @@ const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
             returnToLanding ? 'fade-out' : 'fade-in'
         }`;
     }, [returnToLanding]);
-    
+
     
     return (
         <div className={classes}>

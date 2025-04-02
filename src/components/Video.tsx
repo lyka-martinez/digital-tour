@@ -85,7 +85,9 @@ export const Video = ({ room }: VideoProps) => {
                                 </div>
 
                                 <div
-                                    className="collapse-content text-white bg-brnd-primary-100/90 rounded-md flex flex-col gap-2 peer-checked:pt-4 peer-checked:mt-2 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
+                                    className="collapse-content text-neutral bg-white/90 rounded-md flex flex-col gap-2 peer-checked:pt-4 peer-checked:mt-2 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
+
+                                    // className="collapse-content text-white bg-brnd-primary-100/90 rounded-md flex flex-col gap-2 peer-checked:pt-4 peer-checked:mt-2 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
                                 >
                                     <p className="font-semibold text-lg">{room.name}</p>
                                     <div className="flex flex-col gap-4 text-sm">
@@ -113,16 +115,16 @@ export const Video = ({ room }: VideoProps) => {
 
                         {/* Bed Options Section */}
                         {room.bedOptions && (
-                            <div className="flex gap-3 p-6">
+                            <div className="w-full bg-gradient bg-gradient-rotated flex gap-3 p-6">
                                 {room.bedOptions.map((option, index) => (
                                     <button 
                                         key={index} 
                                         className={`btn rounded-md shadow-none ${
                                             selBedOption === option.type
                                                 ? "text-neutral bg-white"
-                                                : "text-white bg-white/20 border-transparent hover:bg-white/50 hover:border-white"
+                                                : "text-white bg-white/20 border-transparent hover:bg-white/40 hover:border-white"
                                         }`}
-                                        onClick={() => handleBedOptionClick(option.type)}
+                                        onClick={() => handleBedOptionClick(option.type)}   
                                     >
                                         {option.type}
                                     </button>

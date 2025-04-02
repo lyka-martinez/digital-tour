@@ -5,12 +5,30 @@
     background-size: contain;
 }
 
-.bg-gradient {
+/* .bg-gradient {
     background: rgb(17,17,17);
     background: -moz-linear-gradient(0deg, rgba(17,17,17,0.6022058481595763) 0%, rgba(17,17,17,0.3) 40%, rgba(17,17,17,0.1) 75%, rgba(17,17,17,0) 100%);
     background: -webkit-linear-gradient(0deg, rgba(17,17,17,0.6022058481595763) 0%, rgba(17,17,17,0.3) 40%, rgba(17,17,17,0.1) 75%, rgba(17,17,17,0) 100%);
     background: linear-gradient(0deg, rgba(17,17,17,0.6022058481595763) 0%, rgba(17,17,17,0.3) 40%, rgba(17,17,17,0.1) 75%, rgba(17,17,17,0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#111111",endColorstr="#111111",GradientType=1);
+} */
+
+.bg-gradient {
+    position: relative;
+    z-index: 0;
+}
+
+.bg-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(17, 17, 17, 0.6) 0%, rgba(17, 17, 17, 0.3) 40%, rgba(17, 17, 17, 0.1) 75%, rgba(17, 17, 17, 0) 100%);
+    pointer-events: none;
+}
+
+.bg-gradient-rotated::before {
+    background: linear-gradient(180deg, rgba(17,17,17,0.35) 0%, rgba(17,17,17,0.15) 40%, rgba(17,17,17,0.05) 75%, rgba(17,17,17,0) 100%);
 }
 
 .scrollbar-hidden {
