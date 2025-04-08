@@ -9,7 +9,7 @@ type LandingPageProps = {
 
 const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPageProps) => {
     const classes = useMemo(() => {
-        return `flex items-center justify-center h-svh overflow-y-auto bg-bottom-svg ${
+        return `grid grid-cols-1 min-h-screen max-w-screen overflow-y-auto bg-bottom-svg lg:grid-cols-2 xl:grid-cols-[42.5rem__1fr] ${
             startTour ? 'slide-up' : returnToLanding ? 'slide-down' : ''
         }`;
     }, [startTour, returnToLanding]);
@@ -17,35 +17,43 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
     
     return (
         <div className={classes}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 w-screen gap-4 my-4 p-2 lg:px-[6.25rem] 2xl:px-[7.5rem]">
-                <div className="flex flex-col items-center lg:items-start justify-center gap-9">
-                    <img
-                        src="./images/ter-long-logo.webp"
-                        alt="TER Logo"
-                        className="h-auto w-[10rem] md:w-[12.5rem] xl:w-[13.75rem] object-cover -ml-3"
-                        loading="lazy"
-                    />
+            <div>
+                <div className="flex h-screen items-center justify-center px-2 py-10 text-center min-h-[45.656rem] lg:text-start lg:justify-start lg:ps-18 lg:pe-0 xl:ps-24">
 
-                    <div className="flex flex-col text-center lg:text-start gap-5">
-                        <p className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brnd-secondary font-semibold capitalize tracking-wide">
+                    <div>
+                        <div className="flex flex-col items-center lg:items-start">
+                            <img
+                                src="./images/ter-long-logo.webp"
+                                alt="TER Logo"
+                                className="object-cover -ml-3 h-auto w-[10rem] md:w-[12.5rem] xl:w-[13.75rem]"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div className="h-9"></div>
+
+                        <p className="text-[2rem] text-brnd-secondary font-semibold capitalize tracking-wide md:text-4xl lg:text-5xl xl:text-[3.25rem]">
                             Virtual Tour!
                         </p>
 
-                        <p className="text-base md:text-lg xl:text-xl text-base-content/80 leading-7">
-                            Welcome to our virtual tour. We're thrilled to guide <br /> you through an immersive experience and showcase <br />  all the amazing amenities we have to offer.
+                        <p className="text-base-content/75 text-balance leading-[1.625] py-4 md:text-lg xl:text-xl">
+                            Welcome to our virtual tour! Experience an <br />
+                            immersive journey as we showcase the <br />
+                            exceptional amenities and features we offer.
                         </p>
+                        <div className="h-9"></div>
+
+                        <Button text="Start Tour" onClick={onStartTour} />
                     </div>
-
-                    <Button text="Start Tour" onClick={onStartTour} />
+                    
                 </div>
+            </div>
 
-                <div className="rounded-xl overflow-hidden hidden lg:block">
-                    <img
-                        src="./images/ter-suite.webp"
-                        alt="Suite Room Photo"
-                        className="h-[32.5rem] xl:h-[36.25rem] w-auto object-cover"
-                    />
-                </div>
+            <div className="hidden overflow-hidden lg:flex lg:py-18 xl:py-20">
+                <img
+                    src="./images/ter-suite.webp"
+                    alt="Suite Room Photo"
+                    className="object-cover rounded-l-full w-auto h-full"
+                />
             </div>
         </div>
     );

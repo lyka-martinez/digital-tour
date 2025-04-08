@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
 import { Check } from 'lucide-react';
 import { Room } from "../types";
 
@@ -9,9 +9,7 @@ type VideoProps = {
 export const Video = ({ room }: VideoProps) => {
     console.log("Video rendered at", new Date().toLocaleTimeString());
 
-
     const videoRef = useRef<HTMLVideoElement | null>(null);
-    const [isDescVisible, setIsDescVisible] = useState(false);
     const [selBedOption, setSelBedOption] = useState<string | null>(null);
     
     
@@ -27,7 +25,10 @@ export const Video = ({ room }: VideoProps) => {
     
     // Set the first bed option if none is selected
     useEffect(() => {
+        console.log("Set the first bed option [first render]");
+
         if (!selBedOption && room?.bedOptions?.length) {
+            console.log("Set the first bed option: ", room.bedOptions[0].type);
             setSelBedOption(room.bedOptions[0].type);
         }
     }, [room, selBedOption]);
@@ -35,7 +36,7 @@ export const Video = ({ room }: VideoProps) => {
 
     // Reload and play the video whenever the current video source changes
     useEffect(() => {
-        console.log("Room selected", currentVideo);
+        console.log("Room selected: ", room?.name);
         
         if (videoRef.current && currentVideo) {
             videoRef.current.load();
@@ -45,14 +46,9 @@ export const Video = ({ room }: VideoProps) => {
     
     
     const handleBedOptionClick = useCallback((type: string) => {
-        if (type === selBedOption) return;      // Return early if the same bed option is selectedl
+        if (type === selBedOption) return;  // Return early if the same bed option is selected
         setSelBedOption(type);
     }, [selBedOption]);
-
-
-    const toggleDescription = useCallback(() => {
-        setIsDescVisible((prev) => !prev);
-    }, []);
 
 
     return (
@@ -71,71 +67,109 @@ export const Video = ({ room }: VideoProps) => {
                     </video>
                     
                     <div className="absolute inset-0 flex flex-col-reverse items-start justify-between gap-4">
-                        {/* Description Section */}
-                        <div className="w-full bg-gradient p-6 pt-9">
-                            <div className="collapse rounded-none">
-                                <input 
-                                    type="checkbox"
-                                    className="peer video-desc"
-                                    onChange={toggleDescription}
-                                    checked={isDescVisible}
-                                />
-                                <div className="collapse-title font-medium video-desc text-sm">
-                                    {isDescVisible ? "Hide details" : "Show details"}
-                                </div>
-
-                                <div
-                                    className="collapse-content text-neutral bg-white/90 rounded-md flex flex-col gap-2 peer-checked:pt-4 peer-checked:mt-2 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
-
-                                    // className="collapse-content text-white bg-brnd-primary-100/90 rounded-md flex flex-col gap-2 peer-checked:pt-4 peer-checked:mt-2 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
-                                >
-                                    <p className="font-semibold text-lg">{room.name}</p>
-                                    <div className="flex flex-col gap-4 text-sm">
-                                        {room.description && (
-                                            <div className="h-fit">{room.description}</div>
-                                        )}
-
-                                        {room.roomFeatures && room.roomFeatures.length > 0 && (
-                                            <div>                                            
-                                                <p className="pb-2 font-medium tracking-wide">Room Features:</p>
-                                                <ul className="grid grid-cols-2 gap-x-4 gap-y-1">   
-                                                    {room.roomFeatures.map((feature, index) => (
-                                                        <li key={index} className="flex items-center gap-2">
-                                                            <div><Check size={12} /></div>
-                                                            <div>{feature}</div>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Bed Options Section */}
+                        <DescriptionSection room={room} />
+                        
                         {room.bedOptions && (
-                            <div className="w-full bg-gradient bg-gradient-rotated flex gap-3 p-6">
-                                {room.bedOptions.map((option, index) => (
-                                    <button 
-                                        key={index} 
-                                        className={`btn rounded-md shadow-none ${
-                                            selBedOption === option.type
-                                                ? "text-neutral bg-white"
-                                                : "text-white bg-white/20 border-transparent hover:bg-white/40 hover:border-white"
-                                        }`}
-                                        onClick={() => handleBedOptionClick(option.type)}   
-                                    >
-                                        {option.type}
-                                    </button>
-                                ))}
-                            </div>
+                            <BedOptionsSection
+                                bedOptions={room.bedOptions}
+                                selectedOption={selBedOption}
+                                onOptionSelect={handleBedOptionClick}
+                            />
                         )}
                     </div>
                 </>
             ) : (
-                <p className="text-xl text-brnd-light">Select a room to view its video content.</p>
+                <p className="text-xl text-brnd-light">
+                    Select a room from the left panel to view the video.
+                </p>
             )}
         </div>
     );
 }
+
+
+// Description Section Component
+const DescriptionSection = memo(({ room }: { room: Room }) => {
+    console.log("DescriptionSection rendered at", new Date().toLocaleTimeString());
+
+    const [isDescVisible, setIsDescVisible] = useState(false);
+
+
+    const toggleDescription = useCallback(() => {
+        setIsDescVisible((prev) => !prev);
+    }, []);
+
+
+    return (
+        <div className="w-full bg-gradient p-6 pt-9">
+            <div className="collapse rounded-none">
+                <input 
+                    type="checkbox"
+                    className="peer video-desc"
+                    onChange={toggleDescription}
+                    checked={isDescVisible}
+                />
+                <div className="collapse-title font-medium video-desc text-sm">
+                    {isDescVisible ? "Hide details" : "Show details"}
+                </div>
+
+                <div
+                    className="collapse-content text-white bg-brnd-primary-100/90 rounded-md flex flex-col gap-2 peer-checked:pt-4 peer-checked:mt-2 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
+                >
+                    <p className="font-semibold text-lg">{room.name}</p>
+                    <div className="flex flex-col gap-4 text-sm">
+                        {room.description && (
+                            <div className="h-fit">{room.description}</div>
+                        )}
+
+                        {room.roomFeatures && room.roomFeatures.length > 0 && (
+                            <div>                                            
+                                <p className="pb-2 font-medium tracking-wide">Room Features:</p>
+                                <ul className="grid grid-cols-2 gap-x-4 gap-y-1">   
+                                    {room.roomFeatures.map((feature, index) => (
+                                        <li key={index} className="flex items-start gap-2">
+                                            <div className="h-[1.25rem] flex items-center">
+                                                <Check size={12} />
+                                            </div>
+                                            <div>{feature}</div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+});
+
+
+// Bed Options Section Component
+type BedOptionsProps = {
+    bedOptions: { type: string; video: string }[];
+    selectedOption: string | null;
+    onOptionSelect: (type: string) => void;
+}
+
+const BedOptionsSection = memo(({ bedOptions, selectedOption, onOptionSelect }: BedOptionsProps) => {
+    console.log("BedOptionsSection rendered at", new Date().toLocaleTimeString());
+
+    return (
+        <div className="w-full bg-gradient bg-gradient-rotated flex gap-3 p-6">
+            {bedOptions.map((option, index) => (
+                <button
+                    key={index}
+                    className={`btn rounded-md shadow-none ${
+                        selectedOption === option.type
+                            ? "text-neutral bg-white"
+                            : "text-white bg-white/20 border-transparent hover:bg-white/40 hover:border-white"
+                    }`}
+                    onClick={() => onOptionSelect(option.type)}
+                >
+                    {option.type}
+                </button>
+            ))}
+        </div>
+    );
+});

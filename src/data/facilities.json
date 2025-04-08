@@ -94,7 +94,7 @@
                     "Bedroom Slippers"
                 ],
                 "bedOptions": [
-                    { "type": "Queen", "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
+                    { "type": "Queen", "video": "./videos/deluxe-premium-queen.mp4" },
                     { "type": "Twin", "video": "./videos/deluxe-premium-twin.mp4" }
                 ]
             },

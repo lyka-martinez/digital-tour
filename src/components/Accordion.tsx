@@ -31,7 +31,11 @@ export const Accordion = ({ onRoomSelect }: AccordionProps) => {
                     key={index}
                     className="collapse collapse-arrow join-item bg-base-100 border-base-300 border"
                 >
-                    <input type="checkbox" name="accordion-group" />
+                    <input
+                        type="checkbox"
+                        name="accordion-group"
+                        defaultChecked={index === 0}    // Apply defaultChecked to the first accordion
+                    />
                     <div className="collapse-title font-semibold text-brnd-secondary">
                         {facility.title}
                     </div>

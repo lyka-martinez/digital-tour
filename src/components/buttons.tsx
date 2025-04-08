@@ -11,11 +11,11 @@ type ButtonProps = {
 export const Button = ({ text, onClick }: ButtonProps) => {
     return (
         <button
-        className="btn text-base h-[2.625rem] md:btn-lg md:h-[3.25rem] w-fit font-medium pl-9 pr-6 gap-3 rounded-md duration-200 trasition-all bg-brnd-secondary text-white border-2 border-brnd-secondary hover:bg-base-200 hover:text-brnd-secondary shadow-sm"
-        onClick={onClick}
+            className="btn w-fit pl-8 pr-5 gap-2 bg-brnd-secondary text-white border-2 border-brnd-secondary duration-200 trasition-all rounded-md shadow-sm hover:bg-base-200 hover:text-brnd-secondary focus:outline-none focus:ring-2 focus:ring-brnd-secondary focus:ring-offset-2 md:btn-lg md:pl-9 md:pr-6 lg:h-[3rem] xl:h-[3.25rem] xl:pl-11 xl:pr-8"
+            onClick={onClick}
         >
             {text}
-            <ArrowDownRight />
+            <ArrowDownRight className="w-auto h-[1.375rem] md:h-[1.5rem] lg:h-[1.625rem] xl:h-[1.75rem]" />
         </button>
     );
 };
