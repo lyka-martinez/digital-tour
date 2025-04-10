@@ -7,15 +7,28 @@ type ButtonProps = {
     isActive?: boolean;
 }
 
-/* Landing Page Button */
-export const Button = ({ text, onClick }: ButtonProps) => {
+/* Start Tour Button */
+export const StartTourBtn = ({ text, onClick }: ButtonProps) => {
     return (
         <button
-            className="btn w-fit pl-8 pr-5 gap-2 bg-brnd-secondary text-white border-2 border-brnd-secondary duration-200 trasition-all rounded-md shadow-sm hover:bg-base-200 hover:text-brnd-secondary focus:outline-none focus:ring-2 focus:ring-brnd-secondary focus:ring-offset-2 md:btn-lg md:pl-9 md:pr-6 lg:h-[3rem] xl:h-[3.25rem] xl:pl-11 xl:pr-8"
+            className="btn pl-8 pr-5 gap-2 bg-brnd-secondary text-white border-2 border-brnd-secondary duration-200 trasition-all rounded-lg shadow-sm hover:bg-base-200 hover:text-brnd-secondary md:btn-lg md:pl-9 md:pr-6 lg:h-[3rem] xl:h-[3.25rem] xl:pl-11 xl:pr-8"
             onClick={onClick}
         >
             {text}
-            <ArrowDownRight className="w-auto h-[1.375rem] md:h-[1.5rem] lg:h-[1.625rem] xl:h-[1.75rem]" />
+            <ArrowDownRight className="w-auto h-[1.375rem] md:h-[1.5rem] xl:h-[1.625rem]" />
+        </button>
+    );
+};
+
+/* Back to Main Page Button */
+export const BackToPageBtn = ({ text, onClick }: ButtonProps) => {
+    return (
+        
+        <button
+            className="btn px-2 gap-2 duration-200 trasition-all rounded-lg shadow-sm md:btn-lg md:px-8 lg:h-[3rem] xl:h-[3.25rem]"
+            onClick={onClick}
+        >
+            {text}
         </button>
     );
 };

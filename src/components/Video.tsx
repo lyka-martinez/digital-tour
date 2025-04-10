@@ -110,7 +110,7 @@ const DescriptionSection = memo(({ room }: { room: Room }) => {
                     checked={isDescVisible}
                 />
                 <div className="collapse-title font-medium video-desc text-sm">
-                    {isDescVisible ? "Hide details" : "Show details"}
+                    Click to {isDescVisible ? "Hide details" : "Show details"}
                 </div>
 
                 <div

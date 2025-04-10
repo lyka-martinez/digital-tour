@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import { Button } from '../components/Buttons';
+import { StartTourBtn, BackToPageBtn } from '../components/Buttons';
 
 type LandingPageProps = {
     startTour: boolean;
@@ -18,13 +18,14 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
     return (
         <div className={classes}>
             <div>
-                <div className="flex h-screen items-center justify-center px-2 py-10 text-center min-h-[45.656rem] lg:text-start lg:justify-start lg:ps-18 lg:pe-0 xl:ps-24">
+                <div className="flex h-screen items-center justify-center px-2 py-10 text-center min-h-[45.656rem] lg:text-start lg:justify-start lg:ps-18 lg:pe-0 xl:ps-26">
 
                     <div>
                         <div className="flex flex-col items-center lg:items-start">
                             <img
                                 src="./images/ter-long-logo.webp"
-                                alt="TER Logo"
+                                alt="The Exchange Regency Hotel Logo"
+                                aria-label="The Exchange Regency Hotel Logo"
                                 className="object-cover -ml-3 h-auto w-[10rem] md:w-[12.5rem] xl:w-[13.75rem]"
                                 loading="lazy"
                             />
@@ -40,19 +41,22 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
                             immersive journey as we showcase the <br />
                             exceptional amenities and features we offer.
                         </p>
-                        <div className="h-9"></div>
+                        <div className="h-10"></div>
 
-                        <Button text="Start Tour" onClick={onStartTour} />
+                        <div className="inline-flex flex-col gap-3 min-w-[12rem] max-w-full items-stretch justify-center md:px-8 md:flex-row lg:px-0 lg:justify-start">
+                            <BackToPageBtn text="Home" />
+                            <StartTourBtn text="Start Tour" onClick={onStartTour} />
+                        </div>
                     </div>
                     
                 </div>
             </div>
 
-            <div className="hidden overflow-hidden lg:flex lg:py-18 xl:py-20">
+            <div className="hidden overflow-hidden lg:flex lg:py-18 lg:items-center">
                 <img
                     src="./images/ter-suite.webp"
                     alt="Suite Room Photo"
-                    className="object-cover rounded-l-full w-auto h-full"
+                    className="object-cover rounded-l-full w-auto h-full max-h-[40rem]"
                 />
             </div>
         </div>

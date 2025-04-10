@@ -19,7 +19,12 @@ const NavBar = ({ onClick }: NavBarProps) => {
             </div>
 
             <div className="flex-1">
-                <img src="./images/ter-long-logo.webp" alt="TER Logo" className="h-[42px] w-auto object-cover" />
+                <img 
+                    src="./images/ter-long-logo.webp" 
+                    className="h-[42px] w-auto object-cover" 
+                    alt="The Exchange Regency Hotel Logo" 
+                    aria-label="The Exchange Regency Hotel Logo"  
+                />
             </div>
         </div>
     );
