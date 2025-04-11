@@ -26,7 +26,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
                                 src="./images/ter-long-logo.webp"
                                 alt="The Exchange Regency Hotel Logo"
                                 aria-label="The Exchange Regency Hotel Logo"
-                                className="object-cover -ml-3 h-auto w-[10rem] md:w-[12.5rem] xl:w-[13.75rem]"
+                                className="object-cover -ml-3 h-auto w-[10rem] md:w-[11.5rem] lg:w-[12.5rem]"
                                 loading="lazy"
                             />
                         </div>

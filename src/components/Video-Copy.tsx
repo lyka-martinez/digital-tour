@@ -10,9 +10,7 @@ export const Video = ({ room }: VideoProps) => {
     console.log("Video rendered at", new Date().toLocaleTimeString());
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
-    const [selBedOption, setSelBedOption] = useState<string | null>(
-        room?.bedOptions?.[0]?.type || null     // Initialize based on the room prop
-    );
+    const [selBedOption, setSelBedOption] = useState<string | null>(null);
     
     
     // Determine the current video source based on the selected bed option or default to the room video
@@ -22,6 +20,17 @@ export const Video = ({ room }: VideoProps) => {
         }
 
         return room?.bedOptions?.[0]?.video || room?.video;
+    }, [room, selBedOption]);
+    
+    
+    // Set the first bed option if none is selected
+    useEffect(() => {
+        console.log("Set the first bed option [first render]");
+
+        if (!selBedOption && room?.bedOptions?.length) {
+            console.log("Set the first bed option: ", room.bedOptions[0].type);
+            setSelBedOption(room.bedOptions[0].type);
+        }
     }, [room, selBedOption]);
 
 

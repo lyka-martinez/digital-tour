@@ -15,7 +15,7 @@ export const StartTourBtn = ({ text, onClick }: ButtonProps) => {
             onClick={onClick}
         >
             {text}
-            <ArrowDownRight className="w-auto h-[1.375rem] md:h-[1.5rem] xl:h-[1.625rem]" />
+            <ArrowDownRight className="w-auto h-[1.25rem] md:h-[1.5rem] xl:h-[1.625rem]" />
         </button>
     );
 };
@@ -25,7 +25,7 @@ export const BackToPageBtn = ({ text, onClick }: ButtonProps) => {
     return (
         
         <button
-            className="btn px-2 gap-2 duration-200 trasition-all rounded-lg shadow-sm md:btn-lg md:px-8 lg:h-[3rem] xl:h-[3.25rem]"
+            className="btn font-medium px-2 gap-2 duration-200 trasition-all rounded-lg shadow-sm md:btn-lg md:px-8 lg:h-[3rem] xl:h-[3.25rem]"
             onClick={onClick}
         >
             {text}
