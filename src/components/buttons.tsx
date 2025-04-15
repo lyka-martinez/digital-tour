@@ -11,7 +11,7 @@ type ButtonProps = {
 export const StartTourBtn = ({ text, onClick }: ButtonProps) => {
     return (
         <button
-            className="btn pl-8 pr-5 gap-2 bg-brnd-secondary text-white border-2 border-brnd-secondary duration-200 trasition-all rounded-lg shadow-sm hover:bg-base-200 hover:text-brnd-secondary md:btn-lg md:pl-9 md:pr-6 lg:h-[3rem] xl:h-[3.25rem] xl:pl-11 xl:pr-8"
+            className="btn font-medium pl-8 pr-5 gap-2 bg-brnd-secondary text-white border-2 border-brnd-secondary duration-200 trasition-all rounded-lg shadow-sm hover:bg-base-200 hover:text-brnd-secondary md:btn-lg md:pl-9 md:pr-6 lg:h-[3rem] xl:h-[3.25rem] xl:pl-11 xl:pr-8"
             onClick={onClick}
         >
             {text}

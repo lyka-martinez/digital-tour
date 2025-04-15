@@ -7,7 +7,7 @@ type VideoProps = {
 };
 
 export const Video = ({ room }: VideoProps) => {
-    console.log("Video rendered at", new Date().toLocaleTimeString());
+    console.log("Video rendered:", new Date().toLocaleTimeString());
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [selBedOption, setSelBedOption] = useState<string | null>(
@@ -71,7 +71,7 @@ export const Video = ({ room }: VideoProps) => {
                 </>
             ) : (
                 <p className="text-xl text-brnd-light">
-                    Select a room from the left panel to view the video.
+                    Select a room on the left to watch the video.
                 </p>
             )}
         </div>
@@ -81,7 +81,7 @@ export const Video = ({ room }: VideoProps) => {
 
 // Description Section Component
 const DescriptionSection = memo(({ room }: { room: Room }) => {
-    console.log("Description rendered at", new Date().toLocaleTimeString());
+    console.log("Description rendered:", new Date().toLocaleTimeString());
 
     const [isDescVisible, setIsDescVisible] = useState(false);
 
@@ -92,20 +92,20 @@ const DescriptionSection = memo(({ room }: { room: Room }) => {
 
 
     return (
-        <div className="w-full bg-gradient p-6 pt-9">
-            <div className="collapse rounded-none">
+        <div className="w-full bg-gradient pb-6 pt-12">
+            <div className="collapse room-details collapse-arrow rounded-none">
                 <input 
                     type="checkbox"
-                    className="peer video-desc"
+                    className="peer"
                     onChange={toggleDescription}
                     checked={isDescVisible}
                 />
-                <div className="collapse-title font-medium video-desc text-sm">
-                    Click to {isDescVisible ? "Hide details" : "Show details"}
+                <div className="collapse-title font-medium text-sm capitalize">
+                    {isDescVisible ? "hide details" : "show details"}
                 </div>
 
                 <div
-                    className="collapse-content text-white bg-brnd-primary-100/90 rounded-md flex flex-col gap-2 peer-checked:pt-4 peer-checked:mt-2 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
+                    className="collapse-content text-white bg-brnd-primary-100/95 rounded-md flex flex-col gap-2 mx-6 peer-checked:pt-4 peer-checked:mt-1 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
                 >
                     <p className="font-semibold text-lg">{room.name}</p>
                     <div className="flex flex-col gap-4 text-sm">
@@ -144,7 +144,7 @@ type BedOptionsProps = {
 }
 
 const BedOptionsSection = memo(({ bedOptions, selectedOption, onOptionSelect }: BedOptionsProps) => {
-    console.log("BedOptions rendered at", new Date().toLocaleTimeString());
+    console.log("BedOptions rendered:", new Date().toLocaleTimeString());
 
     return (
         <div className="w-full bg-gradient bg-gradient-rotated flex gap-3 p-6">

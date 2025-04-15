@@ -106,7 +106,15 @@ button:focus:not(:focus-visible) {
     --join-ee: var(--radius-xl);
 }
 
-.video-desc {
-    padding: 0;
+.room-details > input:is([type="checkbox"], [type="radio"]),
+.room-details > .collapse-title {
+    padding: 0.25rem 2rem 0.25rem 1.5rem;
     min-height: fit-content;
+    min-width: 9.125rem;
+    width: fit-content;
+}
+
+.room-details.collapse-arrow .collapse-title:after {
+    top: 50%;
+    inset-inline-end: 0.85rem;
 }

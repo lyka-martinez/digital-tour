@@ -43,7 +43,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
                         </p>
                         <div className="h-10"></div>
 
-                        <div className="inline-flex flex-col gap-3 min-w-[12rem] max-w-full items-stretch justify-center md:px-8 md:flex-row lg:px-0 lg:justify-start">
+                        <div className="inline-flex flex-col gap-3 min-w-[12rem] max-w-full justify-center md:px-8 md:flex-row lg:px-0 lg:justify-start">
                             <BackToPageBtn text="Home" />
                             <StartTourBtn text="Start Tour" onClick={onStartTour} />
                         </div>
