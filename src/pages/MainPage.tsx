@@ -1,16 +1,16 @@
-import { memo, useMemo } from "react";
+import { memo, useMemo, useState } from "react";
 import NavBar from '../components/NavBar';
 import { Facility } from '../components/Facility';
 import { Video } from '../components/Video';
-// import { Room } from "../types";
+import { Room } from "../types";
 
 type MainPageProps = {
     returnToLanding: boolean;
     onBack: () => void;
 };
 
-const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
-    // const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
+const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {  
+    const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
 
 
     const classes = useMemo(() => {
@@ -25,8 +25,8 @@ const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
             <NavBar onClick={onBack} />
 
             <div className="main-area-cont flex-1 w-svw flex flex-col overflow-y-auto pb-4">
-                <Video />
-                <Facility />
+                <Video room={selectedRoom} />
+                <Facility onRoomSelect={setSelectedRoom} />
             </div>
         </div>
     );

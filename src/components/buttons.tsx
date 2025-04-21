@@ -44,7 +44,7 @@ export const BedOptionButton = memo(({ text, onClick, isActive, icon }: ButtonPr
             }`}
             onClick={onClick}
         >
-            {icon}
+            {icon && <span>{icon}</span>}
             {text}
         </button>
     );
