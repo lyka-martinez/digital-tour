@@ -5,10 +5,10 @@
     background-size: contain;
 }
 
-.bg-gradient {
+/* .bg-gradient {
     position: relative;
     z-index: 0;
-}   
+}
 
 .bg-gradient::before {
     content: '';
@@ -21,7 +21,7 @@
 
 .bg-gradient-rotated::before {
     background: linear-gradient(180deg, rgba(17,17,17,0.35) 0%, rgba(17,17,17,0.15) 40%, rgba(17,17,17,0.05) 75%, rgba(17,17,17,0) 100%);
-}
+} */
 
 .scrollbar-hidden {
     scrollbar-width: none;
@@ -30,8 +30,36 @@
     display: none;
 }
 
-button:focus:not(:focus-visible) {
-    outline: 0;
+.main-area-cont .facility-cont,
+.main-area-cont .video-cont {
+    min-width: calc(12.75rem * (16 / 9));
+}
+
+.video-size {
+    background-color: var(--color-neutral);
+    aspect-ratio: var(--aspect-video);
+    min-height: 12.75rem;
+    max-height: 500px;      /* Initial max height [alter later] */
+}
+
+.video-controls-cont {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: 0 8px 8px;
+}
+
+.controls-gradient-overlay {
+    position: absolute;
+    width: 100%;
+    height: 176px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 
@@ -90,7 +118,7 @@ button:focus:not(:focus-visible) {
 
 
 /* Overwritten pre-build UI styles */
-.custom-join {
+/* .custom-join {
     display: unset;
     align-items: unset;
     overscroll-behavior-y: contain;
@@ -104,17 +132,44 @@ button:focus:not(:focus-visible) {
 .join-vertical > .join-item:last-child {
     --join-es: var(--radius-xl);
     --join-ee: var(--radius-xl);
+} */
+
+.divider::before,
+.divider::after {
+    height: calc(0.188rem * 0.5);       /* 1.5px */
 }
 
 .room-details > input:is([type="checkbox"], [type="radio"]),
 .room-details > .collapse-title {
-    padding: 0.25rem 2rem 0.25rem 1.5rem;
+    padding: 12px 49px 12px 16px;
     min-height: fit-content;
-    min-width: 9.125rem;
-    width: fit-content;
 }
 
 .room-details.collapse-arrow .collapse-title:after {
     top: 50%;
-    inset-inline-end: 0.85rem;
+}
+
+.tabs-border .tab:is(input:checked):before {
+    --tab-border-color: var(--color-brnd-primary-50);
+    border-color: var(--tab-border-color);
+}
+
+.tabs-border .tab:is(input:checked):after {
+    color: var(--color-brnd-secondary);
+}
+
+.tab:hover {
+    color: var(--color-brnd-secondary);
+}
+
+.tab:is(input[type="radio"]):after {
+    font-weight: var(--font-weight-medium);
+}
+
+.tooltip {
+    --tt-bg: var(--color-neutral-800);
+}
+
+.tooltip[data-tip]:before {
+    padding-inline: calc(0.3125rem * 2);
 }

@@ -1,17 +1,18 @@
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import { ArrowDownRight } from 'lucide-react';
 
 type ButtonProps = {
     text?: string;
     onClick?: () => void;
     isActive?: boolean;
+    icon?: ReactNode;
 }
 
 /* Start Tour Button */
 export const StartTourBtn = ({ text, onClick }: ButtonProps) => {
     return (
         <button
-            className="btn font-medium pl-8 pr-5 gap-2 bg-brnd-secondary text-white border-2 border-brnd-secondary duration-200 trasition-all rounded-lg shadow-sm hover:bg-base-200 hover:text-brnd-secondary md:btn-lg md:pl-9 md:pr-6 lg:h-[3rem] xl:h-[3.25rem] xl:pl-11 xl:pr-8"
+            className="btn font-medium pl-8 pr-5 gap-2 bg-brnd-secondary text-base-100 border-2 border-brnd-secondary duration-200 trasition-all rounded-lg shadow-sm hover:bg-base-200 hover:text-brnd-secondary md:btn-lg md:pl-9 md:pr-6 lg:h-[3rem] xl:h-[3.25rem] xl:pl-11 xl:pr-8"
             onClick={onClick}
         >
             {text}
@@ -23,7 +24,6 @@ export const StartTourBtn = ({ text, onClick }: ButtonProps) => {
 /* Back to Main Page Button */
 export const BackToPageBtn = ({ text, onClick }: ButtonProps) => {
     return (
-        
         <button
             className="btn font-medium px-2 gap-2 duration-200 trasition-all rounded-lg shadow-sm md:btn-lg md:px-8 lg:h-[3rem] xl:h-[3.25rem]"
             onClick={onClick}
@@ -33,14 +33,31 @@ export const BackToPageBtn = ({ text, onClick }: ButtonProps) => {
     );
 };
 
-/* Accordion Item Button */
-export const AccordionButton = memo(({ text, onClick, isActive }: ButtonProps) => {
+/* Bed Options Button */
+export const BedOptionButton = memo(({ text, onClick, isActive, icon }: ButtonProps) => {
     return (
         <button
-            className={`btn btn-block rounded-md border hover:bg-brnd-primary hover:border-brnd-primary-50 hover:text-base-100 active:bg-brnd-primary-50 active:border-brnd-primary-50 ${
+            className={`btn font-medium rounded-lg justify-start hover:border-brnd-secondary focus:border-brnd-secondary ${
                 isActive
-                    ? "bg-brnd-primary text-brnd-light border-brnd-primary-50"
-                    : "border border-brnd-muted text-brnd-secondary bg-transparent"
+                    ? "text-base-100 bg-brnd-primary border-brnd-secondary active:bg-brnd-primary-50"
+                    : "text-brnd-secondary bg-base-100 border-transparent hover:bg-base-100/40"
+            }`}
+            onClick={onClick}
+        >
+            {icon}
+            {text}
+        </button>
+    );
+});
+
+/* Facilities Item Button */
+export const FacilityButton = memo(({ text, onClick, isActive }: ButtonProps) => {
+    return (
+        <button
+            className={`btn text-wrap justify-start rounded-lg hover:border-brnd-secondary focus:border-brnd-secondary ${
+                isActive
+                ? "text-base-100 bg-brnd-primary border-brnd-secondary active:bg-brnd-primary-50"
+                : "bg-base-100 border-neutral/20 hover:bg-brnd-primary/7 focus:bg-brnd-primary/7"
             }`}
             onClick={onClick}
         >

@@ -19,6 +19,8 @@
 
     --font-poppins: 'Poppins', sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
+
+    --breakpoint-xs: 30rem;     /* 480px */
 }
 
 :root {

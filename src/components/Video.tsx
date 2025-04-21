@@ -1,166 +1,146 @@
-import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
-import { Check } from 'lucide-react';
-import { Room } from "../types";
+// import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
+import { BedSingle, BedDouble, Check, Volume2, VolumeOff, Maximize, Minimize } from 'lucide-react';
+import { BedOptionButton } from '../components/Buttons';
+// import { Room } from "../types";
 
-type VideoProps = {
-    room: Room | null;
-};
-
-export const Video = ({ room }: VideoProps) => {
+export const Video = () => {
     console.log("Video rendered:", new Date().toLocaleTimeString());
 
-    const videoRef = useRef<HTMLVideoElement | null>(null);
-    const [selBedOption, setSelBedOption] = useState<string | null>(
-        room?.bedOptions?.[0]?.type || null     // Initialize based on the room prop
-    );
-    
-    
-    // Determine the current video source based on the selected bed option or default to the room video
-    const currentVideo = useMemo(() => {
-        if (selBedOption && room?.bedOptions) {
-            return room.bedOptions.find(option => option.type === selBedOption)?.video || room.video;
-        }
-
-        return room?.bedOptions?.[0]?.video || room?.video;
-    }, [room, selBedOption]);
-
-
-    // Reload and play the video whenever the current video source changes
-    useEffect(() => {
-        console.log("Room selected: ", room?.name);
-        
-        if (videoRef.current && currentVideo) {
-            videoRef.current.load();
-            videoRef.current.play().catch((err) => console.error("Error playing video:", err));
-        }
-    }, [currentVideo, room]);
-    
-    
-    const handleBedOptionClick = useCallback((type: string) => {
-        if (type === selBedOption) return;  // Return early if the same bed option is selected
-        setSelBedOption(type);
-    }, [selBedOption]);
-
 
     return (
-        <div className="flex items-center justify-center h-full w-full relative">
-            {room ? (
-                <>
-                    <video
-                        ref={videoRef}
-                        className="h-full w-auto"
-                        autoPlay
-                        muted
-                        loop
-                    >
-                        <source src={currentVideo} type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                    
-                    <div className="absolute inset-0 flex flex-col-reverse items-start justify-between gap-4">
-                        <DescriptionSection room={room} />
-                        
-                        {room.bedOptions && (
-                            <BedOptionsSection
-                                bedOptions={room.bedOptions}
-                                selectedOption={selBedOption}
-                                onOptionSelect={handleBedOptionClick}
-                            />
-                        )}
-                    </div>
-                </>
-            ) : (
-                <p className="text-xl text-brnd-light">
-                    Select a room on the left to watch the video.
-                </p>
-            )}
-        </div>
-    );
-}
-
-
-// Description Section Component
-const DescriptionSection = memo(({ room }: { room: Room }) => {
-    console.log("Description rendered:", new Date().toLocaleTimeString());
-
-    const [isDescVisible, setIsDescVisible] = useState(false);
-
-
-    const toggleDescription = useCallback(() => {
-        setIsDescVisible((prev) => !prev);
-    }, []);
-
-
-    return (
-        <div className="w-full bg-gradient pb-6 pt-12">
-            <div className="collapse room-details collapse-arrow rounded-none">
-                <input 
-                    type="checkbox"
-                    className="peer"
-                    onChange={toggleDescription}
-                    checked={isDescVisible}
-                />
-                <div className="collapse-title font-medium text-sm capitalize">
-                    {isDescVisible ? "hide details" : "show details"}
-                </div>
-
-                <div
-                    className="collapse-content text-white bg-brnd-primary-100/95 rounded-md flex flex-col gap-2 mx-6 peer-checked:pt-4 peer-checked:mt-1 peer-checked:min-h-auto peer-checked:max-h-[17.5rem] overflow-y-auto"
+        <div className="video-cont flex flex-col h-fit w-full relative">
+            <div className="video-size flex justify-center relative">
+                <video
+                    className="h-full w-auto"
+                    autoPlay
+                    muted
+                    loop
                 >
-                    <p className="font-semibold text-lg">{room.name}</p>
-                    <div className="flex flex-col gap-4 text-sm">
-                        {room.description && (
-                            <div className="h-fit">{room.description}</div>
-                        )}
+                    <source src={`./videos/premier-twin.mp4`} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
 
-                        {room.roomFeatures && room.roomFeatures.length > 0 && (
-                            <div>                                            
-                                <p className="pb-2 font-medium tracking-wide">Room Features:</p>
-                                <ul className="grid grid-cols-2 gap-x-4 gap-y-1">   
-                                    {room.roomFeatures.map((feature, index) => (
-                                        <li key={index} className="flex items-start gap-2">
-                                            <div className="h-[1.25rem] flex items-center">
-                                                <Check size={12} />
-                                            </div>
-                                            <div>{feature}</div>
-                                        </li>
-                                    ))}
-                                </ul>
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                    <div className="video-controls-cont">
+
+                        <div className="video-controls flex justify-end">
+                            {/* Mute/Unmute Audio Button */}
+                            <div className="tooltip" data-tip="Mute">
+                                <label className="swap btn btn-ghost h-[38px] w-[38px] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
+                                    <input type="checkbox" defaultChecked />
+
+                                    {/* volume on icon */}
+                                    <Volume2 className="swap-on w-auto h-[20px]" />     
+
+                                    {/* volume off icon */}
+                                    <VolumeOff className="swap-off w-auto h-[20px]" />
+                                </label>
                             </div>
-                        )}
+
+                            {/* Fullscreen/Exit Fullscreen Button */}
+                            <div className="tooltip" data-tip="Fullscreen">   
+                                <label className="swap btn btn-ghost h-[38px] w-[38px] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
+                                    <input type="checkbox" defaultChecked />
+
+                                    {/* fullscreen icon */}
+                                    <Maximize className="swap-on w-auto h-[20px]" />
+
+                                    {/* exit fullscreen icon */}
+                                    <Minimize className="swap-off w-auto h-[20px]" />
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="controls-gradient-overlay"></div>
+
                     </div>
+                </div>
+            </div>
+
+            <div className="px-4 pt-3">
+                <div className="flex flex-col gap-3">
+                    {/* Room Name */}
+                    <h1 className="font-semibold">
+                        Premier Room
+                    </h1>
+
+                    {/* Bed Options */}
+                    <div className="grid grid-flow-col xs:justify-start gap-2">
+                        <BedOptionButton
+                            text={'Queen bed'}
+                            icon={<BedSingle className="w-auto h-[18px]" />}
+                            isActive={true}
+                            />
+
+                        <BedOptionButton
+                            text={'Twin bed'}
+                            icon={<BedDouble className="w-auto h-[18px]" />}
+                            isActive={false}
+                        />
+                    </div>
+
+                    {/* Description */}
+                    <div>
+                        <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg">
+                            <input type="checkbox" />
+                            <div className="collapse-title font-medium text-sm capitalize">Description</div>
+                            <div className="collapse-content flex flex-col gap-4 text-[13px]">
+
+                                <div className="flex flex-col gap-2">
+                                    <p className="font-bold text-sm text-brnd-secondary hidden">Premier Room</p>
+                                    <div>
+                                        Find all the essentials plus a little extra in our Premier Rooms. It comes with additional bathroom amenities and optional kitchenware, perfect for those who are looking for extended business or leisure stays.
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <p className="font-medium tracking-wide pb-1">Room Features:</p>
+
+                                    <ul className="grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-2">   
+                                        <li key={`0`} className="flex items-start gap-2">
+                                            <div className="h-[1.219rem] flex items-center">
+                                                <Check className="w-auto h-[12px]" />
+                                            </div>
+                                            <div>29 to 35 sqm</div>
+                                        </li>
+
+                                        <li key={`1`} className="flex items-start gap-2">
+                                            <div className="h-[1.219rem] flex items-center">
+                                                <Check className="w-auto h-[12px]" />
+                                            </div>
+                                            <div>1 queen bed / 2 twin beds"</div>
+                                        </li>
+
+                                        <li key={`2`} className="flex items-start gap-2">
+                                            <div className="h-[1.219rem] flex items-center">
+                                                <Check className="w-auto h-[12px]" />
+                                            </div>
+                                            <div>Stable internet connection</div>
+                                        </li>
+
+                                        <li key={`3`} className="flex items-start gap-2">
+                                            <div className="h-[1.219rem] flex items-center">
+                                                <Check className="w-auto h-[12px]" />
+                                            </div>
+                                            <div>Dining area with 2-piece dinnerware set</div>
+                                        </li>
+
+                                        <li key={`4`} className="flex items-start gap-2">
+                                            <div className="h-[1.219rem] flex items-center">
+                                                <Check className="w-auto h-[12px]" />
+                                            </div>
+                                            <div>Mini refrigerator</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="divider mt-1 mb-0"></div>
                 </div>
             </div>
         </div>
     );
-});
-
-
-// Bed Options Section Component
-type BedOptionsProps = {
-    bedOptions: { type: string; video: string }[];
-    selectedOption: string | null;
-    onOptionSelect: (type: string) => void;
 }
-
-const BedOptionsSection = memo(({ bedOptions, selectedOption, onOptionSelect }: BedOptionsProps) => {
-    console.log("BedOptions rendered:", new Date().toLocaleTimeString());
-
-    return (
-        <div className="w-full bg-gradient bg-gradient-rotated flex gap-3 p-6">
-            {bedOptions.map((option, index) => (
-                <button
-                    key={index}
-                    className={`btn rounded-md shadow-none ${
-                        selectedOption === option.type
-                            ? "text-neutral bg-white"
-                            : "text-white bg-white/20 border-transparent hover:bg-white/40 hover:border-white"
-                    }`}
-                    onClick={() => onOptionSelect(option.type)}
-                >
-                    {option.type}
-                </button>
-            ))}
-        </div>
-    );
-});

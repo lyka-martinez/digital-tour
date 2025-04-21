@@ -9,7 +9,7 @@ type LandingPageProps = {
 
 const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPageProps) => {
     const classes = useMemo(() => {
-        return `grid grid-cols-1 min-h-screen max-w-screen overflow-y-auto bg-bottom-svg lg:grid-cols-2 xl:grid-cols-[42.5rem__1fr] ${
+        return `grid grid-cols-1 min-h-svh max-w-screen overflow-y-auto bg-bottom-svg lg:grid-cols-2 xl:grid-cols-[42.5rem__1fr] ${
             startTour ? 'slide-up' : returnToLanding ? 'slide-down' : ''
         }`;
     }, [startTour, returnToLanding]);
@@ -18,7 +18,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
     return (
         <div className={classes}>
             <div>
-                <div className="flex h-screen items-center justify-center px-2 py-10 text-center min-h-[45.656rem] lg:text-start lg:justify-start lg:ps-18 lg:pe-0 xl:ps-26">
+                <div className="flex h-screen items-center justify-center px-2 py-10 text-center min-h-[33.75rem] lg:min-h-[45.656rem] lg:text-start lg:justify-start lg:ps-18 lg:pe-0 xl:ps-26">
 
                     <div>
                         <div className="flex flex-col items-center lg:items-start">
