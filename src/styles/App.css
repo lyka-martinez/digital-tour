@@ -37,7 +37,7 @@
 
 .video-size {
     background-color: var(--color-neutral);
-    aspect-ratio: var(--aspect-video);
+    aspect-ratio: 16 / 9;
     min-height: 12.75rem;
     max-height: 500px;      /* Initial max height [alter later] */
 }

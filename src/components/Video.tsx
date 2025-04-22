@@ -7,20 +7,10 @@ type VideoProps = {
     room: Room | null;
 };
 
-export const Video = ({ room }: VideoProps) => {
-    console.log("Video:", new Date().toLocaleTimeString());
-    
+export const Video = ({ room }: VideoProps) => {    
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [selBedOption, setSelBedOption] = useState<string | null>(null);
 
-
-    // Set selBedOption with the first bed option when the room changes
-    useEffect(() => {
-        if (room?.bedOptions?.length) {
-            setSelBedOption((prev) => prev || room?.bedOptions?.[0]?.type || null);
-        }
-    }, [room]);
-    
     
     // Determine the current video source based on the selected bed option or default to the room video
     const currentVideo = useMemo(() => {
@@ -32,25 +22,28 @@ export const Video = ({ room }: VideoProps) => {
     }, [room, selBedOption]);
 
 
+    // Set selBedOption with the first bed option when the room changes
+    useEffect(() => {
+        if (room?.bedOptions?.length) {
+            setSelBedOption((prev) => prev || room?.bedOptions?.[0]?.type || null);
+        }
+    }, [room]);
+
+
     // Reload and play the video whenever the current video source changes
     useEffect(() => {
         console.log("Room: ", room?.name, " ", new Date().toLocaleTimeString());
         
         if (videoRef.current && currentVideo) {
-            videoRef.current.load();
-            videoRef.current.play().catch((err) => console.error("Error playing video:", err));
+            videoRef.current.src = currentVideo;
+            videoRef.current.play().catch(console.error);
         }
     }, [currentVideo, room]);
     
-    
-    const handleBedOptionClick = useCallback((type: string) => {
-        if (type === selBedOption) return;
-        setSelBedOption(type);
-    }, [selBedOption]);
 
-    const clearConsole = useCallback(() => {
-        console.clear();
-    }, []);
+    const handleBedOptionClick = useCallback((type: string) => {
+        if (type !== selBedOption) setSelBedOption(type);
+    }, [selBedOption]);
 
 
     return (
@@ -73,13 +66,6 @@ export const Video = ({ room }: VideoProps) => {
                             <div className="video-controls-cont">
 
                                 <div className="video-controls flex justify-end">
-                                    <button 
-                                        className="btn"
-                                        onClick={clearConsole}
-                                    >
-                                        Clear Log
-                                    </button>
-
                                     {/* Mute/Unmute Audio Button */}
                                     <div className="tooltip" data-tip="Mute">
                                         <label className="swap btn btn-ghost h-[38px] w-[38px] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
@@ -146,8 +132,6 @@ export const Video = ({ room }: VideoProps) => {
 
 // Description Component
 const Description = memo(({ room }: { room: Room }) => {
-    console.log("Description:", new Date().toLocaleTimeString());
-
     const [isDescVisible, setIsDescVisible] = useState(false);
 
 
@@ -209,8 +193,6 @@ type BedOptionsProps = {
 }
 
 const BedOptions = memo(({ bedOptions, selBedOption, onSelect }: BedOptionsProps) => {
-    console.log("BedOptions: ", selBedOption, " ", new Date().toLocaleTimeString());
-
     return (
         <div className="grid grid-flow-col xs:justify-start gap-2">
             {bedOptions.map((option) => (
