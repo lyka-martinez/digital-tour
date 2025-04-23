@@ -5,24 +5,6 @@
     background-size: contain;
 }
 
-/* .bg-gradient {
-    position: relative;
-    z-index: 0;
-}
-
-.bg-gradient::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(0deg, rgba(17, 17, 17, 0.6) 0%, rgba(17, 17, 17, 0.3) 40%, rgba(17, 17, 17, 0.1) 75%, rgba(17, 17, 17, 0) 100%);
-    pointer-events: none;
-}
-
-.bg-gradient-rotated::before {
-    background: linear-gradient(180deg, rgba(17,17,17,0.35) 0%, rgba(17,17,17,0.15) 40%, rgba(17,17,17,0.05) 75%, rgba(17,17,17,0) 100%);
-} */
-
 .scrollbar-hidden {
     scrollbar-width: none;
 }
@@ -39,7 +21,6 @@
     background-color: var(--color-neutral);
     aspect-ratio: 16 / 9;
     min-height: 12.75rem;
-    max-height: 500px;      /* Initial max height [alter later] */
 }
 
 .video-controls-cont {
@@ -60,6 +41,51 @@
     right: 0;
     z-index: -1;
     background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+
+/* Media Queries */
+@media (width >= 59.375rem) {
+    .main-area-cont .facility-cont,
+    .main-area-cont .video-cont {
+        overflow-y: auto;
+    }
+
+    .main-area-cont .facility-cont {
+        min-width: var(--container-4xs);
+        width: var(--container-4xs);        /* Fix this later */
+    }
+
+    .main-area-cont {
+        overflow: hidden;
+    }
+
+    .tab {
+        justify-content: flex-start;
+    }
+
+    .tabs-border .tab::before {
+        width: calc(100% - 2rem);
+        left: unset;
+    }
+}
+
+@media (width >= 80rem) {
+    .main-area-cont .facility-cont {
+        min-width: var(--container-3xs);
+        width: var(--container-3xs);        /* Fix this later */
+    }
+
+    .tabs-border .tab::before {
+        width: calc(100% - 2.5rem);
+    }
+}
+
+@media (width >= 96rem) {
+    .main-area-cont .facility-cont {
+        min-width: 288px;
+        width: 288px;        /* Fix this later */
+    }
 }
 
 
@@ -118,22 +144,6 @@
 
 
 /* Overwritten pre-build UI styles */
-/* .custom-join {
-    display: unset;
-    align-items: unset;
-    overscroll-behavior-y: contain;
-}
-
-.join-vertical > .join-item:first-child {
-    --join-ss: var(--radius-xl);
-    --join-se: var(--radius-xl);
-}
-
-.join-vertical > .join-item:last-child {
-    --join-es: var(--radius-xl);
-    --join-ee: var(--radius-xl);
-} */
-
 .divider::before,
 .divider::after {
     height: calc(0.188rem * 0.5);       /* 1.5px */

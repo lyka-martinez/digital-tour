@@ -6,15 +6,15 @@ type NavBarProps = {
 };
 
 const NavBar = ({ onClick }: NavBarProps) => {
-    return (
-        <div className="navbar bg-base-100 flex-none gap-1 p-1 min-h-[50px] shadow-sm">
+    return ( 
+        <div className="navbar bg-base-100 flex-none gap-1 py-0 min-h-[3.25rem] border-b border-base-300">
             <div className="flex-none">
                 <button
-                    className="btn btn-square btn-ghost rounded-md"
+                    className="btn btn-square btn-ghost rounded-md border-transparent w-[2.5rem] h-[2.625rem] md:w-[2.625rem]"
                     aria-label="Go back"
                     onClick={onClick}
-                >
-                    <ChevronLeft className="w-auto h-[24px]" />
+                >   
+                    <ChevronLeft className="w-auto h-[1.5rem] md:h-[1.75rem] " />
                 </button>
             </div>
 
@@ -23,7 +23,7 @@ const NavBar = ({ onClick }: NavBarProps) => {
                     src="./images/ter-long-logo.webp" 
                     alt="The Exchange Regency Hotel Logo" 
                     aria-label="The Exchange Regency Hotel Logo"  
-                    className="object-cover h-[40px] w-auto" 
+                    className="object-cover w-auto h-[2.5rem] md:h-[2.625rem]" 
                 />
             </div>
         </div>

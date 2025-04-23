@@ -24,7 +24,7 @@ const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
         <div className={classes}>
             <NavBar onClick={onBack} />
 
-            <div className="main-area-cont flex-1 w-svw flex flex-col overflow-y-auto pb-4">
+            <div className="main-area-cont flex-1 w-svw flex flex-col overflow-y-auto pb-4 md-lg:flex-row-reverse md-lg:pb-0">
                 <Video room={selectedRoom} />
                 <Facility onRoomSelect={setSelectedRoom} />
             </div>

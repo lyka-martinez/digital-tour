@@ -25,23 +25,25 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
 
 
     return (
-        <div className="facility-cont px-4 py-3">
+        <div className="facility-cont px-4 py-3 sm:px-5 md-lg:px-0 md-lg:bg-base-100 md-lg:border-r md-lg:border-base-300">
             <div className="flex flex-col gap-2">
 
-                <div className="tabs tabs-border">
+                <div className="tabs tabs-border md-lg:flex-col">
                     {facilities.map((facility, index) => (
                         <Fragment key={index}>
                             <input
                                 type="radio" 
                                 name="facilities_tabs" 
-                                className="tab " 
+                                className="tab sm:text-base sm:h-[42px] md-lg:flex-start xl:px-5" 
                                 aria-label={facility.title}
                                 defaultChecked={index === 0}
                             />
 
-                            <div className="tab-content rounded-xl border-base-300 bg-base-100 px-4 py-5">
+                            <div className="tab-content rounded-xl border-base-300 bg-base-100 px-4 py-5 md-lg:rounded-none md-lg:border-none md-lg:py-2 xl:px-5">
 
-                                <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
+                                <div className="divider mt-0 mb-4 h-fit hidden md-lg:flex"></div>
+
+                                <div className="grid gap-2 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 md-lg:grid-cols-1">
                                     {facility.rooms.map((room, roomIndex) => (
                                         <FacilityButton
                                             key={roomIndex}

@@ -47,8 +47,8 @@ export const Video = ({ room }: VideoProps) => {
 
 
     return (
-        <div className="video-cont flex flex-col h-fit w-full relative">
-            <div className="video-size flex justify-center items-center relative">
+        <div className="video-cont flex flex-col h-fit w-full relative md-lg:p-3 md-lg:h-full lg:px-4 xl:px-6">
+            <div className="video-size flex justify-center items-center relative overflow-hidden md-lg:rounded-lg">
                 {room ? (
                     <>
                         <video
@@ -77,14 +77,14 @@ export const Video = ({ room }: VideoProps) => {
                                     </div>
 
                                     {/* Fullscreen/Exit Fullscreen Button */}
-                                    <div className="tooltip" data-tip="Fullscreen">   
+                                    {/* <div className="tooltip" data-tip="Fullscreen">   
                                         <label className="swap btn btn-ghost h-[38px] w-[38px] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
                                             <input type="checkbox" defaultChecked />
 
                                             <Maximize className="swap-on w-auto h-[20px]" />
                                             <Minimize className="swap-off w-auto h-[20px]" />
                                         </label>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="controls-gradient-overlay"></div>
@@ -93,17 +93,17 @@ export const Video = ({ room }: VideoProps) => {
                         </div>
                     </>
                 ) : (
-                    <p className="text-brnd-light font-light">
+                    <p className="text-brnd-light font-light sm:text-lg">
                         No video available to play.
                     </p>
                 )}
             </div>
 
             {room && ( 
-                <div className="px-4 pt-3">
+                <div className="px-4 pt-3 sm:px-5 md-lg:px-0 md-lg:pb-3">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-semibold">
+                        <h1 className="font-semibold mb-1 sm:text-lg xl:text-xl">
                             {room.name}
                         </h1>
 
@@ -121,7 +121,7 @@ export const Video = ({ room }: VideoProps) => {
                             <Description room={room} />
                         </div>
 
-                        <div className="divider mt-1 mb-0"></div>
+                        <div className="divider mt-1 mb-0 md-lg:hidden"></div>
                     </div>
                 </div>
             )}
@@ -131,7 +131,7 @@ export const Video = ({ room }: VideoProps) => {
 
 
 // Description Component
-const Description = memo(({ room }: { room: Room }) => {
+const Description = memo(({ room }: { room: Room }) => {    
     const [isDescVisible, setIsDescVisible] = useState(false);
 
 
@@ -152,11 +152,9 @@ const Description = memo(({ room }: { room: Room }) => {
                 {isDescVisible ? "hide description" : "show description"}
             </div>
 
-            <div className="collapse-content flex flex-col gap-4 text-[13px]">
+            <div className="collapse-content flex flex-col gap-4 text-[13px] sm:text-sm">
 
                 <div className="flex flex-col gap-2">
-                    <p className="font-bold text-sm text-brnd-secondary hidden">{room.name}</p>
-
                     {room.description && (
                         <div>{room.description}</div>
                     )}
@@ -169,7 +167,7 @@ const Description = memo(({ room }: { room: Room }) => {
                         <ul className="grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-2">
                             {room.roomFeatures.map((feature, index) => (
                                 <li key={index} className="flex items-start gap-2">
-                                    <div className="h-[1.219rem] flex items-center">
+                                    <div className="flex items-center h-[1.219rem] sm:h-[1.25rem]">
                                         <Check className="w-auto h-[12px]" />
                                     </div>
                                     <div>{feature}</div>

@@ -5,12 +5,12 @@
             {
                 "name": "Front Office",
                 "description": "The hotel front desk is the main hub for guest services, where check-ins, reservations, and inquiries are handled. It offers assistance and information, ensuring a smooth and welcoming experience for guests.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             },
             {
                 "name": "Elevator",
                 "description": "Elevators for easy access to all floors.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             }
         ]
     },
@@ -20,37 +20,37 @@
             {
                 "name": "Function Room",
                 "description": "A spacious room for events and meetings.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             },
             {
                 "name": "Swimming Pool",
                 "description": "Enjoy a calm and rewarding plunge in our swimming pool. With a spacious size of 130 sqm, everyone can jump in and enjoy sunny days at The Exchange Regency Residence Hotel.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             },
             {
                 "name": "Jacuzzi",
                 "description": "A hot tub for a soothing experience.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             },
             {
                 "name": "Fitness Center",
                 "description": "Stay in shape at our fitness center. Complete with a well-curated selection of equipment and regularly sanitized for your safety.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             },
             {
                 "name": "Game Room",
                 "description": "A room with various games for entertainment.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             },
             {
                 "name": "Mini Golf",
                 "description": "A mini golf course for leisure activities.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             },
             {
                 "name": "Children's Playground",
                 "description": "A safe and fun area for children to play.",
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": ""
             }
         ]
     },
@@ -73,8 +73,8 @@
                     "Hair dryer"
                 ],
                 "bedOptions": [
-                    { "type": "Queen", "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
-                    { "type": "Twin", "video": "./videos/deluxe-premium-twin.mp4" }
+                    { "type": "Queen", "video": "./videos/deluxe-classic-queen.mp4" },
+                    { "type": "Twin", "video": "./videos/deluxe-classic-twin.mp4" }
                 ]
             },
             {
@@ -115,7 +115,7 @@
                     "Bedroom Slippers"
                 ],
                 "bedOptions": [
-                    { "type": "Queen", "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
+                    { "type": "Queen", "video": "./videos/premier-queen.mp4" },
                     { "type": "Twin", "video": "./videos/premier-twin.mp4" }
                 ]
             },
@@ -142,7 +142,7 @@
                     "Hair dryer",
                     "Bedroom Slippers"
                 ],
-                "video": "./videos/deluxe-premium-twin.mp4"
+                "video": "./videos/suite.mp4"
             }
         ]
     }

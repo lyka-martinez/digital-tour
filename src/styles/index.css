@@ -20,7 +20,10 @@
     --font-poppins: 'Poppins', sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
 
-    --breakpoint-xs: 30rem;     /* 480px */
+    --breakpoint-xs: 30rem;             /* 480px */
+    --breakpoint-md-lg: 59.375rem;      /* 950px */
+
+    --container-4xs: 15rem;             /* 240px */
 }
 
 :root {
