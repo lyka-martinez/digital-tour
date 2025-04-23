@@ -25,7 +25,7 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
 
 
     return (
-        <div className="facility-cont px-4 py-3 sm:px-5 md-lg:px-0 md-lg:bg-base-100 md-lg:border-r md-lg:border-base-300">
+        <div className="facility-cont px-4 py-3 sm:px-5 md-lg:px-0 md-lg:bg-base-100 md-lg:border-r md-lg:border-neutral-content">
             <div className="flex flex-col gap-2">
 
                 <div className="tabs tabs-border md-lg:flex-col">
@@ -34,7 +34,7 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
                             <input
                                 type="radio" 
                                 name="facilities_tabs" 
-                                className="tab sm:text-base sm:h-[42px] md-lg:flex-start xl:px-5" 
+                                className="tab lg:text-base lg:h-[2.625rem] md-lg:justify-start md-lg:mx-4 md-lg:px-2" 
                                 aria-label={facility.title}
                                 defaultChecked={index === 0}
                             />

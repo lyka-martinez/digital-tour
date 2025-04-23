@@ -10,6 +10,7 @@ type VideoProps = {
 export const Video = ({ room }: VideoProps) => {    
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [selBedOption, setSelBedOption] = useState<string | null>(null);
+    const [isMuted, setIsMuted] = useState(false);
 
     
     // Determine the current video source based on the selected bed option or default to the room video
@@ -46,8 +47,16 @@ export const Video = ({ room }: VideoProps) => {
     }, [selBedOption]);
 
 
+    const toggleMute = useCallback(() => {
+        setIsMuted((prev) => !prev);
+        if (videoRef.current) {
+            videoRef.current.muted = !videoRef.current.muted;
+        }
+    }, []);
+
+
     return (
-        <div className="video-cont flex flex-col h-fit w-full relative md-lg:p-3 md-lg:h-full lg:px-4 xl:px-6">
+        <div className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:px-10 2xl:px-12">
             <div className="video-size flex justify-center items-center relative overflow-hidden md-lg:rounded-lg">
                 {room ? (
                     <>
@@ -55,7 +64,7 @@ export const Video = ({ room }: VideoProps) => {
                             ref={videoRef}
                             className="h-full w-auto"
                             autoPlay
-                            muted
+                            // muted
                             loop
                             >
                             <source src={currentVideo} type="video/mp4" />
@@ -67,12 +76,16 @@ export const Video = ({ room }: VideoProps) => {
 
                                 <div className="video-controls flex justify-end">
                                     {/* Mute/Unmute Audio Button */}
-                                    <div className="tooltip" data-tip="Mute">
-                                        <label className="swap btn btn-ghost h-[38px] w-[38px] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
-                                            <input type="checkbox" defaultChecked />
+                                    <div className="tooltip" data-tip={isMuted ? "Unmute" : "Mute"}>
+                                        <label className="swap btn btn-ghost h-[2.375rem] w-[2.375rem] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
+                                            <input 
+                                                type="checkbox" 
+                                                checked={isMuted}
+                                                onChange={toggleMute}
+                                            />
 
-                                            <Volume2 className="swap-on w-auto h-[20px]" />
-                                            <VolumeOff className="swap-off w-auto h-[20px]" />
+                                            <Volume2 className="swap-off w-auto h-[1.25rem]" />
+                                            <VolumeOff className="swap-on w-auto h-[1.25rem]" />
                                         </label>
                                     </div>
 
@@ -93,7 +106,7 @@ export const Video = ({ room }: VideoProps) => {
                         </div>
                     </>
                 ) : (
-                    <p className="text-brnd-light font-light sm:text-lg">
+                    <p className="text-brnd-light font-light sm:text-lg xl:text-xl">
                         No video available to play.
                     </p>
                 )}
@@ -103,7 +116,7 @@ export const Video = ({ room }: VideoProps) => {
                 <div className="px-4 pt-3 sm:px-5 md-lg:px-0 md-lg:pb-3">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-semibold mb-1 sm:text-lg xl:text-xl">
+                        <h1 className="font-semibold mb-1 sm:text-lg lg:text-xl">
                             {room.name}
                         </h1>
 
@@ -141,7 +154,7 @@ const Description = memo(({ room }: { room: Room }) => {
 
 
     return (
-        <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg">
+        <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
             <input 
                 type="checkbox"
                 className="peer"
@@ -152,7 +165,7 @@ const Description = memo(({ room }: { room: Room }) => {
                 {isDescVisible ? "hide description" : "show description"}
             </div>
 
-            <div className="collapse-content flex flex-col gap-4 text-[13px] sm:text-sm">
+            <div className="collapse-content flex flex-col gap-4 text-xs-sm sm:text-sm">
 
                 <div className="flex flex-col gap-2">
                     {room.description && (
@@ -168,7 +181,7 @@ const Description = memo(({ room }: { room: Room }) => {
                             {room.roomFeatures.map((feature, index) => (
                                 <li key={index} className="flex items-start gap-2">
                                     <div className="flex items-center h-[1.219rem] sm:h-[1.25rem]">
-                                        <Check className="w-auto h-[12px]" />
+                                        <Check className="w-auto h-[0.75rem]" />
                                     </div>
                                     <div>{feature}</div>
                                 </li>
@@ -198,8 +211,8 @@ const BedOptions = memo(({ bedOptions, selBedOption, onSelect }: BedOptionsProps
                     key={option.type}
                     text={`${option.type} bed`}
                     icon={option.type === "Queen" 
-                        ? <BedSingle className="w-auto h-[18px]" /> 
-                        : <BedDouble className="w-auto h-[18px]" />
+                        ? <BedSingle className="w-auto h-[1.125rem]" /> 
+                        : <BedDouble className="w-auto h-[1.125rem]" />
                     }
                     isActive={selBedOption === option.type}
                     onClick={() => onSelect(option.type)}

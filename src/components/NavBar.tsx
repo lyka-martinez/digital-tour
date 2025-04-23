@@ -7,7 +7,7 @@ type NavBarProps = {
 
 const NavBar = ({ onClick }: NavBarProps) => {
     return ( 
-        <div className="navbar bg-base-100 flex-none gap-1 py-0 min-h-[3.25rem] border-b border-base-300">
+        <div className="navbar bg-base-100 flex-none gap-1 py-0 min-h-[3.25rem] border-b border-neutral-content">
             <div className="flex-none">
                 <button
                     className="btn btn-square btn-ghost rounded-md border-transparent w-[2.5rem] h-[2.625rem] md:w-[2.625rem]"

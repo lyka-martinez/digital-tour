@@ -20,6 +20,8 @@
     --font-poppins: 'Poppins', sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
 
+    --text-xs-sm: 0.813rem;             /* 13px */
+
     --breakpoint-xs: 30rem;             /* 480px */
     --breakpoint-md-lg: 59.375rem;      /* 950px */
 
@@ -44,10 +46,8 @@ body {
     margin: 0;
 }
 
+
+
+
 /* dark theme */
-@media (prefers-color-scheme: dark) {
-    /* :root {
-        color: rgba(255, 255, 255, 0.87);
-        background-color: #242424;
-    } */
-}
+@media (prefers-color-scheme: dark) {   }

@@ -6,11 +6,6 @@
                 "name": "Front Office",
                 "description": "The hotel front desk is the main hub for guest services, where check-ins, reservations, and inquiries are handled. It offers assistance and information, ensuring a smooth and welcoming experience for guests.",
                 "video": ""
-            },
-            {
-                "name": "Elevator",
-                "description": "Elevators for easy access to all floors.",
-                "video": ""
             }
         ]
     },
@@ -63,7 +58,7 @@
                 "roomFeatures": [
                     "25 sqm", 
                     "1 queen bed / 2 twin beds",
-                    "Stable internet connection",
+                    "Complentary internet connection",
                     "Mini refrigerator",
                     "Electric kettle",
                     "Bottled water (upon arrival)",
@@ -83,7 +78,7 @@
                 "roomFeatures": [
                     "25 to 27 sqm",   
                     "1 queen bed / 2 twin beds",   
-                    "Stable internet connection",   
+                    "Complentary internet connection",   
                     "Mini refrigerator",   
                     "Electric kettle",   
                     "Bottled water (replenished daily)",   
@@ -104,7 +99,7 @@
                 "roomFeatures": [
                     "29 to 35 sqm",
                     "1 queen bed / 2 twin beds",
-                    "Stable internet connection",
+                    "Complentary internet connection",
                     "Dining area with 2-piece dinnerware set",
                     "Mini refrigerator",
                     "Bottled water (replenished daily)",
@@ -126,7 +121,7 @@
                     "64.5-68.5 sqm",
                     "1 queen bed (inside master’s bedroom)",
                     "1 double bed (inside bedroom 2)",
-                    "Stable internet connection",
+                    "Complentary internet connection",
                     "Dining area with 4-piece dinnerware set",
                     "Receiving area with 3-seater sofa",
                     "Kitchenette with electric stove and rangehood",

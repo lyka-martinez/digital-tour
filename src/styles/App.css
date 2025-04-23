@@ -1,4 +1,6 @@
 /* Specific styles for the App component. */
+@reference "./index.css";
+
 
 .bg-bottom-svg {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23D3DBE8" fill-opacity="1" d="M0,192L60,202.7C120,213,240,235,360,218.7C480,203,600,149,720,128C840,107,960,117,1080,133.3C1200,149,1320,171,1380,181.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>') no-repeat bottom;
@@ -9,7 +11,7 @@
     scrollbar-width: none;
 }
 .scrollbar-hidden::-webkit-scrollbar {
-    display: none;
+    @apply hidden;
 }
 
 .main-area-cont .facility-cont,
@@ -20,7 +22,7 @@
 .video-size {
     background-color: var(--color-neutral);
     aspect-ratio: 16 / 9;
-    min-height: 12.75rem;
+    min-height: 12.75rem;       /* 204px */
 }
 
 .video-controls-cont {
@@ -29,13 +31,13 @@
     left: 0;
     right: 0;
     z-index: 1;
-    padding: 0 8px 8px;
+    padding: 0 0.5rem 0.5rem;
 }
 
 .controls-gradient-overlay {
     position: absolute;
     width: 100%;
-    height: 176px;
+    height: 11rem;      /* 176px */
     bottom: 0;
     left: 0;
     right: 0;
@@ -44,49 +46,50 @@
 }
 
 
-/* Media Queries */
-@media (width >= 59.375rem) {
-    .main-area-cont .facility-cont,
-    .main-area-cont .video-cont {
-        overflow-y: auto;
-    }
 
-    .main-area-cont .facility-cont {
-        min-width: var(--container-4xs);
-        width: var(--container-4xs);        /* Fix this later */
-    }
 
-    .main-area-cont {
-        overflow: hidden;
-    }
-
-    .tab {
-        justify-content: flex-start;
-    }
-
-    .tabs-border .tab::before {
-        width: calc(100% - 2rem);
-        left: unset;
-    }
+/* Overwritten pre-build UI styles */
+.divider::before,
+.divider::after {
+    height: calc(0.188rem * 0.5);       /* 1.5px */
 }
 
-@media (width >= 80rem) {
-    .main-area-cont .facility-cont {
-        min-width: var(--container-3xs);
-        width: var(--container-3xs);        /* Fix this later */
-    }
-
-    .tabs-border .tab::before {
-        width: calc(100% - 2.5rem);
-    }
+.room-details > input:is([type="checkbox"], [type="radio"]),
+.room-details > .collapse-title {
+    padding: 0.75rem 3.063rem 0.75rem 1rem;
+    min-height: fit-content;
 }
 
-@media (width >= 96rem) {
-    .main-area-cont .facility-cont {
-        min-width: 288px;
-        width: 288px;        /* Fix this later */
-    }
+.room-details.collapse-arrow .collapse-title:after {
+    top: 50%;
 }
+
+.tooltip {
+    --tt-bg: var(--color-neutral-800);
+}
+
+.tooltip[data-tip]:before {
+    padding-inline: calc(0.3125rem * 2);
+}
+
+.tab:is(input[type="radio"]):after {
+    @apply font-medium;
+}
+
+.tabs-border .tab:is(input:checked):before {
+    --tab-border-color: var(--color-brnd-primary-50);
+    border-color: var(--tab-border-color);
+}
+
+.tabs-border .tab:is(input:checked):after {
+    @apply text-brnd-secondary;
+}
+
+.tab:hover {
+    @apply text-brnd-secondary;
+}
+
+
 
 
 /* Animations */
@@ -143,43 +146,42 @@
 }
 
 
-/* Overwritten pre-build UI styles */
-.divider::before,
-.divider::after {
-    height: calc(0.188rem * 0.5);       /* 1.5px */
+
+
+/* Media Queries */
+@media (width >= 59.375rem) {
+    .main-area-cont .facility-cont,
+    .main-area-cont .video-cont {
+        @apply overflow-y-auto;
+    }
+
+    .main-area-cont .facility-cont {
+        @apply min-w-4xs w-4xs;
+    }
+
+    .tabs-border .tab::before {
+        @apply h-full w-0.75 left-[-6px] bottom-0;
+    }
+
+    .tabs-border .tab:is(input:checked) {
+        @apply bg-base-300;
+    }
+
+    .video-size {
+        flex: 0 0 auto;
+        height: calc(100% - 10rem);
+        max-height: calc(100vw / (16 / 9));
+    }
 }
 
-.room-details > input:is([type="checkbox"], [type="radio"]),
-.room-details > .collapse-title {
-    padding: 12px 49px 12px 16px;
-    min-height: fit-content;
+@media (width >= 80rem) {
+    .main-area-cont .facility-cont {
+        @apply min-w-3xs w-3xs;
+    }
 }
 
-.room-details.collapse-arrow .collapse-title:after {
-    top: 50%;
-}
-
-.tabs-border .tab:is(input:checked):before {
-    --tab-border-color: var(--color-brnd-primary-50);
-    border-color: var(--tab-border-color);
-}
-
-.tabs-border .tab:is(input:checked):after {
-    color: var(--color-brnd-secondary);
-}
-
-.tab:hover {
-    color: var(--color-brnd-secondary);
-}
-
-.tab:is(input[type="radio"]):after {
-    font-weight: var(--font-weight-medium);
-}
-
-.tooltip {
-    --tt-bg: var(--color-neutral-800);
-}
-
-.tooltip[data-tip]:before {
-    padding-inline: calc(0.3125rem * 2);
+@media (width >= 96rem) {
+    .main-area-cont .facility-cont {
+        @apply min-w-xs w-xs;
+    }
 }

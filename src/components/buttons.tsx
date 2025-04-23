@@ -37,7 +37,7 @@ export const BackToPageBtn = ({ text, onClick }: ButtonProps) => {
 export const BedOptionButton = memo(({ text, onClick, isActive, icon }: ButtonProps) => {
     return (
         <button
-            className={`btn font-medium rounded-lg justify-start hover:border-brnd-secondary focus:border-brnd-secondary ${
+            className={`btn font-medium rounded-lg justify-start hover:border-brnd-secondary focus:border-brnd-secondary xl:h-[2.625rem] shadow-xs ${
                 isActive
                     ? "text-base-100 bg-brnd-primary border-brnd-secondary active:bg-brnd-primary-50"
                     : "text-brnd-secondary bg-base-100 border-transparent hover:bg-base-100/40"
@@ -54,7 +54,7 @@ export const BedOptionButton = memo(({ text, onClick, isActive, icon }: ButtonPr
 export const FacilityButton = memo(({ text, onClick, isActive }: ButtonProps) => {
     return (
         <button
-            className={`btn text-wrap justify-start rounded-lg hover:border-brnd-secondary focus:border-brnd-secondary ${
+            className={`btn text-wrap justify-start rounded-lg hover:border-brnd-secondary focus:border-brnd-secondary xl:h-[2.625rem] ${
                 isActive
                 ? "text-base-100 bg-brnd-primary border-brnd-secondary active:bg-brnd-primary-50"
                 : "bg-base-100 border-neutral/20 hover:bg-brnd-primary/7 focus:bg-brnd-primary/7"
