@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
-import { BedSingle, BedDouble, Check, Volume2, VolumeOff, Maximize, Minimize } from 'lucide-react';
+import { BedSingle, BedDouble, Check, Volume2, VolumeOff, Maximize, Minimize, Play, Pause } from 'lucide-react';
 import { BedOptionButton } from '../components/Buttons';
 import { Room } from "../types";
 
@@ -8,9 +8,15 @@ type VideoProps = {
 };
 
 export const Video = ({ room }: VideoProps) => {    
+    console.log("Room: ", room?.name, " ", new Date().toLocaleTimeString());
+
+
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [selBedOption, setSelBedOption] = useState<string | null>(null);
+
+    const [showControls, setShowControls] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
 
     
     // Determine the current video source based on the selected bed option or default to the room video
@@ -33,14 +39,12 @@ export const Video = ({ room }: VideoProps) => {
 
     // Reload and play the video whenever the current video source changes
     useEffect(() => {
-        console.log("Room: ", room?.name, " ", new Date().toLocaleTimeString());
-        
-        if (videoRef.current && currentVideo) {
-            videoRef.current.src = currentVideo;
-            videoRef.current.play().catch(console.error);
-        }
+        if (!videoRef.current || !currentVideo) return;
+
+        videoRef.current.src = currentVideo;
+        videoRef.current.play().catch(console.error);
     }, [currentVideo, room]);
-    
+
 
     const handleBedOptionClick = useCallback((type: string) => {
         if (type !== selBedOption) setSelBedOption(type);
@@ -48,11 +52,22 @@ export const Video = ({ room }: VideoProps) => {
 
 
     const toggleMute = useCallback(() => {
-        setIsMuted((prev) => !prev);
-        if (videoRef.current) {
-            videoRef.current.muted = !videoRef.current.muted;
-        }
+        if (!videoRef.current) return;
+
+        videoRef.current.muted = !videoRef.current.muted;
+        setIsMuted(videoRef.current.muted);
     }, []);
+
+
+    const togglePlayPause = useCallback(() => {
+        if (!videoRef.current) return;
+
+        (isPlaying) 
+            ? videoRef.current.pause() 
+            : videoRef.current.play().catch(console.error);
+
+        setIsPlaying((prev) => !prev);
+    }, [isPlaying]);
 
 
     return (
@@ -64,40 +79,62 @@ export const Video = ({ room }: VideoProps) => {
                             ref={videoRef}
                             className="h-full w-auto"
                             autoPlay
-                            // muted
                             loop
-                            >
+                        >
                             <source src={currentVideo} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
 
-                        <div className="absolute inset-0 w-full h-full overflow-hidden">
-                            <div className="video-controls-cont">
+                        {/* Video Controls */}
+                        <div 
+                            className="absolute inset-0 w-full h-full overflow-hidden"
+                            onMouseEnter={() => setShowControls(true)}
+                            onMouseLeave={() => setShowControls(false)}
+                        >
+                            <div className={`video-controls-cont transition-opacity ${showControls ? 'opacity-100 duration-300' : 'opacity-0 duration-500'}`}>
 
-                                <div className="video-controls flex justify-end">
-                                    {/* Mute/Unmute Audio Button */}
-                                    <div className="tooltip" data-tip={isMuted ? "Unmute" : "Mute"}>
-                                        <label className="swap btn btn-ghost h-[2.375rem] w-[2.375rem] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
-                                            <input 
-                                                type="checkbox" 
-                                                checked={isMuted}
-                                                onChange={toggleMute}
-                                            />
+                                <div className="video-controls flex">
+                                    <div className="left-controls flex-1">
+                                        {/* Play/Pause Button */}
+                                        <div className="tooltip" data-tip={isPlaying ? "Pause" : "Play"}>   
+                                            <label className="swap btn btn-ghost h-[2.375rem] w-[2.375rem] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
+                                                <input 
+                                                    type="checkbox"
+                                                    checked={!isPlaying}
+                                                    onChange={togglePlayPause}
+                                                />
 
-                                            <Volume2 className="swap-off w-auto h-[1.25rem]" />
-                                            <VolumeOff className="swap-on w-auto h-[1.25rem]" />
-                                        </label>
+                                                <Play className="swap-on w-auto h-[1.25rem]" />
+                                                <Pause className="swap-off w-auto h-[1.25rem]" />
+                                            </label>
+                                        </div>
+
+                                        {/* Mute/Unmute Audio Button */}
+                                        <div className="tooltip" data-tip={isMuted ? "Unmute" : "Mute"}>
+                                            <label className="swap btn btn-ghost h-[2.375rem] w-[2.375rem] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
+                                                <input 
+                                                    type="checkbox" 
+                                                    checked={isMuted}
+                                                    onChange={toggleMute}
+                                                />
+
+                                                <Volume2 className="swap-off w-auto h-[1.25rem]" />
+                                                <VolumeOff className="swap-on w-auto h-[1.25rem]" />
+                                            </label>
+                                        </div>
                                     </div>
+                                    
+                                    <div className="right-controls">
+                                        {/* Fullscreen/Exit Fullscreen Button */}
+                                        <div className="tooltip" data-tip="Fullscreen">   
+                                            <label className="swap btn btn-ghost h-[2.375rem] w-[2.375rem] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
+                                                <input type="checkbox" defaultChecked />
 
-                                    {/* Fullscreen/Exit Fullscreen Button */}
-                                    {/* <div className="tooltip" data-tip="Fullscreen">   
-                                        <label className="swap btn btn-ghost h-[38px] w-[38px] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
-                                            <input type="checkbox" defaultChecked />
-
-                                            <Maximize className="swap-on w-auto h-[20px]" />
-                                            <Minimize className="swap-off w-auto h-[20px]" />
-                                        </label>
-                                    </div> */}
+                                                <Maximize className="swap-on w-auto h-[1.25rem]" />
+                                                <Minimize className="swap-off w-auto h-[1.25rem]" />
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="controls-gradient-overlay"></div>
@@ -116,7 +153,7 @@ export const Video = ({ room }: VideoProps) => {
                 <div className="px-4 pt-3 sm:px-5 md-lg:px-0 md-lg:pb-3">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-semibold mb-1 sm:text-lg lg:text-xl">
+                        <h1 className="font-semibold mb-1 sm:text-lg lg:text-xl xl:text-2xl">
                             {room.name}
                         </h1>
 

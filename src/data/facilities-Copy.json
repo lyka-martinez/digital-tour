@@ -2,11 +2,51 @@
     {
         "title": "Arrival Experience",
         "rooms": [
+            {
+                "name": "Front Office",
+                "description": "The hotel front desk is the main hub for guest services, where check-ins, reservations, and inquiries are handled. It offers assistance and information, ensuring a smooth and welcoming experience for guests.",
+                "video": ""
+            }
         ]
     },
     {
         "title": "Amenities",
         "rooms": [
+            {
+                "name": "Function Room",
+                "description": "A spacious room for events and meetings.",
+                "video": ""
+            },
+            {
+                "name": "Swimming Pool",
+                "description": "Enjoy a calm and rewarding plunge in our swimming pool. With a spacious size of 130 sqm, everyone can jump in and enjoy sunny days at The Exchange Regency Residence Hotel.",
+                "video": ""
+            },
+            {
+                "name": "Jacuzzi",
+                "description": "A hot tub for a soothing experience.",
+                "video": ""
+            },
+            {
+                "name": "Fitness Center",
+                "description": "Stay in shape at our fitness center. Complete with a well-curated selection of equipment and regularly sanitized for your safety.",
+                "video": ""
+            },
+            {
+                "name": "Game Room",
+                "description": "A room with various games for entertainment.",
+                "video": ""
+            },
+            {
+                "name": "Mini Golf",
+                "description": "A mini golf course for leisure activities.",
+                "video": ""
+            },
+            {
+                "name": "Children's Playground",
+                "description": "A safe and fun area for children to play.",
+                "video": ""
+            }
         ]
     },
     {

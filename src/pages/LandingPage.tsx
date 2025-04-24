@@ -14,7 +14,10 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
         }`;
     }, [startTour, returnToLanding]);
 
-    
+
+    const handleBackToPage = () => window.location.href = 'https://www.theexchangeregency.com/';
+
+
     return (
         <div className={classes}>
             <div>
@@ -44,7 +47,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
                         <div className="h-10"></div>
 
                         <div className="inline-flex flex-col gap-3 min-w-[12rem] max-w-full justify-center md:px-8 md:flex-row lg:px-0 lg:justify-start">
-                            <BackToPageBtn text="Home" />
+                            <BackToPageBtn text="Home" onClick={handleBackToPage} />
                             <StartTourBtn text="Start Tour" onClick={onStartTour} />
                         </div>
                     </div>

@@ -31,7 +31,7 @@
     left: 0;
     right: 0;
     z-index: 1;
-    padding: 0 0.5rem 0.5rem;
+    padding: 0 0.75rem 0.5rem;
 }
 
 .controls-gradient-overlay {
@@ -81,11 +81,8 @@
     border-color: var(--tab-border-color);
 }
 
+.tab:hover,
 .tabs-border .tab:is(input:checked):after {
-    @apply text-brnd-secondary;
-}
-
-.tab:hover {
     @apply text-brnd-secondary;
 }
 
@@ -159,12 +156,25 @@
         @apply min-w-4xs w-4xs;
     }
 
-    .tabs-border .tab::before {
-        @apply h-full w-0.75 left-[-6px] bottom-0;
+    .tabs-border .tab {
+        @apply rounded-lg;
     }
 
+    .tabs-border .tab::before {
+        @apply h-[70%] w-0.75 left-[-8px] top-[15%];
+    }
+
+    .tabs-border .tab:hover::before {
+        --tab-border-color: var(--color-neutral-content);
+        border-color: var(--color-base-content);
+    }
+    
     .tabs-border .tab:is(input:checked) {
         @apply bg-base-300;
+    }
+
+    .tab:hover {
+        @apply bg-base-300/60;
     }
 
     .video-size {
@@ -182,6 +192,6 @@
 
 @media (width >= 96rem) {
     .main-area-cont .facility-cont {
-        @apply min-w-xs w-xs;
+        @apply min-w-2xs w-2xs;
     }
 }
