@@ -4,6 +4,7 @@ import MainPage from './pages/MainPage';
 
 import './styles/App.css';
 
+
 export default function VirtualTourApp() {
     const [stat, setStat] = useState({
         startTour: true,

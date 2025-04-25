@@ -4,6 +4,7 @@ import { Room } from "../types";
 
 import facilities from "../data/facilities.json";
 
+
 type AccordionProps = {
     onRoomSelect: (room: Room) => void;
 };

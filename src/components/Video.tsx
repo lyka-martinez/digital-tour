@@ -3,6 +3,7 @@ import { BedSingle, BedDouble, Check, Volume2, VolumeOff, Maximize, Minimize, Pl
 import { BedOptionButton } from '../components/Buttons';
 import { Room } from "../types";
 
+
 type VideoProps = {
     room: Room | null;
 };
@@ -180,7 +181,9 @@ export const Video = ({ room }: VideoProps) => {
 }
 
 
-// Description Component
+
+
+/* Description Component */
 const Description = memo(({ room }: { room: Room }) => {    
     const [isDescVisible, setIsDescVisible] = useState(false);
 
@@ -233,7 +236,9 @@ const Description = memo(({ room }: { room: Room }) => {
 });
 
 
-// Bed Options Component
+
+
+/* Bed Options Component */
 type BedOptionsProps = {
     bedOptions: { type: string; video: string }[];
     selBedOption: string | null;

@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { ChevronLeft } from 'lucide-react';
 
+
 type NavBarProps = {
     onClick: () => void;
 };

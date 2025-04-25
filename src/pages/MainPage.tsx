@@ -4,6 +4,7 @@ import { Facility } from '../components/Facility';
 import { Video } from '../components/Video';
 import { Room } from "../types";
 
+
 type MainPageProps = {
     returnToLanding: boolean;
     onBack: () => void;
