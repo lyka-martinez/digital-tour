@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
 import { BedSingle, BedDouble, Check, Volume2, VolumeOff, Maximize, Minimize, Play, Pause } from 'lucide-react';
-import { BedOptionButton } from './Button';
+import { BedOptionButton } from './Buttons';
 import { Room } from "../types";
 
 

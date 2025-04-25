@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import { StartTourBtn, BackToPageBtn } from '../components/Button';
+import { StartTourBtn, BackToPageBtn } from '../components/Buttons';
 
 
 type LandingPageProps = {
