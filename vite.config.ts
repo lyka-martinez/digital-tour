@@ -8,5 +8,5 @@ export default defineConfig({
         react(), 
         tailwindcss()
     ],
-    base: '/virtual-tour/'
+    base: '/Virtual-Tour/'
 })
