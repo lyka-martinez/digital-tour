@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
 import { BedSingle, BedDouble, Check, Volume2, VolumeOff, Maximize, Minimize, Play, Pause } from 'lucide-react';
-import { BedOptionButton } from './Buttons';
+import { BedOptionButton, ControlButton } from './Buttons';
 import { Room } from "../types";
 
 
@@ -18,6 +18,7 @@ export const Video = ({ room }: VideoProps) => {
     const [showControls, setShowControls] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
     const [isPlaying, setIsPlaying] = useState(true);
+    const [isFullscreen, setIsFullscreen] = useState(false);
 
     
     // Determine the current video source based on the selected bed option or default to the room video
@@ -57,7 +58,7 @@ export const Video = ({ room }: VideoProps) => {
 
         videoRef.current.muted = !videoRef.current.muted;
         setIsMuted(videoRef.current.muted);
-    }, []);
+    }, [isMuted]);
 
 
     const togglePlayPause = useCallback(() => {
@@ -70,10 +71,17 @@ export const Video = ({ room }: VideoProps) => {
         setIsPlaying((prev) => !prev);
     }, [isPlaying]);
 
+    const toggleFullscreen = useCallback(() => {
+        setIsFullscreen((prev) => !prev);
+
+        console.log("Fullscreen: ", !isFullscreen);
+    }, [isFullscreen]);
+
+
 
     return (
         <div className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:px-10 2xl:px-12">
-            <div className="video-size flex justify-center items-center relative overflow-hidden md-lg:rounded-lg">
+            <div className="video-size flex justify-center items-center sticky top-0 overflow-hidden sm:relative md-lg:rounded-lg">
                 {room ? (
                     <>
                         <video
@@ -92,49 +100,35 @@ export const Video = ({ room }: VideoProps) => {
                             onMouseEnter={() => setShowControls(true)}
                             onMouseLeave={() => setShowControls(false)}
                         >
-                            <div className={`video-controls-cont transition-opacity ${showControls ? 'opacity-100 duration-300' : 'opacity-0 duration-500'}`}>
+                            <div 
+                                className={`video-controls-cont transition-opacity ${
+                                    showControls ? 'opacity-100 duration-300' : 'opacity-0 duration-500'
+                            }`}>
 
                                 <div className="video-controls flex">
                                     <div className="left-controls flex-1">
                                         {/* Play/Pause Button */}
-                                        <div className="tooltip" data-tip={isPlaying ? "Pause" : "Play"}>   
-                                            <label className="swap btn btn-ghost h-[2.375rem] w-[2.375rem] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
-                                                <input 
-                                                    type="checkbox"
-                                                    checked={!isPlaying}
-                                                    onChange={togglePlayPause}
-                                                />
-
-                                                <Play className="swap-on w-auto h-[1.25rem]" />
-                                                <Pause className="swap-off w-auto h-[1.25rem]" />
-                                            </label>
-                                        </div>
+                                        <ControlButton
+                                            tooltip={isPlaying ? "Pause" : "Play"}
+                                            icon={isPlaying ? <Pause className="w-auto h-[1.25rem]" /> : <Play className="w-auto h-[1.25rem]" />}
+                                            onClick={togglePlayPause}
+                                        />
 
                                         {/* Mute/Unmute Audio Button */}
-                                        <div className="tooltip" data-tip={isMuted ? "Unmute" : "Mute"}>
-                                            <label className="swap btn btn-ghost h-[2.375rem] w-[2.375rem] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
-                                                <input 
-                                                    type="checkbox" 
-                                                    checked={isMuted}
-                                                    onChange={toggleMute}
-                                                />
-
-                                                <Volume2 className="swap-off w-auto h-[1.25rem]" />
-                                                <VolumeOff className="swap-on w-auto h-[1.25rem]" />
-                                            </label>
-                                        </div>
+                                        <ControlButton
+                                            tooltip={isMuted ? "Unmute" : "Mute"}
+                                            icon={isMuted ? <VolumeOff className="w-auto h-[1.25rem]" /> : <Volume2 className="w-auto h-[1.25rem]" />}
+                                            onClick={toggleMute}
+                                        />
                                     </div>
                                     
                                     <div className="right-controls">
                                         {/* Fullscreen/Exit Fullscreen Button */}
-                                        <div className="tooltip" data-tip="Fullscreen">   
-                                            <label className="swap btn btn-ghost h-[2.375rem] w-[2.375rem] px-1 text-base-100 border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80">
-                                                <input type="checkbox" defaultChecked />
-
-                                                <Maximize className="swap-on w-auto h-[1.25rem]" />
-                                                <Minimize className="swap-off w-auto h-[1.25rem]" />
-                                            </label>
-                                        </div>
+                                        <ControlButton
+                                            tooltip={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+                                            icon={isFullscreen ? <Minimize className="w-auto h-[1.25rem]" /> : <Maximize className="w-auto h-[1.25rem]" />}
+                                            onClick={toggleFullscreen}
+                                        />
                                     </div>
                                 </div>
 

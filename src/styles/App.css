@@ -23,6 +23,7 @@
     background-color: var(--color-neutral);
     aspect-ratio: 16 / 9;
     min-height: 12.75rem;       /* 204px */
+    z-index: 15;
 }
 
 .video-controls-cont {
@@ -30,7 +31,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 20;
     padding: 0 0.75rem 0.5rem;
 }
 
@@ -41,7 +42,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: -1;
+    z-index: -18;
     background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
@@ -162,11 +163,6 @@
 
     .tabs-border .tab::before {
         @apply h-[70%] w-0.75 left-[-8px] top-[15%];
-    }
-
-    .tabs-border .tab:hover::before {
-        --tab-border-color: var(--color-neutral-content);
-        border-color: var(--color-base-content);
     }
     
     .tabs-border .tab:is(input:checked) {

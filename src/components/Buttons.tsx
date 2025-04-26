@@ -4,10 +4,12 @@ import { ArrowDownRight } from 'lucide-react';
 
 type ButtonProps = {
     text?: string;
+    tooltip?: string;
     onClick?: () => void;
     isActive?: boolean;
     icon?: ReactNode;
 }
+
 
 /* Start Tour Button */
 export const StartTourBtn = ({ text, onClick }: ButtonProps) => {
@@ -22,6 +24,7 @@ export const StartTourBtn = ({ text, onClick }: ButtonProps) => {
     );
 };
 
+
 /* Back to Main Page Button */
 export const BackToPageBtn = ({ text, onClick }: ButtonProps) => {
     return (
@@ -33,6 +36,7 @@ export const BackToPageBtn = ({ text, onClick }: ButtonProps) => {
         </button>
     );
 };
+
 
 /* Bed Options Button */
 export const BedOptionButton = memo(({ text, onClick, isActive, icon }: ButtonProps) => {
@@ -51,6 +55,7 @@ export const BedOptionButton = memo(({ text, onClick, isActive, icon }: ButtonPr
     );
 });
 
+
 /* Facilities Item Button */
 export const FacilityButton = memo(({ text, onClick, isActive }: ButtonProps) => {
     return (
@@ -64,5 +69,20 @@ export const FacilityButton = memo(({ text, onClick, isActive }: ButtonProps) =>
         >
             {text}
         </button>
+    );
+});
+
+
+/* Video Control Button */
+export const ControlButton = memo(({ tooltip, icon, onClick }: ButtonProps) => {
+    return (
+        <div className="tooltip" data-tip={tooltip}>
+            <button
+                className="btn h-[2.375rem] w-[2.375rem] px-1 text-base-100 bg-transparent border-transparent shadow-none hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80"
+                onClick={onClick}
+            >
+                {icon}
+            </button>
+        </div>
     );
 });
