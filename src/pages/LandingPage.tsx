@@ -1,5 +1,6 @@
 import { memo, useMemo } from 'react';
-import { StartTourBtn, BackToPageBtn } from '../components/Buttons';
+import Button from '../components/Buttons';
+import { ArrowDownRight } from 'lucide-react';
 
 
 type LandingPageProps = {
@@ -48,8 +49,18 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
                         <div className="h-10"></div>
 
                         <div className="inline-flex flex-col gap-3 min-w-[12rem] max-w-full justify-center md:px-8 md:flex-row lg:px-0 lg:justify-start">
-                            <BackToPageBtn text="Home" onClick={handleBackToPage} />
-                            <StartTourBtn text="Start Tour" onClick={onStartTour} />
+                            <Button 
+                                type="backToPage" 
+                                text="Home" 
+                                onClick={handleBackToPage} 
+                                />
+
+                            <Button 
+                                type="startTour" 
+                                text="Start Tour"
+                                icon={<ArrowDownRight className="w-auto h-[1.25rem] md:h-[1.5rem] xl:h-[1.625rem]" />}
+                                onClick={onStartTour} 
+                            />
                         </div>
                     </div>
                     

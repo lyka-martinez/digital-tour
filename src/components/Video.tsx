@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
 import { BedSingle, BedDouble, Check, Volume2, VolumeOff, Maximize, Minimize, Play, Pause } from 'lucide-react';
-import { BedOptionButton, ControlButton } from './Buttons';
+import Button from './Buttons';
 import { Room } from "../types";
 
 
@@ -108,14 +108,16 @@ export const Video = ({ room }: VideoProps) => {
                                 <div className="video-controls flex">
                                     <div className="left-controls flex-1">
                                         {/* Play/Pause Button */}
-                                        <ControlButton
+                                        <Button
+                                            type="control" 
                                             tooltip={isPlaying ? "Pause" : "Play"}
                                             icon={isPlaying ? <Pause className="w-auto h-[1.25rem]" /> : <Play className="w-auto h-[1.25rem]" />}
                                             onClick={togglePlayPause}
                                         />
 
                                         {/* Mute/Unmute Audio Button */}
-                                        <ControlButton
+                                        <Button
+                                            type="control" 
                                             tooltip={isMuted ? "Unmute" : "Mute"}
                                             icon={isMuted ? <VolumeOff className="w-auto h-[1.25rem]" /> : <Volume2 className="w-auto h-[1.25rem]" />}
                                             onClick={toggleMute}
@@ -124,7 +126,8 @@ export const Video = ({ room }: VideoProps) => {
                                     
                                     <div className="right-controls">
                                         {/* Fullscreen/Exit Fullscreen Button */}
-                                        <ControlButton
+                                        <Button
+                                            type="control" 
                                             tooltip={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
                                             icon={isFullscreen ? <Minimize className="w-auto h-[1.25rem]" /> : <Maximize className="w-auto h-[1.25rem]" />}
                                             onClick={toggleFullscreen}
@@ -243,8 +246,9 @@ const BedOptions = memo(({ bedOptions, selBedOption, onSelect }: BedOptionsProps
     return (
         <div className="grid grid-flow-col xs:justify-start gap-2">
             {bedOptions.map((option) => (
-                <BedOptionButton
+                <Button
                     key={option.type}
+                    type="bedOption"
                     text={`${option.type} bed`}
                     icon={option.type === "Queen" 
                         ? <BedSingle className="w-auto h-[1.125rem]" /> 

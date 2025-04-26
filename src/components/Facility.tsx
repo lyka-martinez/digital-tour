@@ -1,5 +1,5 @@
 import { useState, useCallback, Fragment } from "react";
-import { FacilityButton } from "./Buttons";
+import Button from "./Buttons";
 import { Room } from "../types";
 
 import facilities from "../data/facilities.json";
@@ -46,8 +46,9 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
 
                                 <div className="grid gap-2 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 md-lg:grid-cols-1">
                                     {facility.rooms.map((room, roomIndex) => (
-                                        <FacilityButton
+                                        <Button
                                             key={roomIndex}
+                                            type="facility"
                                             text={room.name}
                                             onClick={() => handleRoomSelect(room)}
                                             isActive={activeRoom === room.name}
