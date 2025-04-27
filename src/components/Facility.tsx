@@ -1,5 +1,5 @@
 import { useState, useCallback, Fragment } from "react";
-import Button from "./Buttons";
+import Button from "./Button";
 import { Room } from "../types";
 
 import facilities from "../data/facilities.json";

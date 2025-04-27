@@ -7,8 +7,8 @@ import './styles/App.css';
 
 export default function VirtualTourApp() {
     const [stat, setStat] = useState({
-        startTour: false,
-        hideLandingPage: false,
+        startTour: true,
+        hideLandingPage: true,
         returnToLanding: false,
     });
 

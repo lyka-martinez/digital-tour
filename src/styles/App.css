@@ -31,8 +31,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 20;
     padding: 0 0.75rem 0.5rem;
+}
+
+.video-controls {
+    position: relative;
+    z-index: 22;
 }
 
 .controls-gradient-overlay {
@@ -42,7 +46,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: -18;
+    z-index: 21;
     background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 

@@ -45,7 +45,7 @@ const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) =
 
 
     const buttonElement = (
-        <button className={`${baseClass} ${typeClass[type]}`} onClick={onClick} >
+        <button className={`${baseClass} ${typeClass[type]}`} onClick={onClick} aria-label={tooltip || text} >
             {content}
         </button>
     );

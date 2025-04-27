@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import Button from '../components/Buttons';
+import Button from '../components/Button';
 import { ArrowDownRight } from 'lucide-react';
 
 

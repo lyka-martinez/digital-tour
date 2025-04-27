@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
-import { BedSingle, BedDouble, Check, Volume2, VolumeOff, Maximize, Minimize, Play, Pause } from 'lucide-react';
-import Button from './Buttons';
+import { BedSingle, BedDouble, Check } from 'lucide-react';
+import Button from './Button';
+import VideoControl from './VideoControl';
 import { Room } from "../types";
 
 
@@ -9,18 +10,18 @@ type VideoProps = {
 };
 
 export const Video = ({ room }: VideoProps) => {    
-    console.log("Room: ", room?.name, " ", new Date().toLocaleTimeString());
+    console.log("Video rendered: ", new Date().toLocaleTimeString());
 
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [selBedOption, setSelBedOption] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const [showControls, setShowControls] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
     const [isPlaying, setIsPlaying] = useState(true);
     const [isFullscreen, setIsFullscreen] = useState(false);
 
-    
+
     // Determine the current video source based on the selected bed option or default to the room video
     const currentVideo = useMemo(() => {
         if (selBedOption && room?.bedOptions) {
@@ -71,12 +72,24 @@ export const Video = ({ room }: VideoProps) => {
         setIsPlaying((prev) => !prev);
     }, [isPlaying]);
 
+
     const toggleFullscreen = useCallback(() => {
         setIsFullscreen((prev) => !prev);
 
         console.log("Fullscreen: ", !isFullscreen);
     }, [isFullscreen]);
 
+
+    // Show loading effect when video is buffering
+    const handleWaiting = useCallback(() => {
+        setIsLoading(true);
+    }, []);
+
+
+    // Hide loading effect when video starts playing
+    const handlePlaying = useCallback(() => {
+        setIsLoading(false);
+    }, []);
 
 
     return (
@@ -89,56 +102,29 @@ export const Video = ({ room }: VideoProps) => {
                             className="h-full w-auto"
                             autoPlay
                             loop
+                            onWaiting={handleWaiting}
+                            onPlaying={handlePlaying}
                         >
                             <source src={currentVideo} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
 
                         {/* Video Controls */}
-                        <div 
-                            className="absolute inset-0 w-full h-full overflow-hidden"
-                            onMouseEnter={() => setShowControls(true)}
-                            onMouseLeave={() => setShowControls(false)}
-                        >
-                            <div 
-                                className={`video-controls-cont transition-opacity ${
-                                    showControls ? 'opacity-100 duration-300' : 'opacity-0 duration-500'
-                            }`}>
+                        <VideoControl
+                            isPlaying={isPlaying}
+                            isMuted={isMuted}
+                            isFullscreen={isFullscreen}
+                            togglePlayPause={togglePlayPause}
+                            toggleMute={toggleMute}
+                            toggleFullscreen={toggleFullscreen}
+                        />
 
-                                <div className="video-controls flex">
-                                    <div className="left-controls flex-1">
-                                        {/* Play/Pause Button */}
-                                        <Button
-                                            type="control" 
-                                            tooltip={isPlaying ? "Pause" : "Play"}
-                                            icon={isPlaying ? <Pause className="w-auto h-[1.25rem]" /> : <Play className="w-auto h-[1.25rem]" />}
-                                            onClick={togglePlayPause}
-                                        />
-
-                                        {/* Mute/Unmute Audio Button */}
-                                        <Button
-                                            type="control" 
-                                            tooltip={isMuted ? "Unmute" : "Mute"}
-                                            icon={isMuted ? <VolumeOff className="w-auto h-[1.25rem]" /> : <Volume2 className="w-auto h-[1.25rem]" />}
-                                            onClick={toggleMute}
-                                        />
-                                    </div>
-                                    
-                                    <div className="right-controls">
-                                        {/* Fullscreen/Exit Fullscreen Button */}
-                                        <Button
-                                            type="control" 
-                                            tooltip={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-                                            icon={isFullscreen ? <Minimize className="w-auto h-[1.25rem]" /> : <Maximize className="w-auto h-[1.25rem]" />}
-                                            onClick={toggleFullscreen}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="controls-gradient-overlay"></div>
-
+                        {/* Loading Effect */}
+                        {isLoading && (
+                            <div className="absolute inset-0 w-full h-full bg-brnd-secondary/70 overflow-hidden flex items-center justify-center backdrop-blur-xs z-16">
+                                <span className="loading loading-infinity text-success z-20 w-[2.5rem] sm:w-[2.75rem] md:w-[3rem] lg:w-[3.125rem] xl:w-[3.375rem] 2xl:w-[3.625rem]"></span>
                             </div>
-                        </div>
+                        )}
                     </>
                 ) : (
                     <p className="text-brnd-light font-light sm:text-lg xl:text-xl">
@@ -181,7 +167,10 @@ export const Video = ({ room }: VideoProps) => {
 
 
 /* Description Component */
-const Description = memo(({ room }: { room: Room }) => {    
+const Description = memo(({ room }: { room: Room }) => {
+    console.log("Description rendered: ", new Date().toLocaleTimeString());
+
+
     const [isDescVisible, setIsDescVisible] = useState(false);
 
 
@@ -243,6 +232,9 @@ type BedOptionsProps = {
 }
 
 const BedOptions = memo(({ bedOptions, selBedOption, onSelect }: BedOptionsProps) => {
+    console.log("BedOptions rendered: ", new Date().toLocaleTimeString());
+
+
     return (
         <div className="grid grid-flow-col xs:justify-start gap-2">
             {bedOptions.map((option) => (
