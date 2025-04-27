@@ -25,7 +25,7 @@ const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) =
                     : "text-brnd-secondary bg-base-100 border-transparent hover:bg-base-100/40"
             }`,
         facility:
-            `text-wrap justify-start rounded-lg hover:border-brnd-secondary focus:border-brnd-secondary xl:h-[2.625rem] ${
+            `font-semibold text-wrap justify-start rounded-lg hover:border-brnd-secondary focus:border-brnd-secondary xl:h-[2.625rem] ${
                 isActive
                     ? "text-base-100 bg-brnd-primary border-brnd-secondary active:bg-brnd-primary-50"
                     : "bg-base-100 border-neutral/20 hover:bg-brnd-primary/7 focus:bg-brnd-primary/7"
