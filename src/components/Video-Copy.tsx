@@ -15,6 +15,7 @@ export const Video = ({ room }: VideoProps) => {
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [selBedOption, setSelBedOption] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const [isMuted, setIsMuted] = useState(false);
     const [isPlaying, setIsPlaying] = useState(true);
@@ -79,6 +80,18 @@ export const Video = ({ room }: VideoProps) => {
     }, [isFullscreen]);
 
 
+    // Show loading effect when video is buffering
+    const handleWaiting = useCallback(() => {
+        setIsLoading(true);
+    }, []);
+
+
+    // Hide loading effect when video starts playing
+    const handlePlaying = useCallback(() => {
+        setIsLoading(false);
+    }, []);
+
+
     return (
         <div className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:px-10 2xl:px-12">
             <div className="video-size flex justify-center items-center sticky top-0 overflow-hidden sm:relative md-lg:rounded-lg">
@@ -89,6 +102,8 @@ export const Video = ({ room }: VideoProps) => {
                             className="h-full w-auto"
                             autoPlay
                             loop
+                            onWaiting={handleWaiting}
+                            onPlaying={handlePlaying}
                         >
                             <source src={currentVideo} type="video/mp4" />
                             Your browser does not support the video tag.
@@ -103,6 +118,13 @@ export const Video = ({ room }: VideoProps) => {
                             toggleMute={toggleMute}
                             toggleFullscreen={toggleFullscreen}
                         />
+
+                        {/* Loading Effect */}
+                        {isLoading && (
+                            <div className="absolute inset-0 w-full h-full bg-brnd-secondary/70 overflow-hidden flex items-center justify-center backdrop-blur-xs z-16">
+                                <span className="loading loading-infinity text-success z-20 w-[2.5rem] sm:w-[2.75rem] md:w-[3rem] lg:w-[3.125rem] xl:w-[3.375rem] 2xl:w-[3.625rem]"></span>
+                            </div>
+                        )}
                     </>
                 ) : (
                     <p className="text-brnd-light font-light sm:text-lg xl:text-xl">

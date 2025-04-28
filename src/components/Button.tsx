@@ -19,15 +19,15 @@ const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) =
         backToPage:
             "rounded-lg shadow-sm px-2 gap-2 md:btn-lg md:px-8 lg:h-[3rem] xl:h-[3.25rem]",
         bedOption:
-            `rounded-lg shadow-xs justify-start hover:border-brnd-secondary focus:border-brnd-secondary xl:h-[2.625rem] ${
+            `rounded-lg shadow-xs justify-start hover:border-brnd-secondary/80 focus:border-brnd-secondary/80 xl:h-[2.625rem] ${
                 isActive
-                    ? "text-base-100 bg-brnd-primary border-brnd-secondary active:bg-brnd-primary-50"
+                    ? "text-base-100 bg-brnd-primary border-brnd-secondary/40 active:bg-brnd-primary-50"
                     : "text-brnd-secondary bg-base-100 border-transparent hover:bg-base-100/40"
             }`,
         facility:
-            `font-semibold text-wrap justify-start rounded-lg hover:border-brnd-secondary focus:border-brnd-secondary xl:h-[2.625rem] ${
+            `font-semibold text-wrap justify-start rounded-lg hover:border-brnd-secondary/80 focus:border-brnd-secondary/80 xl:h-[2.625rem] ${
                 isActive
-                    ? "text-base-100 bg-brnd-primary border-brnd-secondary active:bg-brnd-primary-50"
+                    ? "text-base-100 bg-brnd-primary border-brnd-secondary/40 active:bg-brnd-primary-50"
                     : "bg-base-100 border-neutral/20 hover:bg-brnd-primary/7 focus:bg-brnd-primary/7"
             }`,
         control: 

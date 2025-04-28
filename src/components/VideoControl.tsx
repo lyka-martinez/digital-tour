@@ -1,4 +1,4 @@
-import { memo, useState, useCallback } from "react";
+import { memo, useState, useCallback, useRef, useEffect } from "react";
 import { Volume2, VolumeOff, Maximize, Minimize, Play, Pause } from 'lucide-react';
 import Button from './Button';
 
@@ -20,29 +20,36 @@ const VideoControls = ({
     toggleMute,
     toggleFullscreen,
 }: VideoControlProps) => {
-    console.log("Controls rendered: ", new Date().toLocaleTimeString());
-
-
+    const controlsRef = useRef<HTMLDivElement | null>(null);
     const [showControls, setShowControls] = useState(false);
 
 
-    const mouseEnter = useCallback(() => {
-        setTimeout(() => setShowControls(true), 100);
+    const handleMouseEvents = useCallback((show: boolean) => {
+        setShowControls(show);
     }, []);
 
 
-    const mouseLeave = useCallback(() => {
-        setTimeout(() => setShowControls(false), 100);
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (controlsRef.current && !controlsRef.current.contains(event.target as Node)) {
+                setShowControls(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
 
     return (
         <div 
             className="absolute inset-0 w-full h-full overflow-hidden z-20"
-            onMouseEnter={mouseEnter}
-            onMouseLeave={mouseLeave}
+            onMouseEnter={() => handleMouseEvents(true)}
+            onMouseLeave={() => handleMouseEvents(false)}
+            onClick={() => handleMouseEvents(true)}
         >
-            <div 
+            <div
+                ref={controlsRef}
                 className={`video-controls-cont transition-opacity duration-200 ${
                     showControls ? 'opacity-100' : 'opacity-0'
                 }`}
@@ -56,7 +63,7 @@ const VideoControls = ({
                             tooltip={isPlaying ? "Pause" : "Play"}
                             icon={isPlaying ? <Pause className="w-auto h-[1.25rem]" /> : <Play className="w-auto h-[1.25rem]" />}
                             onClick={togglePlayPause}
-                            />
+                        />
 
                         {/* Mute/Unmute Audio Button */}
                         <Button
@@ -64,7 +71,7 @@ const VideoControls = ({
                             tooltip={isMuted ? "Unmute" : "Mute"}
                             icon={isMuted ? <VolumeOff className="w-auto h-[1.25rem]" /> : <Volume2 className="w-auto h-[1.25rem]" />}
                             onClick={toggleMute}
-                            />
+                        />
                     </div>
                     
                     <div className="right-controls">
@@ -74,7 +81,7 @@ const VideoControls = ({
                             tooltip={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
                             icon={isFullscreen ? <Minimize className="w-auto h-[1.25rem]" /> : <Maximize className="w-auto h-[1.25rem]" />}
                             onClick={toggleFullscreen}
-                            />
+                        />
                     </div>
                 </div>
 
