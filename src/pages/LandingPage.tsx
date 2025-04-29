@@ -37,8 +37,8 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
                         </div>
                         <div className="h-9"></div>
 
-                        <p className="text-[2rem] text-brnd-secondary font-semibold capitalize tracking-wide md:text-4xl lg:text-5xl xl:text-[3.25rem]">
-                            Virtual Tour!
+                        <p className="text-[2rem] text-brnd-secondary font-montserrat font-bold capitalize tracking-wide md:text-4xl lg:text-5xl xl:text-[3.25rem]">
+                            Virtual Tour
                         </p>
 
                         <p className="text-base-content/75 text-balance leading-[1.625] py-4 md:text-lg xl:text-xl">

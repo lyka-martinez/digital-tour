@@ -48,11 +48,14 @@ export const Video = ({ room }: VideoProps) => {
     }, [currentVideo, room]);
 
 
-    const handleBedOptionClick = useCallback((type: string) => {
-        if (type !== selBedOption) setSelBedOption(type);
-    }, [selBedOption]);
+    // Concatenate bed option with room name if available
+    const dspRoomName = useMemo(
+        () => (room?.bedOptions && selBedOption ? `${room.name} ${selBedOption}` : room?.name || ''),
+        [room, selBedOption]
+    );
 
 
+    /* Video controls functions */
     const toggleMute = useCallback(() => {
         if (!videoRef.current) return;
 
@@ -112,11 +115,11 @@ export const Video = ({ room }: VideoProps) => {
             </div>
 
             {room && ( 
-                <div className="px-4 pt-3 sm:px-5 md-lg:px-0 md-lg:pb-3">
+                <div className="p-4 pb-0 sm:px-5 md-lg:px-0 md-lg:pb-3">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-semibold mb-1 sm:text-lg lg:text-xl xl:text-2xl">
-                            {room.name}
+                        <h1 className="font-semibold uppercase tracking-wider mb-1 sm:text-lg lg:text-xl xl:text-2xl">
+                            {dspRoomName}
                         </h1>
 
                         {/* Bed Options */}
@@ -124,7 +127,7 @@ export const Video = ({ room }: VideoProps) => {
                             <BedOptions 
                                 bedOptions={room.bedOptions} 
                                 selBedOption={selBedOption} 
-                                onSelect={handleBedOptionClick} 
+                                onSelect={(type) => type !== selBedOption && setSelBedOption(type)} 
                             />
                         )}
 

@@ -50,9 +50,7 @@ const VideoControls = ({
         >
             <div
                 ref={controlsRef}
-                className={`video-controls-cont transition-opacity duration-200 ${
-                    showControls ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`video-controls-cont transition-opacity duration-200 ${showControls ? 'opacity-100' : 'opacity-0'}`}
             >
 
                 <div className="video-controls flex">
