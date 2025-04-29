@@ -37,8 +37,9 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
                         <Fragment key={index}>
                             <input
                                 type="radio" 
-                                name="facilities_tabs" 
-                                className="tab lg:text-base lg:h-[2.625rem] md-lg:justify-start md-lg:mx-4 md-lg:px-2" 
+                                name="facilities_tabs"
+                                className="tab mb-2 lg:text-base lg:h-[2.625rem] md-lg:justify-start md-lg:mx-4 md-lg:mb-0 md-lg:px-2"
+
                                 aria-label={facility.title}
                                 defaultChecked={index === 0}
                             />
