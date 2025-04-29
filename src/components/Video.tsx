@@ -118,7 +118,7 @@ export const Video = ({ room }: VideoProps) => {
                 <div className="p-4 pb-0 sm:px-5 md-lg:px-0 md-lg:pb-3">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-semibold uppercase tracking-wider mb-1 sm:text-lg lg:text-xl xl:text-2xl">
+                        <h1 className="font-semibold tracking-wider uppercase mb-1 sm:text-lg md:text-xl lg:text-[1.25rem] xl:text-2xl">
                             {dspRoomName}
                         </h1>
 
