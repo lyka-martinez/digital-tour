@@ -62,7 +62,7 @@
 .room-details > input:is([type="checkbox"], [type="radio"]),
 .room-details > .collapse-title {
     padding: 0.75rem 3.063rem 0.75rem 1rem;
-    min-height: fit-content;
+    @apply text-neutral-500 min-h-fit;
 }
 
 .room-details.collapse-arrow .collapse-title:after {

@@ -6,23 +6,26 @@ import facilities from "../data/facilities.json";
 
 
 type AccordionProps = {
-    onRoomSelect: (room: Room) => void;
+    onRoomSelect: (room: Room, facility: string) => void;
 };
 
 export const Facility = ({ onRoomSelect }: AccordionProps) => {
     const [activeRoom, setActiveRoom] = useState<string | null>(null);
 
 
-    const handleRoomSelect = useCallback((room: Room) => {
-        if (!room.video && (!room.bedOptions || room.bedOptions.length === 0)) {
-            console.error(`Room "${room.name}" has no video property.`);
-            return;
-        }
+    const handleRoomSelect = useCallback(
+        (room: Room, facilityTitle: string) => {
+            if (!room.video && (!room.bedOptions || room.bedOptions.length === 0)) {
+                console.error(`Room "${room.name}" has no video property.`);
+                return;
+            }
 
-        if (room.name === activeRoom) return;   // Return early if the room is the same
-        setActiveRoom(room.name);
-        onRoomSelect(room);
-    }, [activeRoom, onRoomSelect]);
+            if (room.name === activeRoom) return;
+            setActiveRoom(room.name);
+            onRoomSelect(room, facilityTitle);
+        },
+        [activeRoom, onRoomSelect]
+    );
 
 
     return (
@@ -50,7 +53,7 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
                                             key={roomIndex}
                                             type="facility"
                                             text={room.name}
-                                            onClick={() => handleRoomSelect(room)}
+                                            onClick={() => handleRoomSelect(room, facility.title)}
                                             isActive={activeRoom === room.name}
                                         />
                                     ))}

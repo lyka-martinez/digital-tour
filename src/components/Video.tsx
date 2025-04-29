@@ -7,9 +7,10 @@ import { Room } from "../types";
 
 type VideoProps = {
     room: Room | null;
+    facility: string | null;
 };
 
-export const Video = ({ room }: VideoProps) => {    
+export const Video = ({ room, facility }: VideoProps) => {    
     console.log("Video rendered: ", new Date().toLocaleTimeString());
 
 
@@ -83,7 +84,7 @@ export const Video = ({ room }: VideoProps) => {
 
 
     return (
-        <div className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:px-10 2xl:px-12">
+        <div className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:py-5 xl:px-10 2xl:px-14">
             <div className="video-size flex justify-center items-center sticky top-0 overflow-hidden sm:relative md-lg:rounded-lg">
                 {room ? (
                     <>
@@ -118,7 +119,7 @@ export const Video = ({ room }: VideoProps) => {
                 <div className="p-4 pb-0 sm:px-5 md-lg:px-0 md-lg:pb-3">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-semibold tracking-wider uppercase mb-1 sm:text-lg md:text-xl lg:text-[1.25rem] xl:text-2xl">
+                        <h1 className="font-semibold tracking-wider uppercase mb-1 sm:text-lg md:text-xl lg:text-[1.25rem] 2xl:text-2xl">
                             {dspRoomName}
                         </h1>
 
@@ -133,7 +134,7 @@ export const Video = ({ room }: VideoProps) => {
 
                         {/* Description */}
                         <div>
-                            <Description room={room} />
+                            <Description room={room} title={facility} />
                         </div>
 
                         <div className="divider mt-1 mb-0 md-lg:hidden"></div>
@@ -148,28 +149,15 @@ export const Video = ({ room }: VideoProps) => {
 
 
 /* Description Component */
-const Description = memo(({ room }: { room: Room }) => {
+const Description = memo(({ room, title }: { room: Room; title: string | null }) => {
     console.log("Description rendered: ", new Date().toLocaleTimeString());
-
-
-    const [isDescVisible, setIsDescVisible] = useState(false);
-
-
-    const toggleDescription = useCallback(() => {
-        setIsDescVisible((prev) => !prev);
-    }, []);
 
 
     return (
         <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
-            <input 
-                type="checkbox"
-                className="peer"
-                onChange={toggleDescription}
-                checked={isDescVisible}
-            />
+            <input type="checkbox" className="peer" />
             <div className="collapse-title font-medium text-sm capitalize">
-                {isDescVisible ? "hide description" : "show description"}
+                {title ? `${title} Details` : "Description"}
             </div>
 
             <div className="collapse-content flex flex-col gap-4 text-xs-sm sm:text-sm">
