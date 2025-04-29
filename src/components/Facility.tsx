@@ -6,7 +6,7 @@ import facilities from "../data/facilities.json";
 
 
 type AccordionProps = {
-    onRoomSelect: (room: Room, facility: string) => void;
+    onRoomSelect: (room: Room) => void;
 };
 
 export const Facility = ({ onRoomSelect }: AccordionProps) => {
@@ -14,7 +14,7 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
 
 
     const handleRoomSelect = useCallback(
-        (room: Room, facilityTitle: string) => {
+        (room: Room) => {
             if (!room.video && (!room.bedOptions || room.bedOptions.length === 0)) {
                 console.error(`Room "${room.name}" has no video property.`);
                 return;
@@ -22,7 +22,7 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
 
             if (room.name === activeRoom) return;
             setActiveRoom(room.name);
-            onRoomSelect(room, facilityTitle);
+            onRoomSelect(room);
         },
         [activeRoom, onRoomSelect]
     );
@@ -53,7 +53,7 @@ export const Facility = ({ onRoomSelect }: AccordionProps) => {
                                             key={roomIndex}
                                             type="facility"
                                             text={room.name}
-                                            onClick={() => handleRoomSelect(room, facility.title)}
+                                            onClick={() => handleRoomSelect(room)}
                                             isActive={activeRoom === room.name}
                                         />
                                     ))}

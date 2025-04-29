@@ -7,10 +7,9 @@ import { Room } from "../types";
 
 type VideoProps = {
     room: Room | null;
-    facility: string | null;
 };
 
-export const Video = ({ room, facility }: VideoProps) => {    
+export const Video = ({ room }: VideoProps) => {    
     console.log("Video rendered: ", new Date().toLocaleTimeString());
 
 
@@ -134,7 +133,7 @@ export const Video = ({ room, facility }: VideoProps) => {
 
                         {/* Description */}
                         <div>
-                            <Description room={room} title={facility} />
+                            <Description room={room} />
                         </div>
 
                         <div className="divider mt-1 mb-0 md-lg:hidden"></div>
@@ -149,7 +148,7 @@ export const Video = ({ room, facility }: VideoProps) => {
 
 
 /* Description Component */
-const Description = memo(({ room, title }: { room: Room; title: string | null }) => {
+const Description = memo(({ room }: { room: Room }) => {
     console.log("Description rendered: ", new Date().toLocaleTimeString());
 
 
@@ -157,7 +156,7 @@ const Description = memo(({ room, title }: { room: Room; title: string | null })
         <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
             <input type="checkbox" className="peer" />
             <div className="collapse-title font-medium text-sm capitalize">
-                {title ? `${title} Details` : "Description"}
+                details
             </div>
 
             <div className="collapse-content flex flex-col gap-4 text-xs-sm sm:text-sm">

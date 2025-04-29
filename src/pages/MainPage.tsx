@@ -12,7 +12,6 @@ type MainPageProps = {
 
 const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {  
     const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
-    const [selectedFacility, setSelectedFacility] = useState<string | null>(null);
 
 
     const classes = useMemo(() => {
@@ -27,14 +26,8 @@ const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
             <NavBar onClick={onBack} />
 
             <div className="main-area-cont flex-1 w-svw flex flex-col overflow-y-auto pb-4 md-lg:flex-row-reverse md-lg:pb-0 md-lg:overflow-hidden">
-                <Video room={selectedRoom}  facility={selectedFacility} />
-                
-                <Facility 
-                    onRoomSelect={(room, facility) => {
-                        setSelectedRoom(room);
-                        setSelectedFacility(facility);
-                    }}  
-                />
+                <Video room={selectedRoom} />
+                <Facility onRoomSelect={setSelectedRoom} />
             </div>
         </div>
     );
