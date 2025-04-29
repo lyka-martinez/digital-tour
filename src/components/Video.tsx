@@ -21,7 +21,6 @@ export const Video = ({ room }: VideoProps) => {
     const [isFullscreen, setIsFullscreen] = useState(false);
 
 
-    // Determine the current video source based on the selected bed option or default to the room video
     const currentVideo = useMemo(() => {
         if (selBedOption && room?.bedOptions) {
             return room.bedOptions.find(option => option.type === selBedOption)?.video || room.video;
@@ -31,7 +30,6 @@ export const Video = ({ room }: VideoProps) => {
     }, [room, selBedOption]);
 
 
-    // Set selBedOption with the first bed option when the room changes
     useEffect(() => {
         if (room?.bedOptions?.length) {
             setSelBedOption((prev) => prev || room?.bedOptions?.[0]?.type || null);
@@ -39,7 +37,6 @@ export const Video = ({ room }: VideoProps) => {
     }, [room]);
 
 
-    // Reload and play the video whenever the current video source changes
     useEffect(() => {
         if (!videoRef.current || !currentVideo) return;
 
@@ -48,7 +45,6 @@ export const Video = ({ room }: VideoProps) => {
     }, [currentVideo, room]);
 
 
-    // Concatenate bed option with room name if available
     const dspRoomName = useMemo(
         () => (room?.bedOptions && selBedOption ? `${room.name} ${selBedOption}` : room?.name || ''),
         [room, selBedOption]
@@ -118,7 +114,7 @@ export const Video = ({ room }: VideoProps) => {
                 <div className="p-4 pb-0 sm:px-5 md-lg:px-0 md-lg:pb-3">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-semibold tracking-wider uppercase mb-1 sm:text-lg md:text-xl lg:text-[1.25rem] 2xl:text-2xl">
+                        <h1 className="font-montserrat font-semibold tracking-wide mb-1 sm:text-lg md:text-xl lg:text-[1.25rem] 2xl:text-2xl">
                             {dspRoomName}
                         </h1>
 
@@ -155,11 +151,11 @@ const Description = memo(({ room }: { room: Room }) => {
     return (
         <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
             <input type="checkbox" className="peer" />
-            <div className="collapse-title font-medium text-sm capitalize">
+            <div className="collapse-title font-medium capitalize text-sm">
                 details
             </div>
 
-            <div className="collapse-content flex flex-col gap-4 text-xs-sm sm:text-sm">
+            <div className="collapse-content flex flex-col gap-4 text-xs-sm sm:text-sm md:gap-5">
 
                 <div className="flex flex-col gap-2">
                     {room.description && (

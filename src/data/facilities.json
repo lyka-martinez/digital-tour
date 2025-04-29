@@ -1,23 +1,13 @@
 [
     {
         "title": "Arrival Experience",
-        "rooms": [
-            {
-                "name": "Front Office",
-                "description": "The hotel front desk is the main hub for guest services, where check-ins, reservations, and inquiries are handled. It offers assistance and information, ensuring a smooth and welcoming experience for guests.",
-                "video": "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
-            }
-        ]
+        "description": "The hotel front desk is the main hub for guest services, where check-ins, reservations, and inquiries are handled. It offers assistance and information, ensuring a smooth and welcoming experience for guests.",
+        "video": "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
     },
     {
         "title": "Amenity",
-        "rooms": [
-            {
-                "name": "Function Room",
-                "description": "A spacious room for events and meetings.",
-                "video": "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
-            }
-        ]
+        "description": "A spacious room for events and meetings.",
+        "video": "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
     },
     {
         "title": "Room",

@@ -82,7 +82,7 @@
 }
 
 .tabs-border .tab::before {
-    @apply bottom-[-8px];
+    @apply bottom-[-8px] w-[84%] left-[8%];
 }
 
 .tabs-border .tab:is(input:checked):before {

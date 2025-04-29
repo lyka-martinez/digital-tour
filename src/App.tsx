@@ -13,7 +13,7 @@ export default function VirtualTourApp() {
     });
 
 
-    const handleStartTour = useCallback(() => {
+    const hndlStartTour = useCallback(() => {
         setStat((prev) => ({ ...prev, startTour: true }));
         setTimeout(() => {
             setStat((prev) => ({ ...prev, startTour: true, hideLandingPage: true }));
@@ -21,7 +21,7 @@ export default function VirtualTourApp() {
     }, []);
 
 
-    const handleReturnToLanding = useCallback(() => {
+    const hndlReturnToLanding = useCallback(() => {
         setStat((prev) => ({ ...prev, returnToLanding: true }));
         setTimeout(() => {
             setStat({ startTour: false, hideLandingPage: false, returnToLanding: true });
@@ -38,14 +38,14 @@ export default function VirtualTourApp() {
                 <LandingPage
                     startTour={stat.startTour}
                     returnToLanding={stat.returnToLanding}
-                    onStartTour={handleStartTour}
+                    onStartTour={hndlStartTour}
                 />
             )}
 
             {stat.hideLandingPage && (
                 <MainPage
                     returnToLanding={stat.returnToLanding}
-                    onBack={handleReturnToLanding}
+                    onBack={hndlReturnToLanding}
                 />
             )}
         </>

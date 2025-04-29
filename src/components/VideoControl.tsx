@@ -24,29 +24,29 @@ const VideoControls = ({
     const [showControls, setShowControls] = useState(false);
 
 
-    const handleMouseEvents = useCallback((show: boolean) => {
+    const hndlMouseEvents = useCallback((show: boolean) => {
         setShowControls(show);
     }, []);
 
 
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
+        const hndlClickOutside = (event: MouseEvent) => {
             if (controlsRef.current && !controlsRef.current.contains(event.target as Node)) {
                 setShowControls(false);
             }
         };
 
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mousedown", hndlClickOutside);
+        return () => document.removeEventListener("mousedown", hndlClickOutside);
     }, []);
 
 
     return (
         <div 
             className="absolute inset-0 w-full h-full overflow-hidden z-20"
-            onMouseEnter={() => handleMouseEvents(true)}
-            onMouseLeave={() => handleMouseEvents(false)}
-            onClick={() => handleMouseEvents(true)}
+            onMouseEnter={() => hndlMouseEvents(true)}
+            onMouseLeave={() => hndlMouseEvents(false)}
+            onClick={() => hndlMouseEvents(true)}
         >
             <div
                 ref={controlsRef}
