@@ -10,7 +10,7 @@ type VideoProps = {
 };
 
 export const Video = ({ room }: VideoProps) => {    
-    console.log("Video rendered: ", new Date().toLocaleTimeString());
+    // console.log("Video rendered: ", new Date().toLocaleTimeString());
 
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -40,9 +40,16 @@ export const Video = ({ room }: VideoProps) => {
     useEffect(() => {
         if (!videoRef.current || !currentVideo) return;
 
-        videoRef.current.src = currentVideo;
-        videoRef.current.play().catch(console.error);
-        setIsPlaying(true);
+        const videoElem = videoRef.current;
+        const hndlLoadedData = () => {
+            videoElem.play().catch(console.error);
+            setIsPlaying(true);
+        };
+
+        videoElem.src = currentVideo;
+        videoElem.addEventListener('loadeddata', hndlLoadedData);
+        
+        return () => videoElem.removeEventListener('loadeddata', hndlLoadedData);
     }, [currentVideo, room]);
 
 
@@ -146,7 +153,7 @@ export const Video = ({ room }: VideoProps) => {
 
 /* Description Component */
 const Description = memo(({ room }: { room: Room }) => {
-    console.log("Description rendered: ", new Date().toLocaleTimeString());
+    // console.log("Description rendered: ", new Date().toLocaleTimeString());
 
 
     return (
@@ -193,7 +200,7 @@ type BedOptionsProps = {
 }
 
 const BedOptions = memo(({ bedOptions, selBedOption, onSelect }: BedOptionsProps) => {
-    console.log("BedOptions rendered: ", new Date().toLocaleTimeString());
+    // console.log("BedOptions rendered: ", new Date().toLocaleTimeString());
 
 
     return (
