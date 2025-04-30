@@ -53,6 +53,8 @@ const VideoControls = ({
                 className={`video-controls-cont transition-opacity duration-200 ${showControls ? 'opacity-100' : 'opacity-0'}`}
             >
 
+                <div className="controls-gradient-overlay"></div>
+
                 <div className="video-controls flex">
                     <div className="left-controls flex-1">
                         {/* Play/Pause Button */}
@@ -82,8 +84,6 @@ const VideoControls = ({
                         />
                     </div>
                 </div>
-
-                <div className="controls-gradient-overlay"></div>
 
             </div>
         </div>

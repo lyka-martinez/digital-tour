@@ -10,7 +10,7 @@ type VideoProps = {
 };
 
 export const Video = ({ room }: VideoProps) => {    
-    // console.log("Video rendered: ", new Date().toLocaleTimeString());
+    console.log("Video rendered: ", new Date().toLocaleTimeString());
 
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -136,9 +136,7 @@ export const Video = ({ room }: VideoProps) => {
                         )}
 
                         {/* Description */}
-                        <div>
-                            <Description room={room} />
-                        </div>
+                        <Description room={room} />
 
                         <div className="divider mt-1 mb-0 md-lg:hidden"></div>
                     </div>
@@ -153,37 +151,39 @@ export const Video = ({ room }: VideoProps) => {
 
 /* Description Component */
 const Description = memo(({ room }: { room: Room }) => {
-    // console.log("Description rendered: ", new Date().toLocaleTimeString());
+    console.log("Description rendered: ", new Date().toLocaleTimeString());
 
 
     return (
-        <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
-            <input type="checkbox" className="peer" />
-            <div className="collapse-title font-medium capitalize text-sm">
-                details
-            </div>
-
-            <div className="collapse-content flex flex-col gap-4 text-xs-sm md:text-sm md:gap-5 text-neutral-900">
-
-                <div className="flex flex-col gap-2 leading-[1.375rem]">
-                    <div>{room.description}</div>
+        <div className="onboard-section">
+            <div className="onboarding-overlay"></div>
+        
+            <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
+                <input type="checkbox" className="peer" />
+                <div className="collapse-title font-medium capitalize text-sm">
+                    details
                 </div>
 
-                {room.roomFeatures && room.roomFeatures.length > 0 && (
-                    <div>
-                        <ul className="grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-2">
-                            {room.roomFeatures.map((feature, index) => (
-                                <li key={index} className="flex items-start gap-3 mb-[2px]">
-                                    <div className="flex items-center h-[1.219rem] sm:h-[1.25rem]">
-                                        <Check className="w-auto h-[0.688rem] md-lg:h-[0.75rem]" />
-                                    </div>
-                                    <div>{feature}</div>
-                                </li>
-                            ))}
-                        </ul>
+                <div className="collapse-content flex flex-col gap-4 text-xs-sm md:text-sm md:gap-5 text-neutral-900">
+                    <div className="flex flex-col gap-2 leading-[1.375rem]">
+                        <div>{room.description}</div>
                     </div>
-                )}
 
+                    {room.roomFeatures && room.roomFeatures.length > 0 && (
+                        <div>
+                            <ul className="grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-2">
+                                {room.roomFeatures.map((feature, index) => (
+                                    <li key={index} className="flex items-start gap-3 mb-[2px]">
+                                        <div className="flex items-center h-[1.219rem] sm:h-[1.25rem]">
+                                            <Check className="w-auto h-[0.688rem] md-lg:h-[0.75rem]" />
+                                        </div>
+                                        <div>{feature}</div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
@@ -200,13 +200,16 @@ type BedOptionsProps = {
 }
 
 const BedOptions = memo(({ bedOptions, selBedOption, onSelect }: BedOptionsProps) => {
-    // console.log("BedOptions rendered: ", new Date().toLocaleTimeString());
+    console.log("BedOptions rendered: ", new Date().toLocaleTimeString());
 
 
     return (
-        <div className="grid grid-flow-col xs:justify-start gap-2">
-            {bedOptions.map((option) => (
-                <Button
+        <div className="onboard-section">
+            <div className="onboarding-overlay"></div>
+
+            <div className="grid grid-flow-col xs:justify-start gap-2">
+                {bedOptions.map((option) => (
+                    <Button
                     key={option.type}
                     type="bedOption"
                     text={`${option.type} bed`}
@@ -216,8 +219,9 @@ const BedOptions = memo(({ bedOptions, selBedOption, onSelect }: BedOptionsProps
                     }
                     isActive={selBedOption === option.type}
                     onClick={() => onSelect(option.type)}
-                />
-            ))}
+                    />
+                ))}
+            </div>
         </div>
     );
 });

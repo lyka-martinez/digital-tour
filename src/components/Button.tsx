@@ -52,7 +52,7 @@ const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) =
 
 
     return type === "control" ? (
-        <div className="tooltip" data-tip={tooltip}>
+        <div className="tooltip tooltip-xs tooltip-neutral-800" data-tip={tooltip}>
             {buttonElement}
         </div>
     ) : (
