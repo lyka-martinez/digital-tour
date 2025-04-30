@@ -17,7 +17,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
     }, [startTour, returnToLanding]);
 
 
-    const handleBackToPage = () => window.location.href = 'https://www.theexchangeregency.com/';
+    const hndlBackToPage = () => window.location.href = 'https://www.theexchangeregency.com/';
 
 
     return (
@@ -52,7 +52,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
                             <Button 
                                 type="backToPage" 
                                 text="Home" 
-                                onClick={handleBackToPage} 
+                                onClick={hndlBackToPage} 
                                 />
 
                             <Button 

@@ -22,11 +22,11 @@ export const Video = ({ room }: VideoProps) => {
 
 
     const currentVideo = useMemo(() => {
-        if (selBedOption && room?.bedOptions) {
-            return room.bedOptions.find(option => option.type === selBedOption)?.video || room.video;
-        }
-
-        return room?.bedOptions?.[0]?.video || room?.video;
+        return (
+            room?.bedOptions?.find((option) => option.type === selBedOption)?.video ||
+            room?.bedOptions?.[0]?.video ||
+            room?.video
+        );
     }, [room, selBedOption]);
 
 
@@ -42,6 +42,7 @@ export const Video = ({ room }: VideoProps) => {
 
         videoRef.current.src = currentVideo;
         videoRef.current.play().catch(console.error);
+        setIsPlaying(true);
     }, [currentVideo, room]);
 
 
@@ -111,10 +112,10 @@ export const Video = ({ room }: VideoProps) => {
             </div>
 
             {room && ( 
-                <div className="p-4 pb-0 sm:px-5 md-lg:px-0 md-lg:pb-3">
+                <div className="p-4 pb-0 sm:px-5 md-lg:px-0">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-montserrat font-semibold tracking-wide mb-1 sm:text-lg md:text-xl lg:text-[1.25rem] 2xl:text-2xl">
+                        <h1 className="font-montserrat font-semibold tracking-wide mb-1 sm:text-lg md:text-xl lg:text-[1.375rem]">
                             {dspRoomName}
                         </h1>
 
@@ -155,23 +156,19 @@ const Description = memo(({ room }: { room: Room }) => {
                 details
             </div>
 
-            <div className="collapse-content flex flex-col gap-4 text-xs-sm sm:text-sm md:gap-5">
+            <div className="collapse-content flex flex-col gap-4 text-xs-sm md:text-sm md:gap-5 text-neutral-900">
 
-                <div className="flex flex-col gap-2">
-                    {room.description && (
-                        <div>{room.description}</div>
-                    )}
+                <div className="flex flex-col gap-2 leading-[1.375rem]">
+                    <div>{room.description}</div>
                 </div>
 
                 {room.roomFeatures && room.roomFeatures.length > 0 && (
                     <div>
-                        <p className="font-medium tracking-wide pb-1">Room Features:</p>
-
                         <ul className="grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-2">
                             {room.roomFeatures.map((feature, index) => (
-                                <li key={index} className="flex items-start gap-2">
+                                <li key={index} className="flex items-start gap-3 mb-[2px]">
                                     <div className="flex items-center h-[1.219rem] sm:h-[1.25rem]">
-                                        <Check className="w-auto h-[0.75rem]" />
+                                        <Check className="w-auto h-[0.688rem] md-lg:h-[0.75rem]" />
                                     </div>
                                     <div>{feature}</div>
                                 </li>

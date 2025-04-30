@@ -1,7 +1,6 @@
-import { useState, useCallback, Fragment } from "react";
+import { useState, useCallback, useEffect, Fragment } from "react";
 import Button from "./Button";
 import { Room } from "../types";
-
 import facilities from "../data/facilities.json";
 
 
@@ -11,11 +10,30 @@ type FacilityProps = {
 
 export const Facility = ({ onRoomSelect }: FacilityProps) => {
     const [activeRoom, setActiveRoom] = useState<string | null>(null);
+    const [activeFacility, setActiveFacility] = useState<string | null>(null);
 
+
+    // Automatically select the first facility on initial load
+    useEffect(() => {
+        const firstFacility = facilities[0];
+        const firstRoom = firstFacility.rooms?.[0];
+
+        setActiveFacility(firstFacility.title);
+        setActiveRoom(firstRoom?.name || firstFacility.title);
+        onRoomSelect(
+            firstRoom || {
+                name: firstFacility.title,
+                description: firstFacility.description || "No description available",
+                video: firstFacility.video || "No video available",
+            }
+        );
+    }, [onRoomSelect]);
+    
 
     const hndlRoomSelect = useCallback(
         (room: Room) => {
             if (room.name === activeRoom) return;
+
             setActiveRoom(room.name);
             onRoomSelect(room);
         },
@@ -25,6 +43,9 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
 
     const hndlFacilitySelect = useCallback(
         (facility: any) => {
+            if (facility.title === activeFacility) return;
+            setActiveFacility(facility.title);
+
             if (facility.rooms) return;
             
             setActiveRoom(facility.title);
@@ -34,7 +55,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
                 video: facility.video,
             });
         },
-        [onRoomSelect]
+        [activeFacility, onRoomSelect]
     );
 
 
@@ -50,6 +71,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
                                 name="facilities_tabs"
                                 className="tab mb-2 lg:text-base lg:h-[2.625rem] md-lg:justify-start md-lg:mx-4 md-lg:mb-0 md-lg:px-2"
                                 aria-label={facility.title}
+                                defaultChecked={index === 0}
                                 onClick={() => hndlFacilitySelect(facility)}
                             />
 
