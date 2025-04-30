@@ -8,3 +8,6 @@ export type Room = {
         video: string;
     }[];
 };
+
+
+export type OnboardingStep = "bedOption" | "description" | null;

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
 import { BedSingle, BedDouble, Check } from 'lucide-react';
 import Button from './Button';
 import VideoControl from './VideoControl';
-import { Room } from "../types";
+import { Room, OnboardingStep } from "../types";
 
 
 type VideoProps = {
@@ -15,6 +15,7 @@ export const Video = ({ room }: VideoProps) => {
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [selBedOption, setSelBedOption] = useState<string | null>(null);
+    const [onboardingStep, setOnboardingStep] = useState<OnboardingStep>("description");
 
     const [isMuted, setIsMuted] = useState(false);
     const [isPlaying, setIsPlaying] = useState(true);
@@ -59,6 +60,23 @@ export const Video = ({ room }: VideoProps) => {
     );
 
 
+    const hndlOnboardingClick = useCallback(() => {
+        setOnboardingStep((prev) => {
+            if (prev === "description") return "bedOption";
+            if (prev === "bedOption") return null;
+            return prev;
+        });
+
+        console.log("setOnboardingStep: ", onboardingStep);
+    }, [onboardingStep]);
+
+
+    const isOnboardingStep = useCallback(
+        (step: OnboardingStep) => onboardingStep === step,
+        [onboardingStep]
+    );
+
+
     /* Video controls functions */
     const toggleMute = useCallback(() => {
         if (!videoRef.current) return;
@@ -87,7 +105,10 @@ export const Video = ({ room }: VideoProps) => {
 
 
     return (
-        <div className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:py-5 xl:px-10 2xl:px-14">
+        <div 
+            className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:py-5 xl:px-10 2xl:px-14"
+            onClick={hndlOnboardingClick}
+        >
             <div className="video-size flex justify-center items-center sticky top-0 overflow-hidden sm:relative md-lg:rounded-lg">
                 {room ? (
                     <>
@@ -131,12 +152,16 @@ export const Video = ({ room }: VideoProps) => {
                             <BedOptions 
                                 bedOptions={room.bedOptions} 
                                 selBedOption={selBedOption} 
-                                onSelect={(type) => type !== selBedOption && setSelBedOption(type)} 
+                                onSelect={(type) => type !== selBedOption && setSelBedOption(type)}
+                                isOnboardingStep={isOnboardingStep}
                             />
                         )}
 
                         {/* Description */}
-                        <Description room={room} />
+                        <Description 
+                            room={room} 
+                            isOnboardingStep={isOnboardingStep}
+                        />
 
                         <div className="divider mt-1 mb-0 md-lg:hidden"></div>
                     </div>
@@ -149,13 +174,24 @@ export const Video = ({ room }: VideoProps) => {
 
 
 
+type DescriptionProps = {
+    room: Room; 
+    isOnboardingStep: (step: OnboardingStep) => boolean;
+}
+
 /* Description Component */
-const Description = memo(({ room }: { room: Room }) => {
+const Description = memo(({ room, isOnboardingStep }: DescriptionProps) => {
     console.log("Description rendered: ", new Date().toLocaleTimeString());
 
 
     return (
-        <div className="onboard-section">
+        <div 
+            className={`onboard-section ${isOnboardingStep("description") 
+                ? "is-open-onboard tooltip-open tooltip tooltip-accent tooltip-bottom md:tooltip-top" 
+                : ""
+            }`}
+            data-tip={isOnboardingStep("description") ? "Click to expand and view details" : undefined}
+        >
             <div className="onboarding-overlay"></div>
         
             <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
@@ -197,14 +233,21 @@ type BedOptionsProps = {
     bedOptions: { type: string; video: string }[];
     selBedOption: string | null;
     onSelect: (type: string) => void;
+    isOnboardingStep: (step: OnboardingStep) => boolean;
 }
 
-const BedOptions = memo(({ bedOptions, selBedOption, onSelect }: BedOptionsProps) => {
+const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep }: BedOptionsProps) => {
     console.log("BedOptions rendered: ", new Date().toLocaleTimeString());
 
 
     return (
-        <div className="onboard-section">
+        <div 
+            className={`onboard-section ${isOnboardingStep("bedOption") 
+                ? "is-open-onboard tooltip-open tooltip tooltip-accent xs:w-fit sm:tooltip-right" 
+                : ""
+            }`}
+            data-tip={isOnboardingStep("bedOption") ? "Select a bed option to view its video" : undefined}
+        >
             <div className="onboarding-overlay"></div>
 
             <div className="grid grid-flow-col xs:justify-start gap-2">
