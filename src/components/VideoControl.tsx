@@ -61,7 +61,7 @@ const VideoControls = ({
                         <Button
                             type="control" 
                             tooltip={isPlaying ? "Pause" : "Play"}
-                            icon={isPlaying ? <Pause className="w-auto h-[1.25rem]" /> : <Play className="w-auto h-[1.25rem]" />}
+                            icon={isPlaying ? <Pause className="w-auto h-[22px] xl:h-[24px]" /> : <Play className="w-auto h-[22px] xl:h-[24px]" />}
                             onClick={togglePlayPause}
                         />
                     </div>
@@ -71,15 +71,15 @@ const VideoControls = ({
                         <Button
                             type="control" 
                             tooltip={isMuted ? "Unmute" : "Mute"}
-                            icon={isMuted ? <VolumeOff className="w-auto h-[1.25rem]" /> : <Volume2 className="w-auto h-[1.25rem]" />}
+                            icon={isMuted ? <VolumeOff className="w-auto h-[22px] xl:h-[24px]" /> : <Volume2 className="w-auto h-[22px] xl:h-[24px]" />}
                             onClick={toggleMute}
                         />
 
                         {/* Fullscreen/Exit Fullscreen Button */}
                         <Button
                             type="control" 
-                            tooltip={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-                            icon={isFullscreen ? <Minimize className="w-auto h-[1.25rem]" /> : <Maximize className="w-auto h-[1.25rem]" />}
+                            tooltip={isFullscreen ? "Exit full screen" : "Full screen"}
+                            icon={isFullscreen ? <Minimize className="w-auto h-[22px] xl:h-[24px]" /> : <Maximize className="w-auto h-[22px] xl:h-[24px]" />}
                             onClick={toggleFullscreen}
                         />
                     </div>

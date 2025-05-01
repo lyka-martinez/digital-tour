@@ -31,7 +31,7 @@ const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) =
                     : "bg-base-100 border-neutral/20 hover:bg-brnd-primary/7 focus:bg-brnd-primary/7"
             }`,
         control: 
-            "text-base-100 bg-transparent border-transparent shadow-none px-1 h-[2.375rem] w-[2.375rem] hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80"
+            "text-base-100 bg-transparent border-transparent shadow-none px-1 size-[38px] xl:size-[40px] hover:bg-neutral-800/80 focus:bg-neutral-800/80 active:bg-neutral-800/80"
     };
 
 
