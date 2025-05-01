@@ -62,13 +62,15 @@ export const Video = ({ room }: VideoProps) => {
 
     const hndlOnboardingClick = useCallback(() => {
         setOnboardingStep((prev) => {
-            if (prev === "description" && room?.description) return "bedOption";
-            if (prev === "bedOption" && room?.bedOptions?.length) return null;
-            return prev;
+            switch (prev) {
+                case "description": return "bedOption";
+                case "bedOption": return null;
+                default: return prev;
+            }
         });
 
         console.log("setOnboardingStep: ", onboardingStep);
-    }, [onboardingStep]);
+    }, [room?.bedOptions?.length]);
 
 
     const isOnboardingStep = useCallback(
@@ -107,7 +109,12 @@ export const Video = ({ room }: VideoProps) => {
     return (
         <div 
             className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:py-5 xl:px-10 2xl:px-14"
-            onClick={hndlOnboardingClick}
+            onClick={onboardingStep && 
+                ((onboardingStep === "description" && room?.description) || 
+                (onboardingStep === "bedOption" && room?.bedOptions?.length)) 
+                    ? hndlOnboardingClick 
+                    : undefined
+            }
         >
             <div className="video-size flex justify-center items-center sticky top-0 overflow-hidden sm:relative md-lg:rounded-lg">
                 {room ? (
