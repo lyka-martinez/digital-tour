@@ -68,8 +68,6 @@ export const Video = ({ room }: VideoProps) => {
                 default: return prev;
             }
         });
-
-        console.log("setOnboardingStep: ", onboardingStep);
     }, [room?.bedOptions?.length]);
 
 
@@ -100,6 +98,13 @@ export const Video = ({ room }: VideoProps) => {
 
 
     const toggleFullscreen = useCallback(() => {
+        const videoCont = videoRef.current?.parentElement;
+        if (!videoRef.current) return;
+
+        (!document.fullscreenElement) 
+            ? videoCont?.requestFullscreen().catch(console.error)
+            : document.exitFullscreen().catch(console.error);
+
         setIsFullscreen((prev) => !prev);
 
         console.log("Fullscreen: ", !isFullscreen);
@@ -108,7 +113,7 @@ export const Video = ({ room }: VideoProps) => {
 
     return (
         <div 
-            className="video-cont flex flex-col h-fit w-full relative md-lg:h-full md-lg:p-4 lg:px-6 xl:py-5 xl:px-10 2xl:px-14"
+            className="video-cont flex flex-col h-fit w-full md-lg:h-full md-lg:p-4 lg:px-6 xl:py-5 xl:px-10 2xl:px-14"
             onClick={onboardingStep && 
                 ((onboardingStep === "description" && room?.description) || 
                 (onboardingStep === "bedOption" && room?.bedOptions?.length)) 
@@ -122,6 +127,7 @@ export const Video = ({ room }: VideoProps) => {
                         <video
                             ref={videoRef}
                             className="h-full w-auto"
+                            controls={false}
                             autoPlay
                             loop
                         >
@@ -253,7 +259,7 @@ const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep 
                 ? "is-open-onboard tooltip-open tooltip tooltip-brnd-primary xs:w-fit sm:tooltip-right rounded-lg outline outline-brnd-light/60 outline-offset-4" 
                 : ""
             }`}
-            data-tip={isOnboardingStep("bedOption") ? "Select a bed option to view its video" : undefined}
+            data-tip={isOnboardingStep("bedOption") ? "Choose a bed type to view its video" : undefined}
         >
             <div className="onboarding-overlay"></div>
 

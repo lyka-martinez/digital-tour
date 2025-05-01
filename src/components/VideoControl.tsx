@@ -64,7 +64,9 @@ const VideoControls = ({
                             icon={isPlaying ? <Pause className="w-auto h-[1.25rem]" /> : <Play className="w-auto h-[1.25rem]" />}
                             onClick={togglePlayPause}
                         />
-
+                    </div>
+                    
+                    <div className="right-controls">
                         {/* Mute/Unmute Audio Button */}
                         <Button
                             type="control" 
@@ -72,9 +74,7 @@ const VideoControls = ({
                             icon={isMuted ? <VolumeOff className="w-auto h-[1.25rem]" /> : <Volume2 className="w-auto h-[1.25rem]" />}
                             onClick={toggleMute}
                         />
-                    </div>
-                    
-                    <div className="right-controls">
+
                         {/* Fullscreen/Exit Fullscreen Button */}
                         <Button
                             type="control" 
