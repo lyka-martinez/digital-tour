@@ -10,7 +10,7 @@ type VideoProps = {
 };
 
 export const Video = ({ room }: VideoProps) => {    
-    console.log("Video rendered: ", new Date().toLocaleTimeString());
+    // console.log("Video: ", new Date().toLocaleTimeString());
 
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -62,8 +62,8 @@ export const Video = ({ room }: VideoProps) => {
 
     const hndlOnboardingClick = useCallback(() => {
         setOnboardingStep((prev) => {
-            if (prev === "description") return "bedOption";
-            if (prev === "bedOption") return null;
+            if (prev === "description" && room?.description) return "bedOption";
+            if (prev === "bedOption" && room?.bedOptions?.length) return null;
             return prev;
         });
 
@@ -181,7 +181,7 @@ type DescriptionProps = {
 
 /* Description Component */
 const Description = memo(({ room, isOnboardingStep }: DescriptionProps) => {
-    console.log("Description rendered: ", new Date().toLocaleTimeString());
+    // console.log("Description: ", new Date().toLocaleTimeString());
 
 
     return (
@@ -237,7 +237,7 @@ type BedOptionsProps = {
 }
 
 const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep }: BedOptionsProps) => {
-    console.log("BedOptions rendered: ", new Date().toLocaleTimeString());
+    // console.log("BedOptions: ", new Date().toLocaleTimeString());
 
 
     return (

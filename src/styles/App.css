@@ -90,15 +90,11 @@
 }
 
 .tooltip.tooltip-xs[data-tip]:before {
-    padding-inline: calc(0.3125rem * 2);
-    padding-block: calc(0.3125rem * 1);
-    border-radius: var(--radius-field);
+    @apply px-[0.625rem] py-[0.313rem];
 }
 
 .tooltip[data-tip]:before {
-    padding-inline: calc(0.25rem * 4);
-    padding-block: calc(0.25rem * 2);
-    border-radius: var(--radius-box);
+    @apply px-[0.75rem] py-[0.5rem];
 }
 
 .tabs-border .tab {
