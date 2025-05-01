@@ -51,7 +51,6 @@
 
 .onboard-section.is-open-onboard {
     z-index: 25;
-
 }
 
 .onboard-section.is-open-onboard .onboarding-overlay {
@@ -85,18 +84,6 @@
     top: 50%;
 }
 
-.tooltip-neutral-800 {
-    --tt-bg: var(--color-neutral-800);
-}
-
-.tooltip.tooltip-xs[data-tip]:before {
-    @apply px-[0.625rem] py-[0.313rem];
-}
-
-.tooltip[data-tip]:before {
-    @apply px-[0.75rem] py-[0.5rem];
-}
-
 .tabs-border .tab {
     @apply rounded-lg font-medium;
 }
@@ -116,6 +103,26 @@
 
 .tabs-border .tab:is(input:checked) {
     @apply text-brnd-secondary bg-base-100;
+}
+
+.tooltip-neutral-800 {
+    --tt-bg: var(--color-neutral-800);
+}
+
+.tooltip-brnd-primary {
+    --tt-bg: var(--color-brnd-primary-50);
+}
+
+.tooltip-brnd-primary[data-tip]:before {
+    @apply text-brnd-light ;
+}
+
+.tooltip.tooltip-xs[data-tip]:before {
+    @apply px-[0.625rem] py-[0.313rem];
+}
+
+.tooltip[data-tip]:before {
+    @apply px-[0.75rem] py-[0.5rem] max-w-[13.75rem] text-justify;
 }
 
 

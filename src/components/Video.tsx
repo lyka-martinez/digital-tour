@@ -194,7 +194,7 @@ const Description = memo(({ room, isOnboardingStep }: DescriptionProps) => {
     return (
         <div 
             className={`onboard-section ${isOnboardingStep("description") 
-                ? "is-open-onboard tooltip-open tooltip tooltip-accent tooltip-bottom md:tooltip-top" 
+                ? "is-open-onboard tooltip-open tooltip tooltip-brnd-primary tooltip-bottom md:tooltip-top rounded-lg outline outline-brnd-light/60 outline-offset-4" 
                 : ""
             }`}
             data-tip={isOnboardingStep("description") ? "Click to expand and view details" : undefined}
@@ -250,7 +250,7 @@ const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep 
     return (
         <div 
             className={`onboard-section ${isOnboardingStep("bedOption") 
-                ? "is-open-onboard tooltip-open tooltip tooltip-accent xs:w-fit sm:tooltip-right" 
+                ? "is-open-onboard tooltip-open tooltip tooltip-brnd-primary xs:w-fit sm:tooltip-right rounded-lg outline outline-brnd-light/60 outline-offset-4" 
                 : ""
             }`}
             data-tip={isOnboardingStep("bedOption") ? "Select a bed option to view its video" : undefined}
@@ -260,15 +260,15 @@ const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep 
             <div className="grid grid-flow-col xs:justify-start gap-2">
                 {bedOptions.map((option) => (
                     <Button
-                    key={option.type}
-                    type="bedOption"
-                    text={`${option.type} bed`}
-                    icon={option.type === "Queen" 
-                        ? <BedSingle className="w-auto h-[1.125rem]" /> 
-                        : <BedDouble className="w-auto h-[1.125rem]" />
-                    }
-                    isActive={selBedOption === option.type}
-                    onClick={() => onSelect(option.type)}
+                        key={option.type}
+                        type="bedOption"
+                        text={`${option.type} bed`}
+                        icon={option.type === "Queen" 
+                            ? <BedSingle className="w-auto h-[1.125rem]" /> 
+                            : <BedDouble className="w-auto h-[1.125rem]" />
+                        }
+                        isActive={selBedOption === option.type}
+                        onClick={() => onSelect(option.type)}
                     />
                 ))}
             </div>
