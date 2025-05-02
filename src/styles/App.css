@@ -20,7 +20,7 @@
 }
 
 .video-size {
-    background-color: var(--color-neutral);
+    background-color: var(--color-brnd-secondary);
     aspect-ratio: 16 / 9;
     min-height: 12.75rem;       /* 204px */
     z-index: 15;
