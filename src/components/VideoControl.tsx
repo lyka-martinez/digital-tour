@@ -41,21 +41,15 @@ const VideoControls = ({
         setShowControls(true);
         clearHideTimeout();
         
-        hideTimeout.current = setTimeout(() => {
-            setShowControls(false);
-        }, 4000);
+        hideTimeout.current = setTimeout(() => setShowControls(false), 4000);
     }, [clearHideTimeout]);
 
 
     // Mouse enter: show controls and start timer
     const hndlMouseEvents = useCallback((show: boolean) => {
-        if (show) {
-            showAndAutoHideControls();
-            return;
-        }
-
-        clearHideTimeout();
-        setShowControls(false);
+        (show) 
+            ? showAndAutoHideControls()
+            : (clearHideTimeout(), setShowControls(false));
     }, [showAndAutoHideControls, clearHideTimeout]);
 
 
@@ -81,10 +75,7 @@ const VideoControls = ({
         const hndlClickOutside = (event: MouseEvent) => {
             const target = event.target as Node;
 
-            if (
-                controlsRef.current?.contains(target) ||
-                parentRef.current?.contains(target)
-            ) {
+            if (controlsRef.current?.contains(target) || parentRef.current?.contains(target)) {
                 return;
             }
 
@@ -113,9 +104,7 @@ const VideoControls = ({
 
 
     // Cleanup timer on unmount
-    useEffect(() => {
-        return () => clearHideTimeout();
-    }, [clearHideTimeout]);
+    useEffect(() => clearHideTimeout, [clearHideTimeout]);
 
 
     return (
