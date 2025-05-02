@@ -107,7 +107,7 @@ export const Video = ({ room }: VideoProps) => {
 
         setIsFullscreen((prev) => !prev);
 
-        console.log("Fullscreen: ", !isFullscreen);
+        // console.log("Fullscreen: ", !isFullscreen);
     }, [isFullscreen]);
 
 

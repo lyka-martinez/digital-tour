@@ -20,20 +20,76 @@ const VideoControls = ({
     toggleMute,
     toggleFullscreen,
 }: VideoControlProps) => {
+    const parentRef = useRef<HTMLDivElement | null>(null);
     const controlsRef = useRef<HTMLDivElement | null>(null);
+    const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
     const [showControls, setShowControls] = useState(false);
 
 
-    const hndlMouseEvents = useCallback((show: boolean) => {
-        setShowControls(show);
+    // Helper to clear any existing hide timeout
+    const clearHideTimeout = useCallback(() => {
+        if (!hideTimeout.current) return;
+
+        clearTimeout(hideTimeout.current);
+        hideTimeout.current = null;
     }, []);
 
 
+    // Show controls and start hide timer
+    const showAndAutoHideControls = useCallback(() => {
+        setShowControls(true);
+        clearHideTimeout();
+        
+        hideTimeout.current = setTimeout(() => {
+            setShowControls(false);
+        }, 4000);
+    }, [clearHideTimeout]);
+
+
+    // Mouse enter: show controls and start timer
+    const hndlMouseEvents = useCallback((show: boolean) => {
+        if (show) {
+            showAndAutoHideControls();
+            return;
+        }
+
+        clearHideTimeout();
+        setShowControls(false);
+    }, [showAndAutoHideControls, clearHideTimeout]);
+
+
+    // Reset timer on mouse move or click inside parentRef
+    const hndlUserActivity = useCallback(() => {
+        showAndAutoHideControls();
+    }, [showAndAutoHideControls]);
+
+
+    // Click events: show controls and start timer
+    const hndlClickEvents = useCallback((event: React.MouseEvent<HTMLDivElement>) => {
+        const target = event.target as Node;
+
+        if (controlsRef.current?.contains(target)) return;
+        if (parentRef.current?.contains(target)) {
+            showAndAutoHideControls();
+        }
+    }, []);
+
+
+    // Hide controls if click outside
     useEffect(() => {
         const hndlClickOutside = (event: MouseEvent) => {
-            if (controlsRef.current && !controlsRef.current.contains(event.target as Node)) {
-                setShowControls(false);
+            const target = event.target as Node;
+
+            if (
+                controlsRef.current?.contains(target) ||
+                parentRef.current?.contains(target)
+            ) {
+                return;
             }
+
+            setShowControls(false);
+            clearHideTimeout();
         };
 
         document.addEventListener("mousedown", hndlClickOutside);
@@ -41,21 +97,43 @@ const VideoControls = ({
     }, []);
 
 
+    // Listen for mousemove inside parentRef to reset timer
+    useEffect(() => {
+        const parent = parentRef.current;
+        if (!parent) return;
+
+        parent.addEventListener("mousemove", hndlUserActivity);
+        parent.addEventListener("mousedown", hndlUserActivity);
+
+        return () => {
+            parent.removeEventListener("mousemove", hndlUserActivity);
+            parent.removeEventListener("mousedown", hndlUserActivity);
+        };
+    }, [hndlUserActivity]);
+
+
+    // Cleanup timer on unmount
+    useEffect(() => {
+        return () => clearHideTimeout();
+    }, [clearHideTimeout]);
+
+
     return (
         <div 
+            ref={parentRef}
             className="absolute inset-0 w-full h-full overflow-hidden z-20"
             onMouseEnter={() => hndlMouseEvents(true)}
             onMouseLeave={() => hndlMouseEvents(false)}
-            onClick={() => hndlMouseEvents(true)}
+            onClick={hndlClickEvents}
         >
             <div
-                ref={controlsRef}
-                className={`video-controls-cont transition-opacity duration-200 ${showControls ? 'opacity-100' : 'opacity-0'}`}
+                className={`video-controls-cont transition-opacity duration-200 ${
+                    showControls ? 'opacity-100' : 'opacity-0'
+                }`}
             >
-
                 <div className="controls-gradient-overlay"></div>
 
-                <div className="video-controls flex">
+                <div ref={controlsRef} className="video-controls flex">
                     <div className="left-controls flex-1">
                         {/* Play/Pause Button */}
                         <Button
@@ -84,7 +162,6 @@ const VideoControls = ({
                         />
                     </div>
                 </div>
-
             </div>
         </div>
     );
