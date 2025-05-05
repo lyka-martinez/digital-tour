@@ -67,7 +67,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
                 </div>
             </div>
 
-            <div className="hidden overflow-hidden lg:flex lg:py-18 lg:items-center">
+            <div className="hidden overflow-hidden lg:flex lg:py-18 lg:items-center lg:justify-end">
                 <img
                     src="./images/ter-suite.webp"
                     alt="Suite Room Photo"
