@@ -209,7 +209,7 @@
 
     .video-size {
         flex: 0 0 auto;
-        height: calc(100% - 10rem);
+        height: calc(100% - 12.5rem);
         max-height: calc(100vw / (16 / 9));
     }
 }

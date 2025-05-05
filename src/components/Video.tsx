@@ -268,7 +268,7 @@ const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep 
                     <Button
                         key={option.type}
                         type="bedOption"
-                        text={`${option.type} bed`}
+                        text={`${option.type} Bed`}
                         icon={option.type === "Queen" 
                             ? <BedSingle className="w-auto h-[1.125rem]" /> 
                             : <BedDouble className="w-auto h-[1.125rem]" />
