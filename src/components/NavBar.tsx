@@ -24,7 +24,7 @@ const NavBar = ({ onClick }: NavBarProps) => {
                     src="./images/ter-long-logo.webp" 
                     alt="The Exchange Regency Hotel Logo" 
                     aria-label="The Exchange Regency Hotel Logo"  
-                    className="object-cover w-auto h-[2.5rem] md:h-[2.625rem]" 
+                    className="object-cover w-auto h-[3.25rem]" 
                 />
             </div>
         </div>
