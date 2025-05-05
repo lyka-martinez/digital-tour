@@ -208,7 +208,7 @@ const Description = memo(({ room, isOnboardingStep }: DescriptionProps) => {
             <div className="onboarding-overlay"></div>
         
             <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
-                <input type="checkbox" className="peer" />
+                <input type="checkbox" className="peer" defaultChecked />
                 <div className="collapse-title font-medium capitalize text-sm">
                     details
                 </div>
