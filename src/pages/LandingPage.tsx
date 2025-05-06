@@ -9,7 +9,13 @@ type LandingPageProps = {
     onStartTour: () => void;
 };
 
+
+/* Landing page for the Virtual Tour. */
 const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPageProps) => {
+    
+    /**
+     * Compute animation classes based on state
+     */
     const classes = useMemo(() => {
         return `grid grid-cols-1 min-h-svh max-w-screen overflow-y-auto bg-bottom-svg lg:grid-cols-2 xl:grid-cols-[42.5rem__1fr] ${
             startTour ? 'slide-up' : returnToLanding ? 'slide-down' : ''
@@ -17,6 +23,7 @@ const LandingPage = ({ startTour, returnToLanding, onStartTour }: LandingPagePro
     }, [startTour, returnToLanding]);
 
 
+    /* Handler for navigating back to the main hotel website */
     const hndlBackToPage = () => window.location.href = 'https://www.theexchangeregency.com/';
 
 

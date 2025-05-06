@@ -12,6 +12,8 @@ type VideoControlProps = {
     toggleFullscreen: () => void;
 };
 
+
+/* VideoControls component to manage video playback, mute/unmute, and fullscreen toggle. */
 const VideoControls = ({
     isPlaying,
     isMuted,
@@ -23,20 +25,23 @@ const VideoControls = ({
     const parentRef = useRef<HTMLDivElement | null>(null);
     const controlsRef = useRef<HTMLDivElement | null>(null);
     const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-
     const [showControls, setShowControls] = useState(false);
 
 
-    // Helper to clear any existing hide timeout
+    /**
+     * Clear hide timeout for controls. 
+     */
     const clearHideTimeout = useCallback(() => {
         if (!hideTimeout.current) return;
-
+        
         clearTimeout(hideTimeout.current);
         hideTimeout.current = null;
     }, []);
-
-
-    // Show controls and start hide timer
+    
+    
+    /**
+     * Show controls and auto-hide after delay
+     */
     const showAndAutoHideControls = useCallback(() => {
         setShowControls(true);
         clearHideTimeout();
@@ -45,21 +50,28 @@ const VideoControls = ({
     }, [clearHideTimeout]);
 
 
-    // Mouse enter: show controls and start timer
+    /**
+     * Handle mouse enter/leave to show/hide controls
+     */
     const hndlMouseEvents = useCallback((show: boolean) => {
         (show) 
-            ? showAndAutoHideControls()
-            : (clearHideTimeout(), setShowControls(false));
+        ? showAndAutoHideControls()
+        : (clearHideTimeout(), setShowControls(false));
     }, [showAndAutoHideControls, clearHideTimeout]);
-
-
-    // Reset timer on mouse move or click inside parentRef
+    
+    
+    /**
+     * Reset hide timer on user activity
+     */
     const hndlUserActivity = useCallback(() => {
         showAndAutoHideControls();
     }, [showAndAutoHideControls]);
-
-
-    // Click events: show controls and start timer
+    
+    
+    /**
+     * Show controls on click inside parent
+     * Ignore clicks on controls
+     */
     const hndlClickEvents = useCallback((event: React.MouseEvent<HTMLDivElement>) => {
         const target = event.target as Node;
 
@@ -70,7 +82,9 @@ const VideoControls = ({
     }, []);
 
 
-    // Hide controls if click outside
+    /**
+     * Hide controls if click outside
+     */
     useEffect(() => {
         const hndlClickOutside = (event: MouseEvent) => {
             const target = event.target as Node;
@@ -88,7 +102,9 @@ const VideoControls = ({
     }, []);
 
 
-    // Listen for mousemove inside parentRef to reset timer
+    /**
+     * Listen for mousemove/mousedown to reset timer
+     */
     useEffect(() => {
         const parent = parentRef.current;
         if (!parent) return;
@@ -103,7 +119,7 @@ const VideoControls = ({
     }, [hndlUserActivity]);
 
 
-    // Cleanup timer on unmount
+    /* Cleanup timer on unmount. */
     useEffect(() => clearHideTimeout, [clearHideTimeout]);
 
 

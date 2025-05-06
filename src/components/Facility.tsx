@@ -8,12 +8,15 @@ type FacilityProps = {
     onRoomSelect: (room: Room | null) => void;
 };
 
+/* Facility component for selecting facility and room */
 export const Facility = ({ onRoomSelect }: FacilityProps) => {
     const [activeRoom, setActiveRoom] = useState<string | null>(null);
     const [activeFacility, setActiveFacility] = useState<string | null>(null);
 
 
-    // Automatically select the first facility on initial load
+    /**
+     * Select first facility and room on mount
+     */
     useEffect(() => {
         const firstFacility = facilities[0];
         const firstRoom = firstFacility.rooms?.[0];
@@ -30,6 +33,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
     }, [onRoomSelect]);
     
 
+    /* Handle room selection */
     const hndlRoomSelect = useCallback(
         (room: Room) => {
             if (room.name === activeRoom) return;
@@ -41,6 +45,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
     );
 
 
+    /* Handle facility selection */
     const hndlFacilitySelect = useCallback(
         (facility: any) => {
             if (facility.title === activeFacility) return;

@@ -10,6 +10,8 @@ type ButtonProps = {
     icon?: ReactNode;
 }
 
+
+/* Button component for various UI actions. */
 const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) => {
     const baseClass = "btn font-medium duration-200 transition-all";
 
@@ -51,6 +53,7 @@ const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) =
     );
 
 
+    /* Tooltip for control buttons. */
     return type === "control" ? (
         <div className="tooltip tooltip-xs tooltip-neutral-800" data-tip={tooltip}>
             {buttonElement}

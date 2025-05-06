@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
 import LandingPage from './pages/LandingPage';
 import MainPage from './pages/MainPage';
-
 import './styles/App.css';
 
 
+/* Main app component for the Virtual Tour. */
 export default function VirtualTourApp() {
     const [stat, setStat] = useState({
         startTour: false,
@@ -13,6 +13,10 @@ export default function VirtualTourApp() {
     });
 
 
+    /**
+     * Handler for starting the tour.
+     * Triggers slide-up animation and hides landing page after delay.
+     */
     const hndlStartTour = useCallback(() => {
         setStat((prev) => ({ ...prev, startTour: true }));
         setTimeout(() => {
@@ -21,6 +25,10 @@ export default function VirtualTourApp() {
     }, []);
 
 
+    /**
+     * Handler for returning to the landing page.
+     * Triggers slide-down animation and resets state after delays.
+     */
     const hndlReturnToLanding = useCallback(() => {
         setStat((prev) => ({ ...prev, returnToLanding: true }));
         setTimeout(() => {
@@ -34,6 +42,7 @@ export default function VirtualTourApp() {
 
     return (
         <>
+            {/* Show LandingPage unless hidden */}
             {!stat.hideLandingPage && (
                 <LandingPage
                     startTour={stat.startTour}
@@ -42,6 +51,7 @@ export default function VirtualTourApp() {
                 />
             )}
 
+            {/* Show MainPage when landing page is hidden */}
             {stat.hideLandingPage && (
                 <MainPage
                     returnToLanding={stat.returnToLanding}

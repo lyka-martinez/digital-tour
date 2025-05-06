@@ -11,8 +11,13 @@ type MainPageProps = {
     onBack: () => void;
 };
 
+
+/* Main page for the Virtual Tour. */
 const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
-    // Set the initial selected room based on the first facility entry
+
+    /**
+     * Get the initial room from the first facility
+     */
     const initRoom = useMemo(() => {
         const firstFacility = facilities[0];
 
@@ -25,7 +30,7 @@ const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
               };
     }, []);
 
-
+    
     const [selectedRoom, setSelectedRoom] = useState<Room | null>(initRoom);
 
 

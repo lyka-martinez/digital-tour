@@ -6,6 +6,8 @@ type NavBarProps = {
     onClick: () => void;
 };
 
+
+/* NavBar component for navigation and branding */
 const NavBar = ({ onClick }: NavBarProps) => {
     return ( 
         <div className="navbar bg-base-100 flex-none gap-1 py-0 min-h-[3.25rem] border-b border-neutral-content">
