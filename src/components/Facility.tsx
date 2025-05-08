@@ -8,6 +8,7 @@ type FacilityProps = {
     onRoomSelect: (room: Room | null) => void;
 };
 
+
 /* Facility component for selecting facility and room */
 export const Facility = ({ onRoomSelect }: FacilityProps) => {
     const [activeRoom, setActiveRoom] = useState<string | null>(null);
@@ -26,8 +27,8 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
         onRoomSelect(
             firstRoom || {
                 name: firstFacility.title,
-                description: firstFacility.description || "No description available",
-                video: firstFacility.video || "No video available",
+                description: firstFacility.description || "No details available",
+                video: firstFacility.video || "",
             }
         );
     }, [onRoomSelect]);
@@ -57,7 +58,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
             onRoomSelect({
                 name: facility.title,
                 description: facility.description,
-                video: facility.video,
+                video: facility.video || "",
             });
         },
         [activeFacility, onRoomSelect]

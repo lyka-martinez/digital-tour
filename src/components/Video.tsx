@@ -28,9 +28,8 @@ export const Video = ({ room }: VideoProps) => {
      */
     const currentVideo = useMemo(() => {
         return (
-            room?.bedOptions?.find((option) => option.type === selBedOption)?.video ||
-            room?.bedOptions?.[0]?.video ||
-            room?.video
+            room?.bedOptions?.find((option) => option.type === selBedOption)?.video || 
+            room?.video || ""
         );
     }, [room, selBedOption]);
 
@@ -52,6 +51,7 @@ export const Video = ({ room }: VideoProps) => {
         if (!videoRef.current || !currentVideo) return;
 
         const videoElem = videoRef.current;
+        
         const hndlLoadedData = () => {
             videoElem.play().catch(console.error);
             setIsPlaying(true);
@@ -180,7 +180,7 @@ export const Video = ({ room }: VideoProps) => {
             }
         >
             <div className="video-size flex justify-center items-center sticky top-0 overflow-hidden sm:relative md-lg:rounded-lg">
-                {room ? (
+                {room && currentVideo ? (
                     <>
                         <video
                             ref={videoRef}

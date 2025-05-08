@@ -24,10 +24,10 @@ const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
         return firstFacility.rooms
             ? firstFacility.rooms[0]
             : {
-                  name: firstFacility.title,
-                  description: firstFacility.description,
-                  video: firstFacility.video,
-              };
+                name: firstFacility.title,
+                description: firstFacility.description,
+                video: firstFacility.video || ""
+            };
     }, []);
 
     
