@@ -106,8 +106,8 @@ export const Video = ({ room }: VideoProps) => {
         if (!videoRef.current) return;
         
         (isPlaying) 
-        ? videoRef.current.pause() 
-        : videoRef.current.play().catch(console.error);
+            ? videoRef.current.pause() 
+            : videoRef.current.play().catch(console.error);
         
         setIsPlaying((prev) => !prev);
     }, [isPlaying]);
@@ -117,13 +117,56 @@ export const Video = ({ room }: VideoProps) => {
     const toggleFullscreen = useCallback(() => {
         const videoCont = videoRef.current?.parentElement;
         if (!videoRef.current) return;
-
+        
         (!document.fullscreenElement) 
             ? videoCont?.requestFullscreen().catch(console.error)
             : document.exitFullscreen().catch(console.error);
-
+        
         setIsFullscreen((prev) => !prev);
     }, [isFullscreen]);
+
+
+    /**
+     * Listen for fullscreen changes and update state
+     */
+    useEffect(() => {
+        const hndlFullscreenChng = () => {
+            setIsFullscreen(!!document.fullscreenElement);
+        };
+
+        document.addEventListener("fullscreenchange", hndlFullscreenChng);
+        return () => document.removeEventListener("fullscreenchange", hndlFullscreenChng);
+    }, []);
+    
+    
+    /* Handle keyboard shortcuts. */
+    useEffect(() => {
+        const hndlKeyDown = (e: KeyboardEvent) => {
+            if (e.repeat) return;
+            if (document.activeElement && (document.activeElement.tagName === "INPUT" || document.activeElement.tagName === "TEXTAREA")) return;
+
+            switch (e.key.toLowerCase()) {
+                case " ":
+                case "k":
+                    e.preventDefault();
+                    togglePlayPause();
+                    break;
+                case "m":
+                    e.preventDefault();
+                    toggleMute();
+                    break;
+                case "f":
+                    e.preventDefault();
+                    toggleFullscreen();
+                    break;
+                default: break;
+            }
+        };
+
+        window.addEventListener("keydown", hndlKeyDown);
+        return () => window.removeEventListener("keydown", hndlKeyDown);
+
+    }, [togglePlayPause, toggleMute, toggleFullscreen, isFullscreen]);
 
 
     return (

@@ -55,8 +55,8 @@ const VideoControls = ({
      */
     const hndlMouseEvents = useCallback((show: boolean) => {
         (show) 
-        ? showAndAutoHideControls()
-        : (clearHideTimeout(), setShowControls(false));
+            ? showAndAutoHideControls()
+            : (clearHideTimeout(), setShowControls(false));
     }, [showAndAutoHideControls, clearHideTimeout]);
     
     
@@ -143,7 +143,7 @@ const VideoControls = ({
                         {/* Play/Pause Button */}
                         <Button
                             type="control" 
-                            tooltip={isPlaying ? "Pause" : "Play"}
+                            tooltip={isPlaying ? "Pause (k)" : "Play (k)"}
                             icon={isPlaying ? <Pause className="w-auto h-[1.375rem] xl:h-[1.5rem]" /> : <Play className="w-auto h-[1.375rem] xl:h-[1.5rem]" />}
                             onClick={togglePlayPause}
                         />
@@ -153,7 +153,7 @@ const VideoControls = ({
                         {/* Mute/Unmute Audio Button */}
                         <Button
                             type="control" 
-                            tooltip={isMuted ? "Unmute" : "Mute"}
+                            tooltip={isMuted ? "Unmute (m)" : "Mute (m)"}
                             icon={isMuted ? <VolumeOff className="w-auto h-[1.375rem] xl:h-[1.5rem]" /> : <Volume2 className="w-auto h-[1.375rem] xl:h-[1.5rem]" />}
                             onClick={toggleMute}
                         />
@@ -161,7 +161,7 @@ const VideoControls = ({
                         {/* Fullscreen/Exit Fullscreen Button */}
                         <Button
                             type="control" 
-                            tooltip={isFullscreen ? "Exit full screen" : "Full screen"}
+                            tooltip={isFullscreen ? "Exit full screen (f)" : "Full screen (f)"}
                             icon={isFullscreen ? <Minimize className="w-auto h-[1.375rem] xl:h-[1.5rem]" /> : <Maximize className="w-auto h-[1.375rem] xl:h-[1.5rem]" />}
                             onClick={toggleFullscreen}
                         />
