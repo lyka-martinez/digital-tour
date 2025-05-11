@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
-import { BedSingle, BedDouble, Check } from 'lucide-react';
+import { BedSingle, BedDouble, Check, Images, X } from 'lucide-react';
 import Button from './Button';
 import VideoControl from './VideoControl';
 import { Room, OnboardingStep } from "../types";
@@ -179,7 +179,12 @@ export const Video = ({ room }: VideoProps) => {
                     : undefined
             }
         >
-            <div className="video-size flex justify-center items-center sticky top-0 overflow-hidden sm:relative md-lg:rounded-lg">
+            <div 
+                className={`video-size flex justify-center items-center sticky top-0 overflow-hidden sm:relative ${!isFullscreen 
+                    ? 'md-lg:rounded-lg' 
+                    : ''
+                }`}
+            >
                 {room && currentVideo ? (
                     <>
                         <video
@@ -218,15 +223,47 @@ export const Video = ({ room }: VideoProps) => {
                             {dspRoomName}
                         </h1>
 
-                        {/* Bed Options */}
-                        {room.bedOptions && (
-                            <BedOptions 
+                        <div className="flex flex-col gap-3">
+                            {/* Bed Options */}
+                            {room.bedOptions && (
+                                <BedOptions 
                                 bedOptions={room.bedOptions} 
                                 selBedOption={selBedOption} 
                                 onSelect={(type) => type !== selBedOption && setSelBedOption(type)}
                                 isOnboardingStep={isOnboardingStep}
-                            />
-                        )}
+                                />
+                            )}
+
+                            {/* View Image Button */}
+                            <div className="grid grid-flow-col">
+                                <button 
+                                    className="btn font-medium rounded-lg shadow-xs text-brnd-secondary bg-base-100 border-transparent hover:bg-base-100/40"
+                                    onClick={() => {
+                                        const modal = document.getElementById('carousel-cont') as HTMLDialogElement | null;
+                                        if (modal) modal.showModal();
+                                    }}
+                                >
+                                    <Images className="w-auto h-[1.125rem]" />
+                                    View Images
+                                </button>
+
+                                <dialog id="carousel-cont" className="modal">
+                                    <div className="modal-box size-full max-w-full rounded-none">
+                                        
+                                        {/* if there is a button in form, it will close the modal */}
+                                        <form method="dialog">
+                                            <button className="btn btn-circle btn-ghost absolute right-2 top-2">
+                                                <X />
+                                            </button>
+                                        </form>
+                                        
+                                        <h3 className="font-bold text-lg">Carousel Template</h3>
+                                        <p className="py-4">Press ESC key or click on ✕ button to close</p>
+                                    
+                                    </div>
+                                </dialog>
+                            </div>
+                        </div>
 
                         {/* Description */}
                         <Description 
@@ -267,7 +304,7 @@ const Description = memo(({ room, isOnboardingStep }: DescriptionProps) => {
         
             <div className="collapse room-details collapse-arrow bg-base-100 border border-base-300 rounded-lg shadow-xs">
                 <input type="checkbox" className="peer" defaultChecked />
-                <div className="collapse-title font-medium capitalize text-sm">
+                <div className="collapse-title font-semibold capitalize text-sm">
                     details
                 </div>
 
@@ -306,6 +343,7 @@ type BedOptionsProps = {
     onSelect: (type: string) => void;
     isOnboardingStep: (step: OnboardingStep) => boolean;
 }
+
 
 const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep }: BedOptionsProps) => {
     // console.log("BedOptions: ", new Date().toLocaleTimeString());
