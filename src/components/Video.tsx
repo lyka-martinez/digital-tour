@@ -258,7 +258,7 @@ export const Video = ({ room }: VideoProps) => {
                                         </form>
                                         
                                         <h3 className="font-bold text-lg">Carousel Template</h3>
-                                        <p className="py-4">Press ESC key or click on ✕ button to close</p>
+                                        <p className="py-4">Press ESC key or click on ✕ button to close [changes made]</p>
                                     
                                     </div>
                                 </dialog>
