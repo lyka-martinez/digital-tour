@@ -20,7 +20,7 @@ export const Video = ({ room }: VideoProps) => {
 
     const [isMuted, setIsMuted] = useState(false);
     const [isPlaying, setIsPlaying] = useState(true);
-    const [isFullscreen, setIsFullscreen] = useState(false);
+    const [isFullscreen, setIsFullscreen] = useState(false)
 
 
     /**
@@ -58,6 +58,7 @@ export const Video = ({ room }: VideoProps) => {
         };
 
         videoElem.src = currentVideo;
+        videoElem.muted = isMuted;
         videoElem.addEventListener('loadeddata', hndlLoadedData);
         
         return () => videoElem.removeEventListener('loadeddata', hndlLoadedData);
