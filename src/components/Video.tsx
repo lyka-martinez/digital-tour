@@ -220,25 +220,31 @@ export const Video = ({ room }: VideoProps) => {
                 <div className="p-4 pb-0 sm:px-5 md-lg:px-0">
                     <div className="flex flex-col gap-3">
                         {/* Room Name */}
-                        <h1 className="font-montserrat font-semibold tracking-wide mb-1 sm:text-lg md:text-xl lg:text-[1.375rem]">
+                        <h1 className="font-montserrat font-semibold tracking-wide mb-1 sm:text-lg md:text-xl xl:text-[1.375rem]">
                             {dspRoomName}
                         </h1>
 
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             {/* Bed Options */}
                             {room.bedOptions && (
-                                <BedOptions 
-                                bedOptions={room.bedOptions} 
-                                selBedOption={selBedOption} 
-                                onSelect={(type) => type !== selBedOption && setSelBedOption(type)}
-                                isOnboardingStep={isOnboardingStep}
-                                />
+                                <>
+                                    <BedOptions 
+                                        bedOptions={room.bedOptions} 
+                                        selBedOption={selBedOption} 
+                                        onSelect={(type) => type !== selBedOption && setSelBedOption(type)}
+                                        isOnboardingStep={isOnboardingStep}
+                                    />
+
+                                    <div className="flex justify-start sm:ms-auto">
+                                        <div className="divider my-2 w-[4.063rem] sm:divider-horizontal sm:mx-2 sm:my-0"></div>
+                                    </div>
+                                </>
                             )}
 
                             {/* View Image Button */}
-                            <div className="grid grid-flow-col">
+                            <div className="grid grid-flow-col gap-2 xs:justify-start">
                                 <button 
-                                    className="btn font-medium rounded-lg shadow-xs text-brnd-secondary bg-base-100 border-transparent hover:bg-base-100/40"
+                                    className="btn font-medium rounded-lg shadow-xs text-brnd-secondary bg-base-100 hover:bg-base-100/40 xl:h-[2.625rem]"
                                     onClick={() => {
                                         const modal = document.getElementById('carousel-cont') as HTMLDialogElement | null;
                                         if (modal) modal.showModal();
@@ -359,7 +365,7 @@ const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep 
         >
             <div className="onboarding-overlay"></div>
 
-            <div className="grid grid-flow-col xs:justify-start gap-2">
+            <div className="grid grid-flow-col gap-2 xs:justify-start">
                 {bedOptions.map((option) => (
                     <Button
                         key={option.type}
