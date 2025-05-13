@@ -177,8 +177,7 @@
 }
 
 .swiper-slide {
-    text-align: center;
-    font-size: 18px;
+    @apply text-lg text-center;
 }
 
 .swiper-slide img {
@@ -289,11 +288,11 @@
     }
 
     .carousel-btn.is-prev {
-        left: 40px
+        left: 2.5rem;
     }
 
     .carousel-btn.is-next {
-        right: 40px
+        right: 2.5rem;
     }
 }
 

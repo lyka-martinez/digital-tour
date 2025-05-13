@@ -1,7 +1,47 @@
 import { memo } from 'react';
 import { Images, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Keyboard, Mousewheel} from 'swiper/modules';
+import { Keyboard, Mousewheel } from 'swiper/modules'
+
+
+type SlideBtnProps = {
+    position?: 'nav' | 'toolbar';
+};
+
+
+/* Custom button components for Swiper navigation */
+const SlidePrevButton = ({ position }: SlideBtnProps) => {
+    const buttonClass = position === 'nav' ? 'is-prev' : '';
+
+    return (
+        <button
+            className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]`}
+            onClick={() => {
+                console.log("Prev button clicked..");
+            }}
+        >
+            <ChevronLeft className="icon" />
+        </button>
+    );
+};
+
+
+const SlideNextButton = ({ position }: SlideBtnProps) => {
+    const buttonClass = position === 'nav' ? 'is-next' : '';
+
+    return (
+        <button
+            className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]`}
+            onClick={() => {
+                console.log("Next button clicked..");
+            }}
+        >
+            <ChevronRight className="icon" />
+        </button>
+    );
+};
+
+
 
 
 /* Carousel component for iamges */
@@ -25,9 +65,7 @@ const Carousel = () => {
                     <div className="carousel-toolbar">
                         {/* data index w/ button controllers */}
                         <div className="hidden absolute left-[50%] -translate-x-[50%] sm:flex">
-                            <button className="carousel-btn btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
-                                <ChevronLeft className="icon" />
-                            </button>
+                            <SlidePrevButton position="toolbar" />
 
                             <div className="min-w-[72px] text-center leading-[48px]">
                                 <span data-index>1</span>
@@ -35,9 +73,7 @@ const Carousel = () => {
                                 <span data-index>6</span>
                             </div>
                             
-                            <button className="carousel-btn btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
-                                <ChevronRight className="icon" />
-                            </button>
+                            <SlideNextButton position="toolbar" />
                         </div>
 
                         {/* close modal button */}
@@ -89,15 +125,10 @@ const Carousel = () => {
                     </Swiper>
 
                     <div className="carousel-nav">
-                        <button className="carousel-btn is-prev btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
-                            <ChevronLeft className="icon" />
-                        </button>
-
-                        <button className="carousel-btn is-next btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
-                            <ChevronRight className="icon" />
-                        </button>
+                        <SlidePrevButton position="nav" />
+                        <SlideNextButton position="nav" />
                     </div>
-                    
+
                 </div>
             </dialog>
         </div>
