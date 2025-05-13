@@ -1,5 +1,7 @@
 import { memo } from 'react';
 import { Images, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Keyboard, Mousewheel} from 'swiper/modules';
 
 
 /* Carousel component for iamges */
@@ -45,11 +47,57 @@ const Carousel = () => {
                             </button>
                         </form>
                     </div>
+
+                    <Swiper
+                        className="custom-swiper"
+                        modules={[Keyboard, Mousewheel]}
+                        keyboard={{
+                            enabled: true,
+                        }}
+                        grabCursor={true}
+                        mousewheel={true}
+                        loop={true}
+                    >
+                        <SwiperSlide>
+                            <img
+                                src="https://swiperjs.com/demos/images/nature-1.jpg"
+                                loading="lazy"
+                            />
+                            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img
+                                src="https://swiperjs.com/demos/images/nature-2.jpg"
+                                loading="lazy"
+                            />
+                            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img    
+                                src="https://swiperjs.com/demos/images/nature-3.jpg"
+                                loading="lazy"
+                            />
+                            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img
+                                src="https://swiperjs.com/demos/images/nature-4.jpg"
+                                loading="lazy"
+                            />
+                            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                        </SwiperSlide>
+                    </Swiper>
+
+                    <div className="carousel-nav">
+                        <button className="carousel-btn is-prev btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
+                            <ChevronLeft className="icon" />
+                        </button>
+
+                        <button className="carousel-btn is-next btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
+                            <ChevronRight className="icon" />
+                        </button>
+                    </div>
                     
-
-
-                    {/* swiper module here.. */}
-    
                 </div>
             </dialog>
         </div>

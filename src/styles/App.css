@@ -1,5 +1,6 @@
 /* Specific styles for the App component. */
 @reference "./index.css";
+@import "swiper/css";
 
 
 .bg-bottom-svg {
@@ -66,7 +67,7 @@
 }
 
 #carousel-cont > .modal-box {
-    @apply p-2 pt-12 bg-neutral-900/82 text-white;
+    @apply p-2 pt-12 bg-neutral-900/86 text-white;
 }
 
 .carousel-toolbar {
@@ -89,8 +90,25 @@
         rgba(0,0,0,.446) 100%);
 }
 
+.carousel-btn {
+    z-index: 30;
+}
+
 .carousel-btn > .icon {
-    @apply drop-shadow-[1px_1px_1px_rgba(0,0,0,0.4)] w-auto h-[1.625rem];
+    @apply drop-shadow-[1px_1px_1px_rgba(0,0,0,0.4)] w-auto h-[28px];
+}
+
+.carousel-btn.is-prev,
+.carousel-btn.is-next {
+    @apply absolute top-[44%] -translate-y-[-50%];
+}
+
+.carousel-btn.is-prev {
+    left: 0.5rem;
+}
+
+.carousel-btn.is-next {
+    right: 0.5rem;
 }
 
 
@@ -151,6 +169,24 @@
 
 .tooltip[data-tip]:before {
     @apply px-[0.75rem] py-[0.5rem] max-w-[13.75rem] text-justify;
+}
+
+.custom-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+}
+
+.swiper-slide img {
+    @apply size-auto max-w-full max-h-full absolute top-[50%] left-[50%];
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 
@@ -242,6 +278,7 @@
     }
 }
 
+
 @media (width >= 64rem) {
     #carousel-cont > .modal-box {
         @apply py-16 px-25;
@@ -250,13 +287,23 @@
     .carousel-toolbar {
         @apply p-2;
     }
+
+    .carousel-btn.is-prev {
+        left: 40px
+    }
+
+    .carousel-btn.is-next {
+        right: 40px
+    }
 }
+
 
 @media (width >= 80rem) {
     .main-area-cont .facility-cont {
         @apply min-w-3xs w-3xs;
     }
 }
+
 
 @media (width >= 96rem) {
     .main-area-cont .facility-cont {
