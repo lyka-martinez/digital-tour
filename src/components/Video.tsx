@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback, useMemo, memo } from "react";
-import { BedSingle, BedDouble, Check, Images, X } from 'lucide-react';
+import { BedSingle, BedDouble, Check, Images, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Button from './Button';
 import VideoControl from './VideoControl';
 import { Room, OnboardingStep } from "../types";
@@ -241,6 +241,9 @@ export const Video = ({ room }: VideoProps) => {
                                 </>
                             )}
 
+
+
+
                             {/* View Image Button */}
                             <div className="grid grid-flow-col gap-2 xs:justify-start">
                                 <button 
@@ -255,22 +258,42 @@ export const Video = ({ room }: VideoProps) => {
                                 </button>
 
                                 <dialog id="carousel-cont" className="modal">
-                                    <div className="modal-box size-full max-w-full rounded-none">
+                                    <div className="modal-box size-full max-w-full rounded-none flex flex-wrap items-center justify-center">
                                         
-                                        {/* if there is a button in form, it will close the modal */}
-                                        <form method="dialog">
-                                            <button className="btn btn-circle btn-ghost absolute right-2 top-2">
-                                                <X />
+                                        <form method="dialog" className="carousel-toolbar">
+                                            {/* data index w/ button controllers */}
+                                            <div className="hidden absolute left-[50%] -translate-x-[50%] sm:flex">
+                                                <button className="carousel-btn btn btn-ghost p-0 size-[48px]">
+                                                    <ChevronLeft className="icon" />
+                                                </button>
+
+                                                <div className="min-w-[72px] text-center leading-[48px]">
+                                                    <span data-index>1</span>
+                                                    &nbsp;/&nbsp;
+                                                    <span data-index>6</span>
+                                                </div>
+                                                
+                                                <button className="carousel-btn btn btn-ghost p-0 size-[48px]">
+                                                    <ChevronRight className="icon" />
+                                                </button>
+                                            </div>
+
+                                            {/* close modal button */}
+                                            <button className="carousel-btn btn btn-ghost p-0 size-[48px]">
+                                                <X className="icon" />
                                             </button>
                                         </form>
-                                        
-                                        <h3 className="font-bold text-lg">Carousel Template</h3>
-                                        <p className="py-4">Press ESC key or click on ✕ button to close [changes made]</p>
-                                    
+
+
+                                        {/* swiper module here.. */}
+                        
                                     </div>
                                 </dialog>
                             </div>
                         </div>
+
+
+
 
                         {/* Description */}
                         <Description 
