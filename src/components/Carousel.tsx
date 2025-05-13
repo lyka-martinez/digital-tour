@@ -19,11 +19,11 @@ const Carousel = () => {
 
             <dialog id="carousel-cont" className="modal">
                 <div className="modal-box size-full max-w-full rounded-none flex flex-wrap items-center justify-center">
-                    
-                    <form method="dialog" className="carousel-toolbar">
+
+                    <div className="carousel-toolbar">
                         {/* data index w/ button controllers */}
                         <div className="hidden absolute left-[50%] -translate-x-[50%] sm:flex">
-                            <button className="carousel-btn btn btn-ghost p-0 size-[48px]">
+                            <button className="carousel-btn btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
                                 <ChevronLeft className="icon" />
                             </button>
 
@@ -33,16 +33,19 @@ const Carousel = () => {
                                 <span data-index>6</span>
                             </div>
                             
-                            <button className="carousel-btn btn btn-ghost p-0 size-[48px]">
+                            <button className="carousel-btn btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
                                 <ChevronRight className="icon" />
                             </button>
                         </div>
 
                         {/* close modal button */}
-                        <button className="carousel-btn btn btn-ghost p-0 size-[48px]">
-                            <X className="icon" />
-                        </button>
-                    </form>
+                        <form method="dialog">
+                            <button className="carousel-btn btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
+                                <X className="icon" />
+                            </button>
+                        </form>
+                    </div>
+                    
 
 
                     {/* swiper module here.. */}

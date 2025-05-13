@@ -89,8 +89,8 @@
         rgba(0,0,0,.446) 100%);
 }
 
-.carousel-btn >.icon {
-    @apply drop-shadow-[1px_1px_1px_rgba(0,0,0,0.4)];
+.carousel-btn > .icon {
+    @apply drop-shadow-[1px_1px_1px_rgba(0,0,0,0.4)] w-auto h-[1.625rem];
 }
 
 
