@@ -99,35 +99,37 @@ const Carousel = () => {
                         grabCursor={true}
                         mousewheel={true}
                         loop={true}
-                        onSwiper={(swiper) => {
-                            swiperRef.current = swiper;     // Store the Swiper instance in the ref
+                        onSwiper={(swiper) => swiperRef.current = swiper }
+                        onSlideChange={() => {
+                            console.log('slide change');
                         }}
                     >
                         <SwiperSlide>
                             <img
-                                src="https://swiperjs.com/demos/images/nature-1.jpg"
+                                src="./images/Deluxe Classic/TER_Deluxe Classic_01.webp"
                                 loading="lazy"
                             />
                             <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img
-                                src="https://swiperjs.com/demos/images/nature-2.jpg"
+                                src="./images/Deluxe Classic/TER_Deluxe Classic_02.webp"
                                 loading="lazy"
                             />
                             <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img    
-                                src="https://swiperjs.com/demos/images/nature-3.jpg"
+                                src="./images/Deluxe Classic/TER_Deluxe Classic_03.webp"
                                 loading="lazy"
-                            />
+                                />
                             <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img
-                                src="https://swiperjs.com/demos/images/nature-4.jpg"
+                                src="./images/Deluxe Classic/TER_Deluxe Classic_04.webp"
                                 loading="lazy"
+                                className=''
                             />
                             <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </SwiperSlide>
