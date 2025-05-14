@@ -11,7 +11,17 @@ type ButtonProps = {
 }
 
 
-/* Button component for various UI actions. */
+/**
+ * Button component for various UI actions.
+ * @param type - The type of button to render.
+ * @param text - The text to display on the button.
+ * @param tooltip - The tooltip text to display on hover.
+ * @param onClick - The function to call when the button is clicked.
+ * @param isActive - Whether the button is in an active state.
+ * @param icon - The icon to display on the button.
+ * @returns The rendered Button component.
+ */
+
 const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) => {
     const baseClass = "btn font-medium duration-200 transition-all";
 
@@ -46,21 +56,19 @@ const Button = ({ type, text, tooltip, onClick, isActive, icon }: ButtonProps) =
     }[type];
 
 
-    const buttonElement = (
+    const buttonEl = (
         <button className={`${baseClass} ${typeClass[type]}`} onClick={onClick} aria-label={tooltip || text} >
             {content}
         </button>
     );
 
 
-    /* Tooltip for control buttons. */
+    /** Tooltip for control buttons. */
     return type === "control" ? (
         <div className="tooltip tooltip-xs tooltip-neutral-800" data-tip={tooltip}>
-            {buttonElement}
+            {buttonEl}
         </div>
-    ) : (
-        buttonElement
-    );
+    ) : buttonEl;
 };
 
 export default memo(Button);

@@ -10,15 +10,18 @@ type FacilityProps = {
 };
 
 
-/* Facility component for selecting facility and room */
+/**
+ * Facility component for selecting facilities and rooms.
+ * @param onRoomSelect - Callback to handle room selection.
+ * @returns JSX.Element
+ */
+
 export const Facility = ({ onRoomSelect }: FacilityProps) => {
     const [activeRoom, setActiveRoom] = useState<string | null>(null);
     const [activeFacility, setActiveFacility] = useState<string | null>(null);
 
 
-    /**
-     * Select first facility and room on mount
-     */
+    /** Select first facility and room on mount */
     useEffect(() => {
         const firstFacility = facilities[0];
         const firstRoom = firstFacility.rooms?.[0];
@@ -29,7 +32,10 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
     }, [onRoomSelect]);
     
 
-    /* Handle room selection */
+    /**
+     * Handles room selection.
+     * @param room - The selected room.
+     */
     const hndlRoomSelect = useCallback(
         (room: Room) => {
             if (room.name === activeRoom) return;
@@ -41,7 +47,10 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
     );
 
 
-    /* Handle facility selection */
+    /**
+     * Handles facility selection.
+     * @param facility - The selected facility.
+     */
     const hndlFacilitySelect = useCallback(
         (facility: any) => {
             if (facility.title === activeFacility) return;

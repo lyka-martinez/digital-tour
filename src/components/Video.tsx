@@ -11,10 +11,13 @@ type VideoProps = {
 };
 
 
-/* Main Video component for displaying room video and details. */
-export const Video = ({ room }: VideoProps) => {    
-    // console.log("Video: ", new Date().toLocaleTimeString());
+/**
+ * Video component for displaying room video and details.
+ * @param room - The room object containing video and image details.
+ * @returns JSX.Element
+ */
 
+export const Video = ({ room }: VideoProps) => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [selBedOption, setSelBedOption] = useState<string | null>(null);
     const [onboardingStep, setOnboardingStep] = useState<OnboardingStep>("description");
@@ -46,9 +49,7 @@ export const Video = ({ room }: VideoProps) => {
     }, [room, selBedOption]);
 
 
-    /**
-     * Set default bed option on room change
-     */
+    /** Set default bed option on room change */
     useEffect(() => {
         if (room?.bedOptions?.length) {
             setSelBedOption((prev) => prev || room?.bedOptions?.[0]?.type || null);
@@ -56,9 +57,7 @@ export const Video = ({ room }: VideoProps) => {
     }, [room]);
 
 
-    /**
-     * Load and play video when source changes
-     */
+    /** Load and play video when source changes */
     useEffect(() => {
         if (!videoRef.current || !currentVideo) return;
 
@@ -77,14 +76,14 @@ export const Video = ({ room }: VideoProps) => {
     }, [currentVideo, room]);
 
 
-    /* Displayed room name with bed option. */
+    /** Displayed room name with bed option. */
     const dspRoomName = useMemo(
         () => (room?.bedOptions && selBedOption ? `${room.name} ${selBedOption}` : room?.name || ''),
         [room, selBedOption]
     );
     
     
-    /* Handle onboarding step click. */
+    /** Handle onboarding step click. */
     const hndlOnboardingClick = useCallback(() => {
         setOnboardingStep((prev) => {
             switch (prev) {
@@ -96,16 +95,14 @@ export const Video = ({ room }: VideoProps) => {
     }, [room?.bedOptions?.length]);
 
 
-    /**
-     * Check if onboarding step is active
-     */
+    /** Check if onboarding step is active */
     const isOnboardingStep = useCallback(
         (step: OnboardingStep) => onboardingStep === step,
         [onboardingStep]
     );
 
 
-    /* Toggle mute state. */
+    /** Toggle mute state. */
     const toggleMute = useCallback(() => {
         if (!videoRef.current) return;
         
@@ -114,7 +111,7 @@ export const Video = ({ room }: VideoProps) => {
     }, [isMuted]);
     
     
-    /* Toggle play/pause state. */
+    /** Toggle play/pause state. */
     const togglePlayPause = useCallback(() => {
         if (!videoRef.current) return;
         
@@ -126,11 +123,11 @@ export const Video = ({ room }: VideoProps) => {
     }, [isPlaying]);
     
     
-    /* Toggle fullscreen state. */
+    /** Toggle fullscreen state. */
     const toggleFullscreen = useCallback(() => {
-        const videoCont = videoRef.current?.parentElement;
         if (!videoRef.current) return;
         
+        const videoCont = videoRef.current?.parentElement;
         (!document.fullscreenElement) 
             ? videoCont?.requestFullscreen().catch(console.error)
             : document.exitFullscreen().catch(console.error);
@@ -152,7 +149,7 @@ export const Video = ({ room }: VideoProps) => {
     }, []);
     
     
-    /* Handle keyboard shortcuts. */
+    /** Handle keyboard shortcuts. */
     useEffect(() => {
         const hndlKeyDown = (e: KeyboardEvent) => {
             if (e.repeat) return;
@@ -281,10 +278,14 @@ type DescriptionProps = {
 }
 
 
-/* Description section for room details. */
-const Description = memo(({ room, isOnboardingStep }: DescriptionProps) => {
-    // console.log("Description: ", new Date().toLocaleTimeString());
+/**
+ * Description section for room details.
+ * @param room - The room object containing description and features.
+ * @param isOnboardingStep - Function to check if a specific onboarding step is active.
+ * @returns The rendered Description component.
+ */
 
+const Description = memo(({ room, isOnboardingStep }: DescriptionProps) => {
     return (
         <div 
             className={`onboard-section ${isOnboardingStep("description") 
@@ -329,7 +330,6 @@ const Description = memo(({ room, isOnboardingStep }: DescriptionProps) => {
 
 
 
-/* Bed options selector for rooms with multiple bed types. */
 type BedOptionsProps = {
     bedOptions: { type: string; video: string }[];
     selBedOption: string | null;
@@ -338,9 +338,16 @@ type BedOptionsProps = {
 }
 
 
-const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep }: BedOptionsProps) => {
-    // console.log("BedOptions: ", new Date().toLocaleTimeString());
+/**
+ * Bed options selector for rooms with multiple bed types.
+ * @param bedOptions - Array of bed options with type and video.
+ * @param selBedOption - Currently selected bed option.
+ * @param onSelect - Callback function to handle bed option selection.
+ * @param isOnboardingStep - Function to check if a specific onboarding step is active.
+ * @returns The rendered Description component.
+ */
 
+const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep }: BedOptionsProps) => {
     return (
         <div 
             className={`onboard-section ${isOnboardingStep("bedOption") 

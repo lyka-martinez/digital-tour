@@ -7,7 +7,12 @@ type NavBarProps = {
 };
 
 
-/* NavBar component for navigation and branding */
+/**
+ * Navigation bar component with a back button and branding logo.
+ * @param onClick - Callback to handle back button click.
+ * @returns JSX.Element
+ */
+
 const NavBar = ({ onClick }: NavBarProps) => {
     return ( 
         <div className="navbar bg-base-100 flex-none gap-1 py-0 min-h-[3.25rem] border-b border-neutral-content">

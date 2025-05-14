@@ -13,7 +13,17 @@ type VideoControlProps = {
 };
 
 
-/* VideoControls component to manage video playback, mute/unmute, and fullscreen toggle. */
+/**
+ * VideoControls component to manage video playback, mute/unmute, and fullscreen toggle.
+ * @param isPlaying - Current play state of the video.
+ * @param isMuted - Current mute state of the video.
+ * @param isFullscreen - Current fullscreen state of the video.
+ * @param togglePlayPause - Function to toggle play/pause state.
+ * @param toggleMute - Function to toggle mute/unmute state.
+ * @param toggleFullscreen - Function to toggle fullscreen mode.
+ * @returns JSX.Element
+ */
+
 const VideoControls = ({
     isPlaying,
     isMuted,
@@ -28,9 +38,7 @@ const VideoControls = ({
     const [showControls, setShowControls] = useState(false);
 
 
-    /**
-     * Clear hide timeout for controls. 
-     */
+    /** Clear hide timeout for controls. */
     const clearHideTimeout = useCallback(() => {
         if (!hideTimeout.current) return;
         
@@ -39,9 +47,7 @@ const VideoControls = ({
     }, []);
     
     
-    /**
-     * Show controls and auto-hide after delay
-     */
+    /** Show controls and auto-hide after delay */
     const showAndAutoHideControls = useCallback(() => {
         setShowControls(true);
         clearHideTimeout();
@@ -82,9 +88,7 @@ const VideoControls = ({
     }, []);
 
 
-    /**
-     * Hide controls if click outside
-     */
+    /** Hide controls if click outside */
     useEffect(() => {
         const hndlClickOutside = (event: MouseEvent) => {
             const target = event.target as Node;
@@ -119,7 +123,7 @@ const VideoControls = ({
     }, [hndlUserActivity]);
 
 
-    /* Cleanup timer on unmount. */
+    /** Cleanup timer on unmount. */
     useEffect(() => clearHideTimeout, [clearHideTimeout]);
 
 

@@ -177,7 +177,7 @@
 }
 
 .swiper-slide {
-    @apply text-lg text-center;
+    @apply text-lg text-center overflow-hidden;
 }
 
 .swiper-slide img {

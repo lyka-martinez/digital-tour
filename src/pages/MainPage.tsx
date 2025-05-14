@@ -13,12 +13,17 @@ type MainPageProps = {
 };
 
 
-/* Main page for the Virtual Tour. */
+/**
+ * Main page for the Virtual Tour.
+ * Displays the navigation bar, facility selector, and video player.
+ * @param returnToLanding - Whether the page is transitioning back to the landing page.
+ * @param onBack - Callback to return to the landing page.
+ * @returns JSX.Element
+ */
+
 const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
 
-    /**
-     * Get the initial room from the first facility
-     */
+    /** Get the initial room from the first facility */
     const initRoom = useMemo(() => {
         const firstFacility = facilities[0];
 

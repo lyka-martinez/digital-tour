@@ -7,40 +7,30 @@ import { Keyboard, Mousewheel } from 'swiper/modules'
 type SlideBtnProps = {
     swiperRef: React.RefObject<any>;
     position?: 'nav' | 'toolbar';
+    isNext?: boolean;
 };
 
 
-/* Custom button components for Swiper navigation */
-const SlidePrevButton = ({ swiperRef, position }: SlideBtnProps) => {
-    const buttonClass = position === 'nav' ? 'is-prev' : '';
+/**
+ * Custom button for Swiper navigation.
+ * @param swiperRef - Reference to the Swiper instance.
+ * @param position - Position of the button ('nav' or 'toolbar').
+ * @returns JSX.Element
+ */
 
-    return (
-        <button
-            className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[3rem]`}
-            onClick={() => {
-                swiperRef.current?.slidePrev();
-            }}
-        >
-            <ChevronLeft className="icon" />
-        </button>
-    );
-};
-
-
-const SlideNextButton = ({ swiperRef, position }: SlideBtnProps) => {
-    const buttonClass = position === 'nav' ? 'is-next' : '';
-
-    return (
-        <button
-            className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[3rem]`}
-            onClick={() => {
-                swiperRef.current?.slideNext();
-            }}
-        >
-            <ChevronRight className="icon" />
-        </button>
-    );
-};
+const SlideButton = ({ swiperRef, position, isNext }: SlideBtnProps) => (
+    <button
+        className={`carousel-btn btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[3rem] 
+            ${position === 'nav' ? (isNext ? 'is-next' : 'is-prev') : ''}
+        `}
+        onClick={() => (isNext 
+            ? swiperRef.current?.slideNext() 
+            : swiperRef.current?.slidePrev()
+        )}
+    >
+        {isNext ? <ChevronRight className="icon" /> : <ChevronLeft className="icon" />}
+    </button>
+);
 
 
 
@@ -50,29 +40,24 @@ type CarouselProps = {
 };
 
 
-/* Carousel component for iamges */
+/**
+ * Carousel component for displaying images in a modal.
+ * @param images - Array of image URLs to display.
+ * @returns JSX.Element
+ */
+
 const Carousel = ({ images }: CarouselProps) => {
     const swiperRef = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState(1);
 
 
-    /**
-     * Reset current slide when images change
-     */
+    /** Reset current slide when images change */
     useEffect(() => {
         if (!swiperRef.current) return;
 
         swiperRef.current.slideTo(0, 0);
         setCurrentSlide(1);
     }, [images]);
-
-
-    /* Handle slide change event. */
-    const hndlSlideChange = () => {
-        if (swiperRef.current) {
-            setCurrentSlide(swiperRef.current.realIndex + 1);
-        }
-    };
 
 
     return ( 
@@ -94,7 +79,7 @@ const Carousel = ({ images }: CarouselProps) => {
                     <div className="carousel-toolbar">
                         {/* data index w/ button controllers */}
                         <div className="hidden absolute left-[50%] -translate-x-[50%] sm:flex">
-                            <SlidePrevButton position="toolbar" swiperRef={swiperRef} />
+                            <SlideButton position="toolbar" swiperRef={swiperRef} isNext={false} />
 
                             <div className="min-w-[4.5rem] text-center leading-[3rem]">
                                 <span>{currentSlide}</span>
@@ -102,7 +87,7 @@ const Carousel = ({ images }: CarouselProps) => {
                                 <span>{images.length}</span>
                             </div>
                             
-                            <SlideNextButton position="toolbar" swiperRef={swiperRef} />
+                            <SlideButton position="toolbar" swiperRef={swiperRef} isNext={true} />
                         </div>
 
                         {/* close modal button */}
@@ -123,7 +108,7 @@ const Carousel = ({ images }: CarouselProps) => {
                         mousewheel={true}
                         loop={true}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        onSlideChange={hndlSlideChange}
+                        onSlideChange={() => setCurrentSlide(swiperRef.current?.realIndex + 1)}
                     >
                         {images.map((image, index) => (
                             <SwiperSlide key={index}>
@@ -134,8 +119,8 @@ const Carousel = ({ images }: CarouselProps) => {
                     </Swiper>
 
                     <div className="carousel-nav">
-                        <SlidePrevButton position="nav" swiperRef={swiperRef} />
-                        <SlideNextButton position="nav" swiperRef={swiperRef} />
+                        <SlideButton position="nav" swiperRef={swiperRef} isNext={false} />
+                        <SlideButton position="nav" swiperRef={swiperRef} isNext={true} />
                     </div>
 
                 </div>
