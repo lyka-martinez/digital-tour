@@ -26,7 +26,8 @@ const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
             : {
                 name: firstFacility.title,
                 description: firstFacility.description,
-                video: firstFacility.video || ""
+                video: firstFacility.video || "",
+                images: firstFacility.images || []
             };
     }, []);
 

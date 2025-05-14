@@ -1,4 +1,4 @@
-import { memo, useRef } from 'react';
+import { memo, useRef, useState, useEffect } from 'react';
 import { Images, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Mousewheel } from 'swiper/modules'
@@ -16,7 +16,7 @@ const SlidePrevButton = ({ swiperRef, position }: SlideBtnProps) => {
 
     return (
         <button
-            className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]`}
+            className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[3rem]`}
             onClick={() => {
                 swiperRef.current?.slidePrev();
                 console.log("Prev button clicked..");
@@ -33,7 +33,7 @@ const SlideNextButton = ({ swiperRef, position }: SlideBtnProps) => {
 
     return (
         <button
-            className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]`}
+            className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[3rem]`}
             onClick={() => {
                 swiperRef.current?.slideNext();
                 console.log("Next button clicked..");
@@ -47,9 +47,34 @@ const SlideNextButton = ({ swiperRef, position }: SlideBtnProps) => {
 
 
 
+type CarouselProps = {
+    images: string[];
+};
+
+
 /* Carousel component for iamges */
-const Carousel = () => {
+const Carousel = ({ images }: CarouselProps) => {
     const swiperRef = useRef<any>(null);
+    const [currentSlide, setCurrentSlide] = useState(1);
+
+
+    /**
+     * Reset current slide when images change
+     */
+    useEffect(() => {
+        if (!swiperRef.current) return;
+
+        swiperRef.current.slideTo(0, 0);
+        setCurrentSlide(1);
+    }, [images]);
+
+
+    /* Handle slide change event. */
+    const hndlSlideChange = () => {
+        if (swiperRef.current) {
+            setCurrentSlide(swiperRef.current.realIndex + 1);
+        }
+    };
 
 
     return ( 
@@ -73,10 +98,10 @@ const Carousel = () => {
                         <div className="hidden absolute left-[50%] -translate-x-[50%] sm:flex">
                             <SlidePrevButton position="toolbar" swiperRef={swiperRef} />
 
-                            <div className="min-w-[72px] text-center leading-[48px]">
-                                <span>1</span>
+                            <div className="min-w-[4.5rem] text-center leading-[3rem]">
+                                <span>{currentSlide}</span>
                                 <span className="text-xs">&nbsp;/&nbsp;</span>
-                                <span>6</span>
+                                <span>{images.length}</span>
                             </div>
                             
                             <SlideNextButton position="toolbar" swiperRef={swiperRef} />
@@ -84,7 +109,7 @@ const Carousel = () => {
 
                         {/* close modal button */}
                         <form method="dialog">
-                            <button className="carousel-btn btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]">
+                            <button className="carousel-btn btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[3rem]">
                                 <X className="icon" />
                             </button>
                         </form>
@@ -99,40 +124,15 @@ const Carousel = () => {
                         grabCursor={true}
                         mousewheel={true}
                         loop={true}
-                        onSwiper={(swiper) => swiperRef.current = swiper }
-                        onSlideChange={() => {
-                            console.log('slide change');
-                        }}
+                        onSwiper={(swiper) => (swiperRef.current = swiper)}
+                        onSlideChange={hndlSlideChange}
                     >
-                        <SwiperSlide>
-                            <img
-                                src="./images/Deluxe Classic Queen/TER_Deluxe Classic_01.webp"
-                                loading="lazy"
-                            />
-                            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img
-                                src="./images/Deluxe Classic Queen/TER_Deluxe Classic_02.webp"
-                                loading="lazy"
-                            />
-                            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img    
-                                src="./images/Deluxe Classic Queen/TER_Deluxe Classic_03.webp"
-                                loading="lazy"
-                                />
-                            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img
-                                src="./images/Deluxe Classic Queen/TER_Deluxe Classic_04.webp"
-                                loading="lazy"
-                                className=''
-                            />
-                            <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-                        </SwiperSlide>
+                        {images.map((image, index) => (
+                            <SwiperSlide key={index}>
+                                <img src={image} alt={`Image ${index + 1}`} loading="lazy" />
+                                <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
 
                     <div className="carousel-nav">

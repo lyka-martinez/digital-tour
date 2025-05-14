@@ -36,6 +36,17 @@ export const Video = ({ room }: VideoProps) => {
 
 
     /**
+     * Determine which images to display based on selected bed option
+     */
+    const currentImages = useMemo(() => {
+        return (
+            room?.bedOptions?.find((option) => option.type === selBedOption)?.images || 
+            room?.images || []
+        );
+    }, [room, selBedOption]);
+
+
+    /**
      * Set default bed option on room change
      */
     useEffect(() => {
@@ -244,7 +255,7 @@ export const Video = ({ room }: VideoProps) => {
 
 
                             {/* View Image Button [Carousel] */}
-                            <Carousel />
+                            <Carousel images={currentImages} />
                         </div>
 
                         {/* Description */}

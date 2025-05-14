@@ -29,6 +29,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
                 name: firstFacility.title,
                 description: firstFacility.description || "No details available",
                 video: firstFacility.video || "",
+                images: firstFacility.images || [],
             }
         );
     }, [onRoomSelect]);
@@ -59,6 +60,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
                 name: facility.title,
                 description: facility.description,
                 video: facility.video || "",
+                images: facility.images || [],
             });
         },
         [activeFacility, onRoomSelect]
