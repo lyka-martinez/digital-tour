@@ -1,22 +1,24 @@
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 import { Images, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Mousewheel } from 'swiper/modules'
 
 
 type SlideBtnProps = {
+    swiperRef: React.RefObject<any>;
     position?: 'nav' | 'toolbar';
 };
 
 
 /* Custom button components for Swiper navigation */
-const SlidePrevButton = ({ position }: SlideBtnProps) => {
+const SlidePrevButton = ({ swiperRef, position }: SlideBtnProps) => {
     const buttonClass = position === 'nav' ? 'is-prev' : '';
 
     return (
         <button
             className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]`}
             onClick={() => {
+                swiperRef.current?.slidePrev();
                 console.log("Prev button clicked..");
             }}
         >
@@ -26,13 +28,14 @@ const SlidePrevButton = ({ position }: SlideBtnProps) => {
 };
 
 
-const SlideNextButton = ({ position }: SlideBtnProps) => {
+const SlideNextButton = ({ swiperRef, position }: SlideBtnProps) => {
     const buttonClass = position === 'nav' ? 'is-next' : '';
 
     return (
         <button
             className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[48px]`}
             onClick={() => {
+                swiperRef.current?.slideNext();
                 console.log("Next button clicked..");
             }}
         >
@@ -46,6 +49,9 @@ const SlideNextButton = ({ position }: SlideBtnProps) => {
 
 /* Carousel component for iamges */
 const Carousel = () => {
+    const swiperRef = useRef<any>(null);
+
+
     return ( 
         <div className="grid grid-flow-col gap-2 xs:justify-start">
             <button 
@@ -65,15 +71,15 @@ const Carousel = () => {
                     <div className="carousel-toolbar">
                         {/* data index w/ button controllers */}
                         <div className="hidden absolute left-[50%] -translate-x-[50%] sm:flex">
-                            <SlidePrevButton position="toolbar" />
+                            <SlidePrevButton position="toolbar" swiperRef={swiperRef} />
 
                             <div className="min-w-[72px] text-center leading-[48px]">
-                                <span data-index>1</span>
-                                &nbsp;/&nbsp;
-                                <span data-index>6</span>
+                                <span>1</span>
+                                <span className="text-xs">&nbsp;/&nbsp;</span>
+                                <span>6</span>
                             </div>
                             
-                            <SlideNextButton position="toolbar" />
+                            <SlideNextButton position="toolbar" swiperRef={swiperRef} />
                         </div>
 
                         {/* close modal button */}
@@ -93,6 +99,9 @@ const Carousel = () => {
                         grabCursor={true}
                         mousewheel={true}
                         loop={true}
+                        onSwiper={(swiper) => {
+                            swiperRef.current = swiper;     // Store the Swiper instance in the ref
+                        }}
                     >
                         <SwiperSlide>
                             <img
@@ -125,8 +134,8 @@ const Carousel = () => {
                     </Swiper>
 
                     <div className="carousel-nav">
-                        <SlidePrevButton position="nav" />
-                        <SlideNextButton position="nav" />
+                        <SlidePrevButton position="nav" swiperRef={swiperRef} />
+                        <SlideNextButton position="nav" swiperRef={swiperRef} />
                     </div>
 
                 </div>
