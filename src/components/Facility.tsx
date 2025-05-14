@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, Fragment } from "react";
 import Button from "./Button";
 import { Room } from "../types";
+import { mapFacilityToRoom } from "../utils/facilityUtils";
 import facilities from "../data/facilities.json";
 
 
@@ -24,14 +25,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
 
         setActiveFacility(firstFacility.title);
         setActiveRoom(firstRoom?.name || firstFacility.title);
-        onRoomSelect(
-            firstRoom || {
-                name: firstFacility.title,
-                description: firstFacility.description || "No details available",
-                video: firstFacility.video || "",
-                images: firstFacility.images || [],
-            }
-        );
+        onRoomSelect(firstRoom || mapFacilityToRoom(firstFacility));
     }, [onRoomSelect]);
     
 
@@ -56,12 +50,7 @@ export const Facility = ({ onRoomSelect }: FacilityProps) => {
             if (facility.rooms) return;
             
             setActiveRoom(facility.title);
-            onRoomSelect({
-                name: facility.title,
-                description: facility.description,
-                video: facility.video || "",
-                images: facility.images || [],
-            });
+            onRoomSelect(mapFacilityToRoom(facility));
         },
         [activeFacility, onRoomSelect]
     );

@@ -19,7 +19,6 @@ const SlidePrevButton = ({ swiperRef, position }: SlideBtnProps) => {
             className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[3rem]`}
             onClick={() => {
                 swiperRef.current?.slidePrev();
-                console.log("Prev button clicked..");
             }}
         >
             <ChevronLeft className="icon" />
@@ -36,7 +35,6 @@ const SlideNextButton = ({ swiperRef, position }: SlideBtnProps) => {
             className={`carousel-btn ${buttonClass} btn btn-ghost bg-transparent shadow-none text-white border-none p-0 size-[3rem]`}
             onClick={() => {
                 swiperRef.current?.slideNext();
-                console.log("Next button clicked..");
             }}
         >
             <ChevronRight className="icon" />

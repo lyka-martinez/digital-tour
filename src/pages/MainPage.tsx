@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar';
 import { Facility } from '../components/Facility';
 import { Video } from '../components/Video';
 import { Room } from "../types";
+import { mapFacilityToRoom } from "../utils/facilityUtils";
 import facilities from "../data/facilities.json";
 
 
@@ -23,12 +24,7 @@ const MainPage = ({ returnToLanding, onBack }: MainPageProps) => {
 
         return firstFacility.rooms
             ? firstFacility.rooms[0]
-            : {
-                name: firstFacility.title,
-                description: firstFacility.description,
-                video: firstFacility.video || "",
-                images: firstFacility.images || []
-            };
+            : mapFacilityToRoom(firstFacility);
     }, []);
 
     
