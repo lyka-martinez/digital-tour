@@ -106,28 +106,28 @@ const Carousel = () => {
                     >
                         <SwiperSlide>
                             <img
-                                src="./images/Deluxe Classic/TER_Deluxe Classic_01.webp"
+                                src="./images/Deluxe Classic Queen/TER_Deluxe Classic_01.webp"
                                 loading="lazy"
                             />
                             <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img
-                                src="./images/Deluxe Classic/TER_Deluxe Classic_02.webp"
+                                src="./images/Deluxe Classic Queen/TER_Deluxe Classic_02.webp"
                                 loading="lazy"
                             />
                             <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img    
-                                src="./images/Deluxe Classic/TER_Deluxe Classic_03.webp"
+                                src="./images/Deluxe Classic Queen/TER_Deluxe Classic_03.webp"
                                 loading="lazy"
                                 />
                             <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img
-                                src="./images/Deluxe Classic/TER_Deluxe Classic_04.webp"
+                                src="./images/Deluxe Classic Queen/TER_Deluxe Classic_04.webp"
                                 loading="lazy"
                                 className=''
                             />

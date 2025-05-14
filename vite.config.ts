@@ -14,6 +14,6 @@ export default defineConfig(({ mode }) => {
         define: {
             __APP_ENV__: JSON.stringify(env.APP_ENV),
         },
-        base: env.VERCEL === '1' ? '/' : '/virtual-tour/'   // Set base dynamically based on VERCEL env variable
+        base: env.VERCEL === '1' ? '/' : '/digital-tour/'   // Set base dynamically based on VERCEL env variable
     }
 })
