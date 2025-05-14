@@ -111,7 +111,7 @@ const Carousel = ({ images }: CarouselProps) => {
                         onSlideChange={() => setCurrentSlide(swiperRef.current?.realIndex + 1)}
                     >
                         {images.map((image, index) => (
-                            <SwiperSlide key={index}>
+                            <SwiperSlide key={index} zoom={true}>
                                 <img src={image} alt={`Image ${index + 1}`} loading="lazy" />
                                 <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                             </SwiperSlide>
