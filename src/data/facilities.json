@@ -2,12 +2,29 @@
     {
         "title": "Arrival Experience",
         "description": "The hotel front desk is the main hub for guest services, where check-ins, reservations, and inquiries are handled. It offers assistance and information, ensuring a smooth and welcoming experience for guests.",
-        "video": ""
+        "video": "",
+        "images": [
+            "./images/Arrival Experience/arrival-experience-01.webp",
+            "./images/Arrival Experience/arrival-experience-02.webp",
+            "./images/Arrival Experience/arrival-experience-03.webp"
+        ]
     },
     {
         "title": "Amenities",
         "description": "A spacious room for events and meetings.",
-        "video": ""
+        "video": "",
+        "images": [
+            "./images/Amenities/amenities-01.webp",
+            "./images/Amenities/amenities-02.webp",
+            "./images/Amenities/amenities-03.webp",
+            "./images/Amenities/amenities-04.webp",
+            "./images/Amenities/amenities-05.webp",
+            "./images/Amenities/amenities-06.webp",
+            "./images/Amenities/amenities-07.webp",
+            "./images/Amenities/amenities-08.webp",
+            "./images/Amenities/amenities-09.webp",
+            "./images/Amenities/amenities-10.webp"
+        ]
     },
     {
         "title": "Room",
@@ -28,8 +45,31 @@
                     "Hair dryer"
                 ],
                 "bedOptions": [
-                    { "type": "Queen", "video": "./videos/deluxe-classic-queen.mp4" },
-                    { "type": "Twin", "video": "./videos/deluxe-classic-twin.mp4" }
+                    { 
+                        "type": "Queen", 
+                        "video": "./videos/deluxe-classic-queen.mp4",
+                        "images": [
+                            "./images/Deluxe Classic Queen/deluxe-classic-01.webp",
+                            "./images/Deluxe Classic Queen/deluxe-classic-02.webp",
+                            "./images/Deluxe Classic Queen/deluxe-classic-03.webp",
+                            "./images/Deluxe Classic Queen/deluxe-classic-04.webp",
+                            "./images/Deluxe Classic Queen/deluxe-classic-05.webp",
+                            "./images/Deluxe Classic Queen/deluxe-classic-06.webp",
+                            "./images/Deluxe Classic Queen/deluxe-classic-07.webp"
+                        ]
+                    },
+                    { 
+                        "type": "Twin", 
+                        "video": "./videos/deluxe-classic-twin.mp4",
+                        "images": [
+                            "./images/Deluxe Classic Twin/deluxe-classic-01.webp",
+                            "./images/Deluxe Classic Twin/deluxe-classic-02.webp",
+                            "./images/Deluxe Classic Twin/deluxe-classic-03.webp",
+                            "./images/Deluxe Classic Twin/deluxe-classic-04.webp",
+                            "./images/Deluxe Classic Twin/deluxe-classic-05.webp",
+                            "./images/Deluxe Classic Twin/deluxe-classic-06.webp"
+                        ]
+                    }
                 ]
             },
             {
@@ -49,8 +89,36 @@
                     "Bedroom Slippers"
                 ],
                 "bedOptions": [
-                    { "type": "Queen", "video": "./videos/deluxe-premium-queen.mp4" },
-                    { "type": "Twin", "video": "./videos/deluxe-premium-twin.mp4" }
+                    {
+                        "type": "Queen", 
+                        "video": "./videos/deluxe-premium-queen.mp4",
+                        "images": [
+                            "./images/Deluxe Premium Queen/deluxe-premium-01.webp",
+                            "./images/Deluxe Premium Queen/deluxe-premium-02.webp",
+                            "./images/Deluxe Premium Queen/deluxe-premium-03.webp",
+                            "./images/Deluxe Premium Queen/deluxe-premium-04.webp",
+                            "./images/Deluxe Premium Queen/deluxe-premium-05.webp",
+                            "./images/Deluxe Premium Queen/deluxe-premium-06.webp",
+                            "./images/Deluxe Premium Queen/deluxe-premium-07.webp"
+                        ]
+                    },
+                    { 
+                        "type": "Twin", 
+                        "video": "./videos/deluxe-premium-twin.mp4",
+                        "images": [
+                            "./images/Deluxe Premium Twin/deluxe-premium-01.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-02.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-03.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-04.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-05.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-06.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-07.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-08.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-09.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-10.webp",
+                            "./images/Deluxe Premium Twin/deluxe-premium-11.webp"
+                        ]
+                    }
                 ]
             },
             {
@@ -70,8 +138,33 @@
                     "Bedroom Slippers"
                 ],
                 "bedOptions": [
-                    { "type": "Queen", "video": "./videos/premier-queen.mp4" },
-                    { "type": "Twin", "video": "./videos/premier-twin.mp4" }
+                    { 
+                        "type": "Queen", 
+                        "video": "./videos/premier-queen.mp4",
+                        "images": [
+                            "./images/Premier Queen/premier-01.webp",
+                            "./images/Premier Queen/premier-02.webp",
+                            "./images/Premier Queen/premier-03.webp",
+                            "./images/Premier Queen/premier-04.webp",
+                            "./images/Premier Queen/premier-05.webp",
+                            "./images/Premier Queen/premier-06.webp",
+                            "./images/Premier Queen/premier-07.webp",
+                            "./images/Premier Queen/premier-08.webp",
+                            "./images/Premier Queen/premier-09.webp"
+                        ]
+                    },
+                    { 
+                        "type": "Twin", 
+                        "video": "./videos/premier-twin.mp4",
+                        "images": [
+                            "./images/Premier Twin/premier-01.webp",
+                            "./images/Premier Twin/premier-02.webp",
+                            "./images/Premier Twin/premier-03.webp",
+                            "./images/Premier Twin/premier-04.webp",
+                            "./images/Premier Twin/premier-05.webp",
+                            "./images/Premier Twin/premier-06.webp"
+                        ]
+                    }
                 ]
             },
             {
@@ -97,7 +190,22 @@
                     "Hair dryer",
                     "Bedroom Slippers"
                 ],
-                "video": "./videos/suite.mp4"
+                "video": "./videos/suite.mp4",
+                "images": [
+                    "./images/Suite/suite-01.webp",
+                    "./images/Suite/suite-02.webp",
+                    "./images/Suite/suite-03.webp",
+                    "./images/Suite/suite-04.webp",
+                    "./images/Suite/suite-05.webp",
+                    "./images/Suite/suite-06.webp",
+                    "./images/Suite/suite-07.webp",
+                    "./images/Suite/suite-08.webp",
+                    "./images/Suite/suite-09.webp",
+                    "./images/Suite/suite-10.webp",
+                    "./images/Suite/suite-11.webp",
+                    "./images/Suite/suite-12.webp",
+                    "./images/Suite/suite-13.webp"
+                ]
             }
         ]
     }
