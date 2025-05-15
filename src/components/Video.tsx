@@ -344,12 +344,27 @@ type BedOptionsProps = {
  * @param selBedOption - Currently selected bed option.
  * @param onSelect - Callback function to handle bed option selection.
  * @param isOnboardingStep - Function to check if a specific onboarding step is active.
+ * @param bedOptionsRef - Ref to the bed options container.
  * @returns The rendered Description component.
  */
 
 const BedOptions = memo(({ bedOptions, selBedOption, onSelect, isOnboardingStep }: BedOptionsProps) => {
+    const bedOptionsRef = useRef<HTMLDivElement | null>(null);
+
+
+    /**
+     * Scroll to bed options when onboarding step is active
+     */
+    useEffect(() => {
+        if (isOnboardingStep("bedOption") && bedOptionsRef.current) {
+            bedOptionsRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+        }
+    }, [isOnboardingStep]);
+
+
     return (
-        <div 
+        <div
+            ref={bedOptionsRef}
             className={`onboard-section ${isOnboardingStep("bedOption") 
                 ? "is-open-onboard tooltip-open tooltip tooltip-brnd-primary xs:w-fit sm:tooltip-right rounded-lg outline outline-brnd-light/60 outline-offset-4" 
                 : ""
