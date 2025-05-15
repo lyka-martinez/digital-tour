@@ -1,7 +1,7 @@
 import { memo, useRef, useState, useEffect } from 'react';
 import { Images, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Keyboard, Mousewheel } from 'swiper/modules'
+import { Keyboard, Mousewheel, Zoom } from 'swiper/modules'
 
 
 type SlideBtnProps = {
@@ -100,19 +100,19 @@ const Carousel = ({ images }: CarouselProps) => {
 
                     <Swiper
                         className="custom-swiper"
-                        modules={[Keyboard, Mousewheel]}
+                        modules={[Keyboard, Mousewheel, Zoom]}
                         keyboard={{
                             enabled: true,
                         }}
                         grabCursor={true}
                         mousewheel={true}
-                        loop={true}
+                        zoom={true}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={() => setCurrentSlide(swiperRef.current?.realIndex + 1)}
                     >
-                        {images.map((image, index) => (
-                            <SwiperSlide key={index}>
-                                <img src={image} alt={`Image ${index + 1}`} loading="lazy" />
+                        {images.map((img, index) => (
+                            <SwiperSlide key={index} zoom={true}>
+                                <img src={img} alt={`Image ${index + 1}`} loading="lazy" />
                                 <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                             </SwiperSlide>
                         ))}

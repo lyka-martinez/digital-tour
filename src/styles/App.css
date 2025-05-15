@@ -1,6 +1,7 @@
 /* Specific styles for the App component. */
 @reference "./index.css";
 @import "swiper/css";
+@import 'swiper/css/zoom';
 
 
 .bg-bottom-svg {
@@ -181,11 +182,7 @@
 }
 
 .swiper-slide img {
-    @apply size-auto max-w-full max-h-full absolute top-[50%] left-[50%];
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    @apply size-auto;
 }
 
 
