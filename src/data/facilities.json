@@ -4,9 +4,9 @@
         "description": "Upon arrival at The Exchange Regency Residence Hotel, guests are warmly welcomed at the front desk, the central point for all guest services. Friendly and professional staff are readily available to assist with check-ins, reservations, and inquiries, ensuring a smooth and hassle-free start to each guest’s stay.",
         "video": "",
         "images": [
-            "./images/Arrival Experience/arrival-experience-01.webp",
-            "./images/Arrival Experience/arrival-experience-02.webp",
-            "./images/Arrival Experience/arrival-experience-03.webp"
+            "./images/Arrival Experience/arrival-experience-01.jpg",
+            "./images/Arrival Experience/arrival-experience-02.jpg",
+            "./images/Arrival Experience/arrival-experience-03.jpg"
         ]
     },
     {
@@ -14,16 +14,16 @@
         "description": "The Exchange Regency Residence Hotel offers a variety of amenities to enhance your stay. Guests can enjoy a spacious function room for meetings, a large swimming pool for relaxation, a soothing jacuzzi, and a well-equipped fitness center. For families, a safe and enjoyable children’s playground ensures that younger guests are well taken care of, while the game room provides fun for everyone.",
         "video": "",
         "images": [
-            "./images/Amenities/amenities-01.webp",
-            "./images/Amenities/amenities-02.webp",
-            "./images/Amenities/amenities-03.webp",
-            "./images/Amenities/amenities-04.webp",
-            "./images/Amenities/amenities-05.webp",
-            "./images/Amenities/amenities-06.webp",
-            "./images/Amenities/amenities-07.webp",
-            "./images/Amenities/amenities-08.webp",
-            "./images/Amenities/amenities-09.webp",
-            "./images/Amenities/amenities-10.webp"
+            "./images/Amenities/amenities-01.jpg",
+            "./images/Amenities/amenities-02.jpg",
+            "./images/Amenities/amenities-03.jpg",
+            "./images/Amenities/amenities-04.jpg",
+            "./images/Amenities/amenities-05.jpg",
+            "./images/Amenities/amenities-06.jpg",
+            "./images/Amenities/amenities-07.jpg",
+            "./images/Amenities/amenities-08.jpg",
+            "./images/Amenities/amenities-09.jpg",
+            "./images/Amenities/amenities-10.jpg"
         ]
     },
     {
@@ -49,25 +49,25 @@
                         "type": "Queen", 
                         "video": "./videos/deluxe-classic-queen.mp4",
                         "images": [
-                            "./images/Deluxe Classic Queen/deluxe-classic-01.webp",
-                            "./images/Deluxe Classic Queen/deluxe-classic-02.webp",
-                            "./images/Deluxe Classic Queen/deluxe-classic-03.webp",
-                            "./images/Deluxe Classic Queen/deluxe-classic-04.webp",
-                            "./images/Deluxe Classic Queen/deluxe-classic-05.webp",
-                            "./images/Deluxe Classic Queen/deluxe-classic-06.webp",
-                            "./images/Deluxe Classic Queen/deluxe-classic-07.webp"
+                            "./images/Deluxe Classic Queen/deluxe-classic-01.jpg",
+                            "./images/Deluxe Classic Queen/deluxe-classic-02.jpg",
+                            "./images/Deluxe Classic Queen/deluxe-classic-03.jpg",
+                            "./images/Deluxe Classic Queen/deluxe-classic-04.jpg",
+                            "./images/Deluxe Classic Queen/deluxe-classic-05.jpg",
+                            "./images/Deluxe Classic Queen/deluxe-classic-06.jpg",
+                            "./images/Deluxe Classic Queen/deluxe-classic-07.jpg"
                         ]
                     },
                     { 
                         "type": "Twin", 
                         "video": "./videos/deluxe-classic-twin.mp4",
                         "images": [
-                            "./images/Deluxe Classic Twin/deluxe-classic-01.webp",
-                            "./images/Deluxe Classic Twin/deluxe-classic-02.webp",
-                            "./images/Deluxe Classic Twin/deluxe-classic-03.webp",
-                            "./images/Deluxe Classic Twin/deluxe-classic-04.webp",
-                            "./images/Deluxe Classic Twin/deluxe-classic-05.webp",
-                            "./images/Deluxe Classic Twin/deluxe-classic-06.webp"
+                            "./images/Deluxe Classic Twin/deluxe-classic-01.jpg",
+                            "./images/Deluxe Classic Twin/deluxe-classic-02.jpg",
+                            "./images/Deluxe Classic Twin/deluxe-classic-03.jpg",
+                            "./images/Deluxe Classic Twin/deluxe-classic-04.jpg",
+                            "./images/Deluxe Classic Twin/deluxe-classic-05.jpg",
+                            "./images/Deluxe Classic Twin/deluxe-classic-06.jpg"
                         ]
                     }
                 ]
@@ -93,30 +93,30 @@
                         "type": "Queen", 
                         "video": "./videos/deluxe-premium-queen.mp4",
                         "images": [
-                            "./images/Deluxe Premium Queen/deluxe-premium-01.webp",
-                            "./images/Deluxe Premium Queen/deluxe-premium-02.webp",
-                            "./images/Deluxe Premium Queen/deluxe-premium-03.webp",
-                            "./images/Deluxe Premium Queen/deluxe-premium-04.webp",
-                            "./images/Deluxe Premium Queen/deluxe-premium-05.webp",
-                            "./images/Deluxe Premium Queen/deluxe-premium-06.webp",
-                            "./images/Deluxe Premium Queen/deluxe-premium-07.webp"
+                            "./images/Deluxe Premium Queen/deluxe-premium-01.jpg",
+                            "./images/Deluxe Premium Queen/deluxe-premium-02.jpg",
+                            "./images/Deluxe Premium Queen/deluxe-premium-03.jpg",
+                            "./images/Deluxe Premium Queen/deluxe-premium-04.jpg",
+                            "./images/Deluxe Premium Queen/deluxe-premium-05.jpg",
+                            "./images/Deluxe Premium Queen/deluxe-premium-06.jpg",
+                            "./images/Deluxe Premium Queen/deluxe-premium-07.jpg"
                         ]
                     },
                     { 
                         "type": "Twin", 
                         "video": "./videos/deluxe-premium-twin.mp4",
                         "images": [
-                            "./images/Deluxe Premium Twin/deluxe-premium-01.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-02.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-03.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-04.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-05.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-06.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-07.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-08.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-09.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-10.webp",
-                            "./images/Deluxe Premium Twin/deluxe-premium-11.webp"
+                            "./images/Deluxe Premium Twin/deluxe-premium-01.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-02.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-03.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-04.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-05.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-06.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-07.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-08.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-09.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-10.jpg",
+                            "./images/Deluxe Premium Twin/deluxe-premium-11.jpg"
                         ]
                     }
                 ]
@@ -142,27 +142,27 @@
                         "type": "Queen", 
                         "video": "./videos/premier-queen.mp4",
                         "images": [
-                            "./images/Premier Queen/premier-01.webp",
-                            "./images/Premier Queen/premier-02.webp",
-                            "./images/Premier Queen/premier-03.webp",
-                            "./images/Premier Queen/premier-04.webp",
-                            "./images/Premier Queen/premier-05.webp",
-                            "./images/Premier Queen/premier-06.webp",
-                            "./images/Premier Queen/premier-07.webp",
-                            "./images/Premier Queen/premier-08.webp",
-                            "./images/Premier Queen/premier-09.webp"
+                            "./images/Premier Queen/premier-01.jpg",
+                            "./images/Premier Queen/premier-02.jpg",
+                            "./images/Premier Queen/premier-03.jpg",
+                            "./images/Premier Queen/premier-04.jpg",
+                            "./images/Premier Queen/premier-05.jpg",
+                            "./images/Premier Queen/premier-06.jpg",
+                            "./images/Premier Queen/premier-07.jpg",
+                            "./images/Premier Queen/premier-08.jpg",
+                            "./images/Premier Queen/premier-09.jpg"
                         ]
                     },
                     { 
                         "type": "Twin", 
                         "video": "./videos/premier-twin.mp4",
                         "images": [
-                            "./images/Premier Twin/premier-01.webp",
-                            "./images/Premier Twin/premier-02.webp",
-                            "./images/Premier Twin/premier-03.webp",
-                            "./images/Premier Twin/premier-04.webp",
-                            "./images/Premier Twin/premier-05.webp",
-                            "./images/Premier Twin/premier-06.webp"
+                            "./images/Premier Twin/premier-01.jpg",
+                            "./images/Premier Twin/premier-02.jpg",
+                            "./images/Premier Twin/premier-03.jpg",
+                            "./images/Premier Twin/premier-04.jpg",
+                            "./images/Premier Twin/premier-05.jpg",
+                            "./images/Premier Twin/premier-06.jpg"
                         ]
                     }
                 ]
@@ -192,19 +192,19 @@
                 ],
                 "video": "./videos/suite.mp4",
                 "images": [
-                    "./images/Suite/suite-01.webp",
-                    "./images/Suite/suite-02.webp",
-                    "./images/Suite/suite-03.webp",
-                    "./images/Suite/suite-04.webp",
-                    "./images/Suite/suite-05.webp",
-                    "./images/Suite/suite-06.webp",
-                    "./images/Suite/suite-07.webp",
-                    "./images/Suite/suite-08.webp",
-                    "./images/Suite/suite-09.webp",
-                    "./images/Suite/suite-10.webp",
-                    "./images/Suite/suite-11.webp",
-                    "./images/Suite/suite-12.webp",
-                    "./images/Suite/suite-13.webp"
+                    "./images/Suite/suite-01.jpg",
+                    "./images/Suite/suite-02.jpg",
+                    "./images/Suite/suite-03.jpg",
+                    "./images/Suite/suite-04.jpg",
+                    "./images/Suite/suite-05.jpg",
+                    "./images/Suite/suite-06.jpg",
+                    "./images/Suite/suite-07.jpg",
+                    "./images/Suite/suite-08.jpg",
+                    "./images/Suite/suite-09.jpg",
+                    "./images/Suite/suite-10.jpg",
+                    "./images/Suite/suite-11.jpg",
+                    "./images/Suite/suite-12.jpg",
+                    "./images/Suite/suite-13.jpg"
                 ]
             }
         ]

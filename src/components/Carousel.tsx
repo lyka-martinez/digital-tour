@@ -83,7 +83,7 @@ const Carousel = ({ images }: CarouselProps) => {
 
                             <div className="min-w-[4.5rem] text-center leading-[3rem]">
                                 <span>{currentSlide}</span>
-                                <span className="text-xs">&nbsp;/&nbsp;</span>
+                                &nbsp;/&nbsp;
                                 <span>{images.length}</span>
                             </div>
                             
